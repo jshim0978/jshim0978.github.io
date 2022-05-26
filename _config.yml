@@ -4,7 +4,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   simple description!
 
 url: "https://jshim0978.github.io" # the base hostname & protocol for your site, e.g. https://example.github.io
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 
 # Navigation
 urls:
@@ -24,14 +24,14 @@ urls:
 
 # Edit Author details (For multi authors check _data/authors.yml)
 
-author_logo: profile.png
-author: Jungwoo Shim
+author_logo: profile.jpg
+author: jshim0978
 author_bio: Hi, my name is Jungwoo Shim. This is my simple blog :D
 author_email: "jshim0978@gmail.com"
 author_location: Seoul, Korea
-author_website_url: "https://sujaykundu.com"
+author_website_url: "https://jshim0978.github.io"
 typewrite-text: welcome to my blog!
-hero_cover_img: storm_trooper_cover.png
+hero_cover_img: sudojpg.jpg
 
 # Experiences
 author_work_experiences:
@@ -44,7 +44,7 @@ author_work_experiences:
 
 # Education
 author_education_details:
-              - college_logo: CNU_logo.png
+              - college_logo: CNU_logo.jpg
                 college_name: CNU
                 college_url: https://cnu.ac.kr
                 college_degree: Computer Science
@@ -66,9 +66,9 @@ author_project_details:
 
 # social links
 github_username:  jshim0978
-facebook_username: jungwooshim
+facebook_username: jungwoo.shim.33
 linkedin_username: jungwooshim
-instagram_username: jungwooshim
+instagram_username: j_w_shim
 
 #for comments ( we got Disqus and Hyvor Commenting, uncomment the one you want to use )
 

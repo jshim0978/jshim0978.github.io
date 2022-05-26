@@ -2,7 +2,7 @@
 layout: post
 title:  "Added Multi Author Support"
 summary: "Multi Author Support allows to create articles with different Authors"
-author: xplor4r
+author: jshim0978
 date: '2020-10-25 1:35:23 +0530'
 category: jekyll
 thumbnail: /assets/img/posts/code.jpg
@@ -24,35 +24,19 @@ Under _authors folder create a author details file (username.md) with his/her us
 Then add this frontmatter to describe the author in **johndoe.md**.
 ```yml
 ---
-name: John Doe # Name of the Author
-username: johndoe # Username of the Author
-bio: "Hi I a John, a Web Developer and Designer." # Author Bio
-site: http://johndoe.com  # Author Website URL
-avatar: johndoe.png  # Profile Image (img path will be /assets/img/authors/johndoe.png)
-email: mail@johndoe.com  # Author Email address
+name: Jungwoo Shim # Name of the Author
+username: jshim0978 # Username of the Author
+bio: "Hi I a Jungwoo, Currently a Web Developer, Wanting to be a Data Scientist." # Author Bio
+site: http://jshim0978.github.io  # Author Website URL
+avatar: fancy_winnie.jpg  # Profile Image (img path will be /assets/img/authors/johndoe.png)
+email: jshim0978@gmail.com  # Author Email address
 social:  # Author Social profile links
     - title: "github"
-      url: "https://github.com/johndoe"
-    - title: "linkedin"
-      url: "https://www.linkedin.com/in/johndoe"
-    - title: "youtube"
-      url: "https://www.youtube.com/channel/UCSfLBFFfNU9r6ihfei6VeJw"
+      url: "https://github.com/jshim0978"
     - title: "facebook"
-      url: "https://www.facebook.com/johndoe"
-    - title: "twitter"
-      url: "https://www.twitter.com/johndoe"
-    - title: "behance"
-      url: "https://behance.com/johndoe"
+      url: "https://www.facebook.com/jungwoo.shim.33/"
     - title: "instagram"
-      url: "https://instagram.com/johndoe"
-    - title: "medium"
-      url: "https://medium.com/johndoe"
-    - title: "telegram"
-      url: "https://telegram.com/johndoe"
-    - title: "dribbble"
-      url: "https://dribbble.com/johndoe"
-    - title: "flickr"
-      url: "https://flickr.com/johndoe"
+      url: "https://instagram.com/j_w_shim"
 ---
 ```
 You can create multiple authors similarly under _authors
@@ -60,56 +44,22 @@ You can create multiple authors similarly under _authors
 Next, copy the same frontmatter in _data/authors.yml (under individual author usernames) like this :
 
 ```yml
-# Author 1
-johndoe:
-   name: John Doe
-   username: johndoe
-   site: http://johndoe.com
-   avatar: johndoe.png
-   bio: "Hi I a John, a Web Developer and Designer."
-   email: mail@johndoe.com
-   social:
+---
+Jungwoo:
+  name: Jungwoo Shim # Name of the Author
+    username: jshim0978 # Username of the Author
+    bio: "Hi I a Jungwoo, Currently a Web Developer, Wanting to be a Data Scientist." # Author Bio
+    site: http://jshim0978.github.io  # Author Website URL
+    avatar: fancy_winnie.jpg  # Profile Image (img path will be /assets/img/authors/johndoe.png)
+    email: jshim0978@gmail.com  # Author Email address
+    social:  # Author Social profile links
       - title: "github"
-        url: "https://github.com/johndoe"
-      - title: "linkedin"
-        url: "https://www.linkedin.com/in/johndoe"
-      - title: "youtube"
-        url: "https://www.youtube.com/channel/UCSfLBFFfNU9r6ihfei6VeJw"
+        url: "https://github.com/jshim0978"
       - title: "facebook"
-        url: "https://www.facebook.com/johndoe"
-      - title: "twitter"
-        url: "https://www.twitter.com/johndoe"
-      - title: "behance"
-        url: "https://behance.com/johndoe"
+        url: "https://www.facebook.com/jungwoo.shim.33/"
       - title: "instagram"
-        url: "https://instagram.com/johndoe"
-      - title: "medium"
-        url: "https://medium.com/johndoe"
-      - title: "telegram"
-        url: "https://telegram.com/johndoe"
-      - title: "dribbble"
-        url: "https://dribbble.com/johndoe"
-      - title: "flickr"
-        url: "https://flickr.com/johndoe"
-
-# Author 2
-janedoe:
-   name: Jane Doe
-   username: janedoe
-   site: https://janedoe.com
-   avatar: jane.png
-   bio: "Designer"
-   email: mail@janedoe.com
-   social:
-      - title: "github"
-        url: "https://github.com/janedoe"
-      - title: "linkedin"
-        url: "https://www.linkedin.com/janedoe"
-      - title: "youtube"
-        url: "https://www.youtube.com/channel/UCSfLBFFfNU9r6ihfei6VeJw"
-      - title: "facebook"
-        url: "https://www.facebook.com/janedoe"
-
+        url: "https://instagram.com/j_w_shim"
+---
 ```
 
 Likewise ! This will be helpful for the widgets. (About Author, Recent Articles).
