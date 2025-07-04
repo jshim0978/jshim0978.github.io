@@ -8,7 +8,7 @@ version: 2
 # Personal info
 name: Jungwoo Shim
 title: AI Researcher at ETRI
-email: jshim0978@gmail.com
+email: right_rain@etri.re.kr / jshim0978@gmail.com
 website: jshim0978.github.io
 
 # Dark Mode (true/false/never)
@@ -30,22 +30,22 @@ content:
     layout: list
     content:
       - layout: top-middle
-        title: Patent: 치료적 프롬프트 정제를 통해 언어 모델의 환각 오류를 감소시키는 방법, 장치, 및 프로그램
-        sub_title: KR Application No. 10-2024-0102366 · 출원일: 2024년 8월 1일
+        title: "Patent: 치료적 프롬프트 정제를 통해 언어 모델의 환각 오류를 감소시키는 방법, 장치, 및 프로그램"
+        sub_title: "KR Application No. 10-2024-0102366 · 출원일: 2024년 8월 1일"
         caption: 2024
         description: |
           Method, device, and program for reducing hallucination errors in language models through therapeutic prompt refinement.
 
       - layout: top-middle
-        title: CPR: Mitigating Large Language Model Hallucinations with Curative Prompt Refinement
-        sub_title: IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC 2024)
+        title: "CPR: Mitigating Large Language Model Hallucinations with Curative Prompt Refinement"
+        sub_title: "IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC 2024)"
         caption: 2024
         description: |
           Research paper presenting a novel approach to mitigating hallucinations in large language models through curative prompt refinement techniques.
 
       - layout: top-middle
-        title: Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models
-        sub_title: Pattern Recognition (Under Review)
+        title: "Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models"
+        sub_title: "Pattern Recognition (Under Review)"
         caption: 2024
         description: |
           Comprehensive study on multi-stage prompt refinement techniques for reducing hallucinations in large language models.
@@ -85,7 +85,7 @@ content:
           **Role:** Backend Engineer  
           **Period:** May 2022 - Jan 2023  
           - Developed and deployed a comprehensive system monitoring solution using Prometheus and Grafana.
-          - Monitored the company’s services hosted on Naver Cloud, improving operational reliability and performance.
+          - Monitored the company's services hosted on Naver Cloud, improving operational reliability and performance.
 
           **Giro Payment Service using Open API**  
           *Mobile Entropy, Korea*  
@@ -122,31 +122,31 @@ content:
           **Period:** Mar 2020 - Jun 2020  
           - Developed a model to predict match outcomes based on draft picks using data analysis and machine learning.
 
-    - title: Experience # Title for the section
+  - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
     content:
       - layout: left
         title: Electronics and Telecommunications Research Institute (ETRI)
-        link: 
+        link:
         sub_title: AI Researcher
         caption: 2025/07 - Present
         quote: >
           Currently working as an AI researcher at ETRI, focusing on cutting-edge artificial intelligence research and development.
         description: | # this will include new lines to allow paragraphs
-            - Conducting research in artificial intelligence and machine learning
-            - Contributing to innovative AI solutions and technologies
+          - Conducting research in artificial intelligence and machine learning
+          - Contributing to innovative AI solutions and technologies
 
       - layout: left
         title: Mobile Entropy
-        link: 
+        link:
         sub_title: Web Developer
         caption: 2021/02 - 2023/01
         quote: >
           Developed and maintained web services for gas company clients, leading front-end and supporting back-end integration.
         description: | # this will include new lines to allow paragraphs
-            - Led frontend development for various web applications
-            - Supported backend integration and system architecture
-            - Worked on payment systems, IoT safety monitoring, and cloud infrastructure
+          - Led frontend development for various web applications
+          - Supported backend integration and system architecture
+          - Worked on payment systems, IoT safety monitoring, and cloud infrastructure
 
   - title: Education # Title for the section
     layout: list # Type of content section (list/text)
