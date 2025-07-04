@@ -7,3 +7,10 @@
 #
 layout: default
 ---
+
+## Quick Navigation
+
+- **[💼 Experience & Education](/experience/)** - My professional journey, education, and publications
+- **[🚀 Projects](/projects/)** - Detailed portfolio of my projects and research work
+
+---

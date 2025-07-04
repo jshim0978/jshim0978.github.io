@@ -7,7 +7,7 @@ version: 2
 
 # Personal info
 name: Jungwoo Shim
-title: Graduate Student at Korea University
+title: AI Researcher at ETRI
 email: jshim0978@gmail.com
 website: jshim0978.github.io
 
@@ -23,26 +23,39 @@ linkedin_username: "Jungwoo Shim"
 # About Section
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, my name is Jungwoo Shim, and I am a graduate student at Korea University, specializing in Artificial Intelligence. My current research focuses on mitigating large language model hallucinations through plug-and-play prompt refinement. I have a solid foundation in computer science from Chungnam National University, and I am skilled in various programming languages and technologies including Python, Java, and frontend development. I am passionate about large language models and their applications in real-world scenarios.
+  Hi, my name is Jungwoo Shim, and I am an AI Researcher at ETRI (Electronics and Telecommunications Research Institute). I recently completed my M.S. in Artificial Intelligence from Korea University Graduate School of Artificial Intelligence, where my research focused on mitigating large language model hallucinations through multi-stage prompt refinement. I have a solid foundation in computer science from Chungnam National University, and I am skilled in various programming languages and technologies including Python, Java, React.js, and AI/ML frameworks. I am passionate about large language models, AI research, and their applications in real-world scenarios.
 
 content:
-  - title: Publications # New section for publications
+  - title: Publications & Patents # New section for publications
     layout: list
     content:
       - layout: top-middle
-        title: CPR - Mitigating Large Language Model Hallucinations with Curative Prompt Refinement
-        sub_title: Published in IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC)
+        title: Patent: 치료적 프롬프트 정제를 통해 언어 모델의 환각 오류를 감소시키는 방법, 장치, 및 프로그램
+        sub_title: KR Application No. 10-2024-0102366 · 출원일: 2024년 8월 1일
         caption: 2024
         description: |
-          This paper presents a novel approach to mitigating hallucinations in large language models through a technique called Curative Prompt Refinement (CPR). 
-          The research was accepted for publication at the IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC) in 2024.
-    
+          Method, device, and program for reducing hallucination errors in language models through therapeutic prompt refinement.
+
+      - layout: top-middle
+        title: CPR: Mitigating Large Language Model Hallucinations with Curative Prompt Refinement
+        sub_title: IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC 2024)
+        caption: 2024
+        description: |
+          Research paper presenting a novel approach to mitigating hallucinations in large language models through curative prompt refinement techniques.
+
+      - layout: top-middle
+        title: Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models
+        sub_title: Pattern Recognition (Under Review)
+        caption: 2024
+        description: |
+          Comprehensive study on multi-stage prompt refinement techniques for reducing hallucinations in large language models.
+
   - title: Projects
     layout: list
     content:
       - layout: top-middle
         title: Research Projects
-        description: | 
+        description: |
           **LLM Development for Chemical Control Systems**  
           *Agency for Defense Development (ADD), Korea*  
           **Role:** Researcher  
@@ -109,65 +122,52 @@ content:
           **Period:** Mar 2020 - Jun 2020  
           - Developed a model to predict match outcomes based on draft picks using data analysis and machine learning.
 
-  
-  - title: Experience # Title for the section
+    - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: Mobile Entropy
+        title: Electronics and Telecommunications Research Institute (ETRI)
         link: 
-        sub_title: Backend Engineer
-        caption: May 2022 - Jan 2023
+        sub_title: AI Researcher
+        caption: 2025/07 - Present
         quote: >
-          Spearheaded the integration of critical backend systems for payment processing and system monitoring.
+          Currently working as an AI researcher at ETRI, focusing on cutting-edge artificial intelligence research and development.
         description: | # this will include new lines to allow paragraphs
-            - Set up and integrated the KakaoPay API for gas bill payments, improving payment processing efficiency.
-            - Developed and deployed a monitoring solution using Prometheus and Grafana, enhancing system reliability for services hosted on Naver Cloud.
+            - Conducting research in artificial intelligence and machine learning
+            - Contributing to innovative AI solutions and technologies
 
       - layout: left
         title: Mobile Entropy
         link: 
-        # link_text: boringcompany.com
-        sub_title: Frontend Engineer
-        caption: Jun 2021 - Apr 2022
+        sub_title: Web Developer
+        caption: 2021/02 - 2023/01
         quote: >
-          Played a key role in developing a secure Giro payment service using Open API.
-          Worked on enhancing IoT-based smart safety systems.
+          Developed and maintained web services for gas company clients, leading front-end and supporting back-end integration.
         description: | # this will include new lines to allow paragraphs
-            - Developed frontend interfaces and integrated APIs for the Giro payment service, contributing to a seamless user experience.
-            - Focused on the development of IoT logic and frontend interfaces for smart safety systems, improving workplace safety and efficiency.
-
-      - layout: left
-        title: Chungnam National University
-        link: 
-        # link_text: boringcompany.com
-        sub_title: Researcher
-        caption: Feb 2020 - Nov 2020
-        quote: >
-          Contributed to reducing risks associated with Android APKs.
-        description: | # this will include new lines to allow paragraphs
-            Improved the Argus-SAF tool for APK analysis, focusing on malignity mitigation, which provided better security for Android applications.
+            - Led frontend development for various web applications
+            - Supported backend integration and system architecture
+            - Worked on payment systems, IoT safety monitoring, and cloud infrastructure
 
   - title: Education # Title for the section
     layout: list # Type of content section (list/text)
     content:
       - layout: left
-        title: Korea University
-        caption: Feb 2023 - Present
-        sub_title: MSc Artificial Intelligence
+        title: Korea University Graduate School of Artificial Intelligence
+        caption: 2023/03 - 2025/02
+        sub_title: M.S. in Artificial Intelligence
         quote: >
-          Research focused on mitigating large language model hallucinations.
+          Master's Thesis: "Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models"
         description: | # this will include new lines to allow paragraphs
-          Currently pursuing a Master's degree in Artificial Intelligence with a focus on large language models and prompt refinement techniques under the guidance of Professor Seong Whan Lee. GPA: 4.25 / 4.5
+          Specialized in large language models and prompt engineering techniques, with research focused on reducing hallucinations in AI systems.
 
       - layout: left
         title: Chungnam National University
-        caption: Mar 2015 - Feb 2021
-        sub_title: BSc Computer Science
+        caption: 2015/03 - 2021/02
+        sub_title: B.S. in Computer Science
         quote: >
-          Thesis on Developing Safe UI for Android OS.
+          Completed undergraduate studies in computer science.
         description: | # this will include new lines to allow paragraphs
-          Completed a Bachelor's degree in Computer Science with a thesis on UI safety in Android OS. Developed strong foundational skills in computer science and programming. GPA: 3.18 / 4.5
+          Built a strong foundation in programming, algorithms, and software development.
 
   - title: A Little More About Me
     layout: text
@@ -181,7 +181,6 @@ content:
       Here is an interesting image  
       ![Trees](/images/landscape-trees.jpg "Trees")
 
-
 # Footer
 footer_show_references: true
 # references_title: References on request (Override references text)
@@ -194,4 +193,4 @@ sass:
   style: compressed
 
 plugins:
- - jekyll-seo-tag
+  - jekyll-seo-tag
