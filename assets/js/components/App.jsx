@@ -72,12 +72,12 @@ const App = () => {
         currentSection={currentSection}
         onSectionChange={section => navigate(section)}
       />
-      <main className="mt-16 min-h-[calc(100vh-4rem)]">
+      <main className="pt-16">
         {renderSection()}
       </main>
       {showBackToTop && (
         <button
-          className="fixed bottom-8 right-8 w-10 h-10 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center text-sm transition-all hover:bg-gray-300 z-50"
+          className="fixed bottom-6 right-6 w-8 h-8 bg-gray-100 text-gray-600 rounded text-xs transition-all hover:bg-gray-200 z-50"
           onClick={scrollToTop}
           aria-label="Back to top"
         >
