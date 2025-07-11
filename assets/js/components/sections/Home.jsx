@@ -9,78 +9,99 @@ const Home = ({ onNavigate }) => {
   ];
 
   return (
-    <section className="relative py-12 min-h-[85vh] bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(59,130,246,0.02)_25%,rgba(59,130,246,0.02)_50%,transparent_50%,transparent_75%,rgba(59,130,246,0.02)_75%)] bg-[length:32px_32px]"></div>
+    <section className="relative min-h-screen bg-white overflow-hidden">
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-100"></div>
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-50/30 to-transparent rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-gray-50/40 to-transparent rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
       
-      <div className="relative max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16 pt-12">
-          <div className="relative mb-8">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-20 blur-xl scale-110 animate-pulse"></div>
-            <img src="/images/profile.jpg" alt="Profile" className="relative mx-auto w-40 h-40 rounded-full shadow-2xl border-4 border-white object-cover ring-4 ring-blue-100" />
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8">
+        {/* Hero Section */}
+        <div className="pt-20 pb-12 text-center">
+          <div className="mb-8">
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-gray-100 rounded-full blur-2xl opacity-40 scale-110"></div>
+              <img 
+                src="/images/profile.jpg" 
+                alt="Jungwoo Shim - AI Researcher" 
+                className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-xl border-4 border-white"
+              />
+            </div>
           </div>
           
-          <div className="space-y-4">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-800 via-blue-800 to-purple-800 font-heading tracking-tight leading-tight">
+          <div className="space-y-6 mb-12">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-tight">
               Jungwoo Shim
             </h1>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-lg sm:text-xl text-slate-600 font-medium">
-              <span className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-md border border-blue-100">
-                🔬 AI Researcher at ETRI
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <span className="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-medium border border-blue-200">
+                <span className="mr-2">🔬</span>
+                AI Researcher at ETRI
               </span>
-              <span className="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-md border border-purple-100">
-                🎓 M.S. in Artificial Intelligence
+              <span className="inline-flex items-center px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-200">
+                <span className="mr-2">🎓</span>
+                M.S. in Artificial Intelligence
               </span>
             </div>
-            <p className="text-lg text-slate-700 max-w-4xl mx-auto font-body leading-relaxed mt-6">
-              Passionate about pushing the boundaries of <span className="font-semibold text-blue-700">artificial intelligence</span> and its real-world impact. 
-              My research focuses on <span className="font-semibold text-purple-700">mitigating large language model hallucinations</span> through 
-              multi-stage prompt refinement, contributing to more reliable and trustworthy AI systems.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Passionate about advancing <span className="font-semibold text-gray-800">artificial intelligence</span> through 
+              rigorous research and practical applications. Specialized in <span className="font-semibold text-gray-800">large language models</span> 
+              and developing more reliable AI systems.
             </p>
           </div>
           
-          {/* Research Impact Metrics */}
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-100">
+          {/* Key Metrics */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
               <div className="text-3xl font-bold text-blue-600 mb-2">2+</div>
-              <div className="text-sm text-slate-600 font-medium">Publications</div>
+              <div className="text-sm text-gray-600 font-medium">Publications</div>
             </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-purple-100">
-              <div className="text-3xl font-bold text-purple-600 mb-2">10+</div>
-              <div className="text-sm text-slate-600 font-medium">Projects</div>
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
+              <div className="text-sm text-gray-600 font-medium">Projects</div>
             </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-indigo-100">
-              <div className="text-3xl font-bold text-indigo-600 mb-2">4+</div>
-              <div className="text-sm text-slate-600 font-medium">Years Experience</div>
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="text-3xl font-bold text-blue-600 mb-2">4+</div>
+              <div className="text-sm text-gray-600 font-medium">Years Experience</div>
             </div>
           </div>
         </div>
         {/* Skills & Technologies Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 font-heading text-slate-800">Technical Expertise</h2>
+        <div className="py-16 border-t border-gray-200">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Expertise</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Proficient in cutting-edge technologies and methodologies driving AI research and development
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100">
-              <h3 className="text-xl font-semibold mb-6 text-slate-800 flex items-center gap-2">
-                <span className="text-2xl">🧠</span>
-                AI & Machine Learning
-              </h3>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                  <span className="text-2xl">🧠</span>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">AI & Machine Learning</h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {['Deep Learning', 'Natural Language Processing', 'Large Language Models', 'Computer Vision', 'PyTorch', 'TensorFlow', 'Transformers', 'BERT', 'GPT'].map((skill) => (
-                  <span key={skill} className="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 text-slate-700 rounded-full text-sm font-medium border border-blue-200 hover:scale-105 transition-transform cursor-default">
+                  <span key={skill} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium border border-blue-100 hover:bg-blue-100 transition-colors">
                     {skill}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-purple-100">
-              <h3 className="text-xl font-semibold mb-6 text-slate-800 flex items-center gap-2">
-                <span className="text-2xl">💻</span>
-                Software Development
-              </h3>
+            
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mr-4">
+                  <span className="text-2xl">💻</span>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Software Development</h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {['Python', 'JavaScript', 'React', 'Node.js', 'Docker', 'AWS', 'Git', 'MongoDB', 'PostgreSQL', 'REST APIs'].map((skill) => (
-                  <span key={skill} className="px-3 py-1 bg-gradient-to-r from-purple-100 to-indigo-100 text-slate-700 rounded-full text-sm font-medium border border-purple-200 hover:scale-105 transition-transform cursor-default">
+                  <span key={skill} className="px-3 py-1 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-200 hover:bg-gray-100 transition-colors">
                     {skill}
                   </span>
                 ))}
@@ -90,74 +111,100 @@ const Home = ({ onNavigate }) => {
         </div>
 
         {/* Quick Navigation */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 font-heading text-slate-800">Explore My Work</h2>
+        <div className="py-16 border-t border-gray-200">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Explore My Work</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Discover my research projects, professional experience, and published work
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <button
-              className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center border border-blue-100 hover:scale-[1.02] hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/60 group"
+              className="bg-white rounded-2xl p-8 text-center border border-gray-200 hover:shadow-md hover:border-blue-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 group"
               onClick={() => { console.log('QuickNav: projects clicked'); onNavigate && onNavigate('projects'); }}
               type="button"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">🚀</div>
-              <h3 className="text-xl font-semibold mb-2 font-heading group-hover:text-blue-600 transition-colors">Projects</h3>
-              <p className="text-slate-600 text-sm">Explore my latest projects and research work</p>
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
+                <span className="text-2xl">🚀</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">Projects</h3>
+              <p className="text-gray-600 text-sm">Explore my latest projects and research work</p>
             </button>
+            
             <button
-              className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center border border-purple-100 hover:scale-[1.02] hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500/60 group"
+              className="bg-white rounded-2xl p-8 text-center border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500/20 group"
               onClick={() => { console.log('QuickNav: experience clicked'); onNavigate && onNavigate('experience'); }}
               type="button"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">💼</div>
-              <h3 className="text-xl font-semibold mb-2 font-heading group-hover:text-purple-600 transition-colors">Experience</h3>
-              <p className="text-slate-600 text-sm">View my professional journey and education</p>
+              <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gray-200 transition-colors">
+                <span className="text-2xl">💼</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-gray-700 transition-colors">Experience</h3>
+              <p className="text-gray-600 text-sm">View my professional journey and education</p>
             </button>
+            
             <button
-              className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center border border-indigo-100 hover:scale-[1.02] hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/60 group"
+              className="bg-white rounded-2xl p-8 text-center border border-gray-200 hover:shadow-md hover:border-green-200 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-500/20 group"
               onClick={() => { console.log('QuickNav: publications clicked'); onNavigate && onNavigate('publications'); }}
               type="button"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">📄</div>
-              <h3 className="text-xl font-semibold mb-2 font-heading group-hover:text-indigo-600 transition-colors">Publications</h3>
-              <p className="text-slate-600 text-sm">See my research papers and patents</p>
+              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
+                <span className="text-2xl">📄</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-green-600 transition-colors">Publications</h3>
+              <p className="text-gray-600 text-sm">See my research papers and patents</p>
             </button>
           </div>
         </div>
         {/* About Me Section */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-slate-200">
-          <h2 className="text-3xl font-bold text-center mb-8 font-heading text-slate-800">About Me</h2>
+        <div className="py-16 border-t border-gray-200">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">About Me</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              My journey in artificial intelligence and software development
+            </p>
+          </div>
+          
           <div className="max-w-4xl mx-auto">
-            <p className="text-lg text-slate-700 mb-6 font-body leading-relaxed">
-              My journey began with a <span className="font-semibold text-blue-700">B.S. in Computer Science</span> from Chungnam National University, 
-              where I built a strong foundation in software engineering and problem-solving. I recently earned my 
-              <span className="font-semibold text-purple-700"> M.S. in Artificial Intelligence</span> from Korea University, 
-              focusing my research on mitigating hallucinations in large language models through multi-stage prompt refinement.
-            </p>
-            <p className="text-lg text-slate-700 mb-8 font-body leading-relaxed">
-              My expertise spans <span className="font-semibold text-indigo-700">deep learning</span>, 
-              <span className="font-semibold text-blue-700"> natural language processing</span>, and 
-              <span className="font-semibold text-purple-700"> scalable AI systems</span>. I thrive on tackling complex challenges, 
-              collaborating with diverse teams, and transforming innovative ideas into practical solutions. Beyond research, 
-              I enjoy mentoring, sharing knowledge, and contributing to open-source projects.
-            </p>
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 mb-8">
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                My journey began with a <span className="font-semibold text-gray-900">B.S. in Computer Science</span> from Chungnam National University, 
+                where I built a strong foundation in software engineering and problem-solving. I recently earned my 
+                <span className="font-semibold text-gray-900"> M.S. in Artificial Intelligence</span> from Korea University, 
+                focusing my research on mitigating hallucinations in large language models through multi-stage prompt refinement.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                My expertise spans <span className="font-semibold text-gray-900">deep learning</span>, 
+                <span className="font-semibold text-gray-900"> natural language processing</span>, and 
+                <span className="font-semibold text-gray-900"> scalable AI systems</span>. I thrive on tackling complex challenges, 
+                collaborating with diverse teams, and transforming innovative ideas into practical solutions. Beyond research, 
+                I enjoy mentoring, sharing knowledge, and contributing to open-source projects.
+              </p>
+            </div>
             
             <div className="text-center">
-              <h3 className="text-xl font-semibold mb-6 text-slate-800 font-heading">Interests & Hobbies</h3>
+              <h3 className="text-xl font-semibold mb-6 text-gray-900">Interests & Hobbies</h3>
               <div className="flex flex-wrap gap-3 justify-center">
                 <a href="https://www.mountainproject.com/" target="_blank" rel="noopener noreferrer" 
-                   className="bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full text-slate-700 font-medium hover:scale-105 hover:shadow-md transition-all duration-200 border border-blue-200">
-                  🧗‍♂️ Rock climbing
+                   className="inline-flex items-center px-4 py-2 bg-gray-50 text-gray-700 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="mr-2">🧗‍♂️</span>
+                  Rock climbing
                 </a>
                 <a href="https://www.rockpapershotgun.com/" target="_blank" rel="noopener noreferrer" 
-                   className="bg-gradient-to-r from-purple-100 to-indigo-100 px-4 py-2 rounded-full text-slate-700 font-medium hover:scale-105 hover:shadow-md transition-all duration-200 border border-purple-200">
-                  🎮 Gaming
+                   className="inline-flex items-center px-4 py-2 bg-gray-50 text-gray-700 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="mr-2">🎮</span>
+                  Gaming
                 </a>
                 <a href="https://singularityhub.com/" target="_blank" rel="noopener noreferrer" 
-                   className="bg-gradient-to-r from-indigo-100 to-blue-100 px-4 py-2 rounded-full text-slate-700 font-medium hover:scale-105 hover:shadow-md transition-all duration-200 border border-indigo-200">
-                  🔬 Exploring new technologies
+                   className="inline-flex items-center px-4 py-2 bg-gray-50 text-gray-700 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="mr-2">🔬</span>
+                  Exploring new technologies
                 </a>
                 <a href="https://www.codecademy.com/" target="_blank" rel="noopener noreferrer" 
-                   className="bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full text-slate-700 font-medium hover:scale-105 hover:shadow-md transition-all duration-200 border border-blue-200">
-                  📚 Learning new skills
+                   className="inline-flex items-center px-4 py-2 bg-gray-50 text-gray-700 rounded-full font-medium hover:bg-gray-100 transition-colors border border-gray-200">
+                  <span className="mr-2">📚</span>
+                  Learning new skills
                 </a>
               </div>
             </div>

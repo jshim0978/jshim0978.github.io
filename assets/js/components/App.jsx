@@ -67,17 +67,17 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-white">
       <Navigation
         currentSection={currentSection}
         onSectionChange={section => navigate(section)}
       />
-      <main className="mt-24 min-h-[calc(100vh-6rem)]">
+      <main className="mt-20 min-h-[calc(100vh-5rem)]">
         {renderSection()}
       </main>
       {showBackToTop && (
         <button
-          className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full shadow-lg flex items-center justify-center text-xl transition-all hover:scale-110 hover:shadow-xl z-50"
+          className="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center text-xl transition-all hover:bg-blue-700 hover:scale-105 z-50"
           onClick={scrollToTop}
           aria-label="Back to top"
         >
