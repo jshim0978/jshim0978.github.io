@@ -1,40 +1,59 @@
 import React from 'react';
-import { experiences, experienceMap } from '../experiences';
+import { experiences, experienceMap } from '@/components/experiences';
+import Container from '@/components/shared/Container';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 
 const Experience = ({ onExperienceSelect, selectedExperienceId }) => {
   if (selectedExperienceId && experienceMap[selectedExperienceId]) {
     const ExperienceComponent = experienceMap[selectedExperienceId];
     return (
-      <div className="py-12">
-        <button
-          className="mb-6 ml-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-gray-700"
-          onClick={() => onExperienceSelect(null)}
-        >
-          ← Back to Experience
-        </button>
+      <Container>
+        <div className="mb-8">
+          <Button variant="ghost" onClick={() => onExperienceSelect(null)}>
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Experience & Education
+          </Button>
+        </div>
         <ExperienceComponent />
-      </div>
+      </Container>
     );
   }
 
   return (
-    <section className="py-12 bg-background min-h-[80vh]">
-      <div className="max-w-5xl mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-10 font-heading text-primary drop-shadow-lg">💼 Experience & Education</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {experiences.map(exp => (
-            <button
-              key={exp.id}
-              className="bg-white/90 backdrop-blur-md rounded-2xl shadow-card p-6 text-left border border-blue-100 hover:scale-[1.03] hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-accent/60 group"
-              onClick={() => onExperienceSelect(exp.id)}
-              type="button"
-            >
-              <h3 className="text-lg font-semibold mb-2 font-heading group-hover:text-primary transition-colors">{exp.title}</h3>
-            </button>
-          ))}
-        </div>
+    <Container>
+      <div className="mb-16 text-center">
+        <h1 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4 font-heading tracking-tight">
+          Experience & Education
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          My professional journey and academic background in the field of AI and Computer Science.
+        </p>
       </div>
-    </section>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {experiences.map((exp) => (
+          <Card
+            key={exp.id}
+            className="group flex flex-col justify-between"
+          >
+            <CardHeader className="text-center">
+              <CardTitle>{exp.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="flex-grow flex flex-col items-center justify-center">
+              <p className="text-muted-foreground">
+                {exp.id.includes('Univ') ? 'Education' : 'Professional Experience'}
+              </p>
+            </CardContent>
+            <div className="p-6">
+              <Button onClick={() => onExperienceSelect(exp.id)} className="w-full" variant="outline">
+                View Details
+              </Button>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Container>
   );
 };
 

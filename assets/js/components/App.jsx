@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Navigation from './Navigation';
-import Home from './sections/Home';
-import Projects from './sections/Projects';
-import Experience from './sections/Experience';
-import Publications from './sections/Publications';
+import Navigation from '@/components/Navigation';
+import Home from '@/components/sections/Home';
+import Projects from '@/components/sections/Projects';
+import Experience from '@/components/sections/Experience';
+import Publications from '@/components/sections/Publications';
 
 function parseHash() {
   const hash = window.location.hash.replace(/^#\/?/, '');
@@ -17,68 +17,91 @@ const App = () => {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedExperienceId, setSelectedExperienceId] = useState(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    return false;
+  });
 
-  // Hash-based routing
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     function handleHashChange() {
       const { section, id } = parseHash();
       setCurrentSection(section || 'home');
       setSelectedProjectId(section === 'projects' ? id : null);
       setSelectedExperienceId(section === 'experience' ? id : null);
+      window.scrollTo(0, 0);
     }
     window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // initial
+    handleHashChange();
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const navigate = (section, id = null) => {
-    if (section === 'projects' && id) {
-      window.location.hash = `/projects/${id}`;
-    } else if (section === 'experience' && id) {
-      window.location.hash = `/experience/${id}`;
-    } else {
-      window.location.hash = `/${section}`;
+    let path = `/${section}`;
+    if (id) {
+      path += `/${id}`;
     }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.hash = path;
   };
 
   const renderSection = () => {
     switch (currentSection) {
       case 'home':
-        return <Home onNavigate={section => navigate(section)} />;
+        return <section id="home" className="section"><Home onNavigate={navigate} /></section>;
       case 'projects':
-        return <Projects
-          onProjectSelect={id => id ? navigate('projects', id) : navigate('projects')}
-          selectedProjectId={selectedProjectId}
-        />;
+        return <section id="projects" className="section"><Projects onProjectSelect={(id) => navigate('projects', id)} selectedProjectId={selectedProjectId} /></section>;
       case 'experience':
-        return <Experience
-          onExperienceSelect={id => id ? navigate('experience', id) : navigate('experience')}
-          selectedExperienceId={selectedExperienceId}
-        />;
+        return <section id="experience" className="section"><Experience onExperienceSelect={(id) => navigate('experience', id)} selectedExperienceId={selectedExperienceId} /></section>;
       case 'publications':
-        return <Publications />;
+        return <section id="publications" className="section"><Publications /></section>;
       default:
-        return <Home onNavigate={section => navigate(section)} />;
+        return <section id="home" className="section"><Home onNavigate={navigate} /></section>;
     }
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation
-        currentSection={currentSection}
-        onSectionChange={section => navigate(section)}
-      />
-      <main className="pt-16">
-        {renderSection()}
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <Navigation
+          currentSection={currentSection}
+          onSectionChange={navigate}
+          darkMode={darkMode}
+          onToggleDarkMode={() => setDarkMode(dm => !dm)}
+        />
+      </div>
+      <main className="pt-8">
+        <div className="container">
+          {renderSection()}
+        </div>
       </main>
       {showBackToTop && (
         <button
-          className="fixed bottom-6 right-6 w-8 h-8 bg-gray-100 text-gray-600 rounded text-xs transition-all hover:bg-gray-200 z-50"
-          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 w-8 h-8 bg-card border rounded-full text-lg transition-all hover:scale-110 z-50 flex items-center justify-center"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Back to top"
         >
           ↑

@@ -1,70 +1,65 @@
 import React from 'react';
 import { projects, projectMap } from '../projects';
+import Container from '../shared/Container';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
 
 const Projects = ({ onProjectSelect, selectedProjectId }) => {
   if (selectedProjectId && projectMap[selectedProjectId]) {
     const ProjectComponent = projectMap[selectedProjectId];
     return (
-      <div className="py-12">
-        <button
-          className="mb-6 ml-4 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-gray-700"
-          onClick={() => onProjectSelect(null)}
-        >
-          ← Back to Projects
-        </button>
+      <Container>
+        <div className="mb-8">
+          <Button variant="ghost" onClick={() => onProjectSelect(null)}>
+            <svg className="arrow-sm mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Projects
+          </Button>
+        </div>
         <ProjectComponent />
-      </div>
+      </Container>
     );
   }
 
   return (
-    <section className="bg-white">
-      <div className="max-w-3xl mx-auto px-6 py-12">
-        {/* Header */}
-        <div className="mb-10">
-          <h1 className="text-4xl font-light text-black mb-6">Projects</h1>
-          <p className="text-base text-black leading-relaxed">
-            Research projects and software development work spanning AI, machine learning, and full-stack development.
-          </p>
-        </div>
-        
-        {/* Projects List */}
-        <div className="mb-10">
-          {projects.map((project, index) => (
-            <div key={project.id} className="mb-6">
-              <button
-                className="text-left w-full group"
-                onClick={() => onProjectSelect(project.id)}
-                type="button"
-              >
-                <h3 className="text-lg font-medium text-blue-600 hover:underline mb-1">
-                  {project.title}
-                </h3>
-                <p className="text-base text-black leading-relaxed">
-                  Click to explore project details and technical implementation.
-                </p>
-              </button>
-            </div>
-          ))}
-        </div>
-        
-        {/* Contact */}
-        <div className="border-t border-gray-200 pt-8">
-          <h2 className="text-xl font-medium text-black mb-4">Contact</h2>
-          <div className="text-left">
-            <p className="text-base text-black leading-relaxed mb-2">
-              <strong>Email:</strong> Available upon request
-            </p>
-            <p className="text-base text-black leading-relaxed">
-              <a href="/files/심정우_포트폴리오.pdf" target="_blank" rel="noopener noreferrer" 
-                 className="text-blue-600 hover:underline">
-                Download Portfolio (PDF)
-              </a>
-            </p>
-          </div>
-        </div>
+    <Container>
+      <div className="mb-16 text-center">
+        <h1 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4 font-heading tracking-tight">
+          Projects
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          A selection of my research, development, and contest-winning projects.
+        </p>
       </div>
-    </section>
+
+      <div className="space-y-8">
+        {projects.map((project) => (
+          <Card key={project.id} className="group transition-all duration-300 ease-in-out">
+            <div className="md:grid md:grid-cols-4 md:gap-8 items-center">
+              <div className="md:col-span-3">
+                <CardHeader>
+                  <CardTitle>{project.title}</CardTitle>
+                  <CardDescription className="pt-2">{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary">{tag}</Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </div>
+              <div className="p-6 md:p-0 md:pr-6">
+                <Button onClick={() => onProjectSelect(project.id)} className="project-button" variant="outline">
+                  View Project
+                  <svg className="project-button-arrow ml-2 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </Button>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Container>
   );
 };
 

@@ -1,10 +1,28 @@
-import ExperienceETRI from './ExperienceETRI';
-import ExperienceMobileEntropy from './ExperienceMobileEntropy';
-import ExperienceKoreaUniv from './ExperienceKoreaUniv';
-import ExperienceCNU from './ExperienceCNU';
-// Add more imports as you add more experiences
+import React from 'react';
+import ProjectDetailCard from '../shared/ProjectDetailCard';
 
-export const experiences = [
+const ExperienceCNU = () => (
+  <ProjectDetailCard title="Chungnam National University" description="Bachelor of Science in Computer Science">
+    <p>Details about the B.S. in Computer Science at CNU.</p>
+  </ProjectDetailCard>
+);
+const ExperienceETRI = () => (
+  <ProjectDetailCard title="ETRI (Electronics and Telecommunications Research Institute)" description="AI Researcher">
+    <p>Details about the AI Researcher position at ETRI.</p>
+  </ProjectDetailCard>
+);
+const ExperienceKoreaUniv = () => (
+  <ProjectDetailCard title="Korea University" description="Master of Science in Artificial Intelligence">
+    <p>Details about the M.S. in AI at Korea University.</p>
+  </ProjectDetailCard>
+);
+const ExperienceMobileEntropy = () => (
+  <ProjectDetailCard title="Mobile Entropy" description="Software Engineer">
+    <p>Details about the Software Engineer role at Mobile Entropy.</p>
+  </ProjectDetailCard>
+);
+
+const experiences = [
   {
     id: 'etri',
     title: 'Electronics and Telecommunications Research Institute (ETRI)',
@@ -25,13 +43,13 @@ export const experiences = [
     title: 'Chungnam National University',
     component: ExperienceCNU,
   },
-  // Add more experience objects here
 ];
 
-export const experienceMap = {
+const experienceMap = {
   etri: ExperienceETRI,
   'mobile-entropy': ExperienceMobileEntropy,
   'korea-univ': ExperienceKoreaUniv,
   'cnu': ExperienceCNU,
-  // Add more id: Component pairs here
-}; 
+};
+
+export { experiences, experienceMap, ExperienceCNU, ExperienceETRI, ExperienceKoreaUniv, ExperienceMobileEntropy }; 

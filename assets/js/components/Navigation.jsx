@@ -1,37 +1,67 @@
 import React from 'react';
 
-const Navigation = ({ currentSection, onSectionChange }) => {
+const Navigation = ({ currentSection, onSectionChange, darkMode, onToggleDarkMode }) => {
   const navItems = [
-    { id: 'home', label: 'Home', icon: '🏠' },
-    { id: 'projects', label: 'Projects', icon: '🚀' },
-    { id: 'experience', label: 'Experience', icon: '💼' },
-    { id: 'publications', label: 'Publications & Patents', icon: '📄' },
+    { id: 'home', label: 'Home' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'publications', label: 'Publications' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-white border-b border-gray-200">
-      <div className="max-w-3xl mx-auto px-6 py-3 flex justify-between items-center">
-        <div>
-          <h1 className="text-lg font-medium text-black m-0">Jungwoo Shim</h1>
+    <nav className="static bg-background/95 backdrop-blur-sm border-b border-border/50 shadow-sm mb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 max-w-7xl">
+        <div className="flex items-center">
+          <span className="text-lg font-heading font-semibold text-foreground tracking-tight">Jungwoo Shim</span>
         </div>
-        
-        <ul className="flex gap-4 list-none m-0 p-0">
+        <div className="flex md:flex items-center gap-6">
           {navItems.map(item => (
-            <li key={item.id}>
-              <button
-                className={`text-sm transition-colors focus:outline-none ${
-                  currentSection === item.id 
-                    ? 'text-blue-600 font-medium' 
-                    : 'text-gray-600 hover:text-black'
-                }`}
-                onClick={() => onSectionChange(item.id)}
-              >
-                <span className="hidden sm:inline">{item.label}</span>
-                <span className="sm:hidden text-base">{item.icon}</span>
-              </button>
-            </li>
+            <button
+              key={item.id}
+              className={`nav-button ${currentSection === item.id ? 'active' : ''}`}
+              onClick={() => onSectionChange(item.id)}
+              aria-current={currentSection === item.id ? 'page' : undefined}
+            >
+              {item.label}
+            </button>
           ))}
-        </ul>
+        </div>
+        <div className="flex items-center">
+          <button
+            className="p-1 rounded-md text-muted-foreground hover:text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring hover:bg-accent/5"
+            onClick={onToggleDarkMode}
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.95 7.07l-.71-.71M6.34 6.34l-.71-.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" /></svg>
+            )}
+          </button>
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            className="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring"
+            onClick={() => {
+              // Add mobile menu toggle logic here
+            }}
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </nav>
   );
