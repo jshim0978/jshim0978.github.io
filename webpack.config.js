@@ -2,7 +2,6 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => {
-  const isProduction = argv.mode === 'production';
 
   return {
     entry: './assets/js/app.js',
@@ -25,22 +24,14 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/,
           use: [
-            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {
-                sourceMap: !isProduction,
-                importLoaders: 2
-              }
+                importLoaders: 1, // This is crucial for postcss-loader to work on @imported files
+              },
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  config: path.resolve(__dirname, 'postcss.config.js')
-                }
-              }
-            }
+            'postcss-loader',
           ]
         }
       ]
