@@ -6,7 +6,7 @@ module.exports = (env, argv) => {
   return {
     entry: './assets/js/app.js',
     output: {
-      path: path.resolve(__dirname, 'public'),
+      path: path.resolve(__dirname, 'assets/js'),
       filename: 'bundle.js',
     },
     module: {
@@ -38,7 +38,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'tailwind.css',
+        filename: '../css/tailwind.css',
       }),
     ],
     resolve: {

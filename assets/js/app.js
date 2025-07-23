@@ -1,6 +1,6 @@
 import '../css/custom.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './components/App';
 
 console.log('=== APP.JS IS RUNNING ===');
@@ -9,6 +9,7 @@ console.log('=== APP.JS IS RUNNING ===');
 document.addEventListener('DOMContentLoaded', function() {
   const appContainer = document.getElementById('root');
   if (appContainer) {
-    ReactDOM.render(<App />, appContainer);
+    const root = createRoot(appContainer);
+    root.render(<App />);
   }
 }); 
