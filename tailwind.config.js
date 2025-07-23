@@ -26,17 +26,17 @@ module.exports = {
         '300': '300ms',
       },
       backgroundImage: {
-        'primary-gradient': 'linear-gradient(to right, #132047, #06b6d4)',
+        'primary-gradient': 'linear-gradient(to right, #334155, #0ea5e9)',
       },
       colors: {
-        primary: '#132047', // Deeper blue for strong title contrast
-        accent: '#06b6d4',  // Cyan
-        gold: '#fbbf24',    // Gold for awards
-        background: '#f9fafb', // Lighter background
-        'background-strong': '#f1f5f9', // For section backgrounds
-        glass: 'rgba(255,255,255,0.7)',
-        dark: '#0f172a',    // For dark text
-        purple: '#9333ea',  // For education badges
+        primary: '#334155',      // Slate 700
+        accent: '#0ea5e9',       // Sky 500
+        gold: '#fbbf24',         // Amber 400
+        background: '#f8fafc',   // Slate 50
+        'background-strong': '#f1f5f9', // Slate 100
+        glass: 'rgba(248, 250, 252, 0.7)',
+        dark: '#1e293b',         // Slate 800
+        purple: '#9333ea',       // Purple 600
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
