@@ -9,7 +9,7 @@ const Navigation = ({ currentSection, onSectionChange, darkMode, onToggleDarkMod
   ];
 
   return (
-    <nav className="static bg-background/95 backdrop-blur-sm border-b border-border/50 shadow-sm mb-8">
+    <nav className="static bg-slate-100/95 dark:bg-slate-800/95 backdrop-blur-sm border-b border-border/50 shadow-sm mb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 max-w-7xl">
         <div className="flex items-center">
           <span className="text-lg font-heading font-semibold text-foreground tracking-tight">Jungwoo Shim</span>

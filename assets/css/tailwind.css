@@ -992,6 +992,9 @@ video {
 .bg-secondary\/80 {
   background-color: hsl(var(--secondary) / 0.8);
 }
+.bg-slate-100\/95 {
+  background-color: rgb(241 245 249 / 0.95);
+}
 .bg-transparent {
   background-color: transparent;
 }
@@ -2065,6 +2068,10 @@ h1, h2, h3, h4, h5, h6 {
 .dark\:border-gray-800:is(.dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(31 41 55 / var(--tw-border-opacity, 1));
+}
+
+.dark\:bg-slate-800\/95:is(.dark *) {
+  background-color: rgb(30 41 59 / 0.95);
 }
 
 .dark\:text-accent:is(.dark *) {
