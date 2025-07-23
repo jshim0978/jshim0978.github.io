@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import Navigation from '@/components/Navigation';
 import Home from '@/components/sections/Home';
