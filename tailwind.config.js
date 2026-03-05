@@ -10,37 +10,22 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.25rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1200px",
       },
     },
     extend: {
-      transitionProperty: {
-        'all': 'all',
-      },
-      transitionTimingFunction: {
-        'ease-in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
-      },
-      transitionDuration: {
-        '300': '300ms',
-      },
-      backgroundImage: {
-        'primary-gradient': 'linear-gradient(to right, #334155, #0ea5e9)',
-      },
       colors: {
-        primary: '#334155',      // Slate 700
-        accent: '#0ea5e9',       // Sky 500
-        gold: '#fbbf24',         // Amber 400
-        background: '#f8fafc',   // Slate 50
-        'background-strong': '#f1f5f9', // Slate 100
-        glass: 'rgba(248, 250, 252, 0.7)',
-        dark: '#1e293b',         // Slate 800
-        purple: '#9333ea',       // Purple 600
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -53,6 +38,10 @@ module.exports = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -63,9 +52,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        heading: ['Poppins', 'Montserrat', 'Inter', 'sans-serif'],
-        body: ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
-        script: ['Dancing Script', 'cursive'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Menlo', 'monospace'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -73,25 +61,15 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
-        },
-        "fadeIn": {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
+        "pulse-glow": {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.4 },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fadeIn": "fadeIn 1s ease-in-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}; 
+};

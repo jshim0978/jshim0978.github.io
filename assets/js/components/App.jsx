@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import Home from '@/components/sections/Home';
 import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import Publications from '@/components/sections/Publications';
+import CV from '@/components/sections/CV';
+import Footer from '@/components/shared/Footer';
 
 function parseHash() {
   const hash = window.location.hash.replace(/^#\/?/, '');
@@ -12,6 +14,12 @@ function parseHash() {
   const [section, id] = hash.split('/');
   return { section, id };
 }
+
+const pageVariants = {
+  initial: { opacity: 0, y: 8 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -4 },
+};
 
 const App = () => {
   const [currentSection, setCurrentSection] = useState('home');
@@ -37,13 +45,7 @@ const App = () => {
   }, [darkMode]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
-    };
+    const handleScroll = () => setShowBackToTop(window.scrollY > 400);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -63,53 +65,70 @@ const App = () => {
 
   const navigate = (section, id = null) => {
     let path = `/${section}`;
-    if (id) {
-      path += `/${id}`;
-    }
+    if (id) path += `/${id}`;
     window.location.hash = path;
   };
 
   const renderSection = () => {
     switch (currentSection) {
       case 'home':
-        return <section id="home" className="section"><Home onNavigate={navigate} /></section>;
+        return <Home onNavigate={navigate} />;
       case 'projects':
-        return <section id="projects" className="section"><Projects onProjectSelect={(id) => navigate('projects', id)} selectedProjectId={selectedProjectId} /></section>;
+        return <Projects onProjectSelect={(id) => navigate('projects', id)} selectedProjectId={selectedProjectId} />;
       case 'experience':
-        return <section id="experience" className="section"><Experience onExperienceSelect={(id) => navigate('experience', id)} selectedExperienceId={selectedExperienceId} /></section>;
+        return <Experience onExperienceSelect={(id) => navigate('experience', id)} selectedExperienceId={selectedExperienceId} />;
       case 'publications':
-        return <section id="publications" className="section"><Publications /></section>;
+        return <Publications />;
+      case 'cv':
+        return <CV />;
       default:
-        return <section id="home" className="section"><Home onNavigate={navigate} /></section>;
+        return <Home onNavigate={navigate} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Navigation
-          currentSection={currentSection}
-          onSectionChange={navigate}
-          darkMode={darkMode}
-          onToggleDarkMode={() => setDarkMode(dm => !dm)}
-        />
-      </div>
-      <main className="pt-8">
-        <div className="container">
-          {renderSection()}
-        </div>
+      <Navigation
+        currentSection={currentSection}
+        onSectionChange={navigate}
+        darkMode={darkMode}
+        onToggleDarkMode={() => setDarkMode(dm => !dm)}
+      />
+
+      <main>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSection + (selectedProjectId || '') + (selectedExperienceId || '')}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {renderSection()}
+          </motion.div>
+        </AnimatePresence>
       </main>
-      {showBackToTop && (
-        <button
-          className="fixed bottom-4 right-4 w-8 h-8 bg-card border rounded-full text-lg transition-all hover:scale-110 z-50 flex items-center justify-center"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          aria-label="Back to top"
-        >
-          ↑
-        </button>
-      )}
+
+      <Footer />
+
+      {/* Back to top */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="fixed bottom-5 right-5 w-8 h-8 rounded-lg bg-foreground text-background flex items-center justify-center z-50 hover:bg-foreground/90 transition-colors shadow-sm"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Back to top"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
-export default App; 
+export default App;

@@ -14,17 +14,17 @@ const ProjectDetailCard = ({ title, description, tags, children }) => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="text-3xl font-bold">{title}</CardTitle>
-        {description && <CardDescription className="pt-2 text-lg">{description}</CardDescription>}
+        <CardTitle className="text-xl font-semibold">{title}</CardTitle>
+        {description && <CardDescription className="pt-1 text-sm">{description}</CardDescription>}
       </CardHeader>
-      <CardContent className="prose dark:prose-invert max-w-none">
+      <CardContent className="prose dark:prose-invert max-w-none text-sm text-muted-foreground leading-relaxed">
         {children}
       </CardContent>
       {tags && tags.length > 0 && (
         <CardFooter>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {tags.map((tag) => (
-              <Badge key={tag} variant="secondary">{tag}</Badge>
+              <Badge key={tag} variant="secondary" className="font-mono text-[10px]">{tag}</Badge>
             ))}
           </div>
         </CardFooter>
@@ -33,4 +33,4 @@ const ProjectDetailCard = ({ title, description, tags, children }) => {
   )
 }
 
-export default ProjectDetailCard; 
+export default ProjectDetailCard;

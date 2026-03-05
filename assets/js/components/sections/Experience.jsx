@@ -2,7 +2,9 @@ import React from 'react';
 import { experiences, experienceMap } from '@/components/experiences';
 import Container from '@/components/shared/Container';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import AnimatedSection, { StaggerContainer, StaggerItem } from '@/components/shared/AnimatedSection';
 
 const Experience = ({ onExperienceSelect, selectedExperienceId }) => {
   if (selectedExperienceId && experienceMap[selectedExperienceId]) {
@@ -10,9 +12,9 @@ const Experience = ({ onExperienceSelect, selectedExperienceId }) => {
     return (
       <Container>
         <div className="mb-8">
-          <Button variant="ghost" onClick={() => onExperienceSelect(null)}>
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            Back to Experience & Education
+          <Button variant="ghost" onClick={() => onExperienceSelect(null)} className="gap-2">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back
           </Button>
         </div>
         <ExperienceComponent />
@@ -22,39 +24,47 @@ const Experience = ({ onExperienceSelect, selectedExperienceId }) => {
 
   return (
     <Container>
-      <div className="mb-16 text-center">
-        <h1 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-4 font-heading tracking-tight">
-          Experience & Education
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          My professional journey and academic background in the field of AI and Computer Science.
-        </p>
-      </div>
+      <AnimatedSection>
+        <div className="mb-12">
+          <p className="code-label mb-2">// experience & education</p>
+          <h1 className="text-3xl sm:text-4xl font-semibold text-foreground mb-3 tracking-tight">
+            Experience <span className="text-muted-foreground">&</span> Education
+          </h1>
+          <p className="text-[15px] text-muted-foreground max-w-xl leading-relaxed">
+            My professional journey and academic background in AI and Computer Science.
+          </p>
+        </div>
+      </AnimatedSection>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-3" staggerDelay={0.08}>
         {experiences.map((exp) => (
-          <Card
-            key={exp.id}
-            className="group flex flex-col justify-between"
-          >
-            <CardHeader className="text-center">
-              <CardTitle>{exp.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex-grow flex flex-col items-center justify-center">
-              <p className="text-muted-foreground">
-                {exp.id.includes('Univ') ? 'Education' : 'Professional Experience'}
-              </p>
-            </CardContent>
-            <div className="p-6">
-              <Button onClick={() => onExperienceSelect(exp.id)} className="w-full" variant="outline">
-                View Details
-              </Button>
-            </div>
-          </Card>
+          <StaggerItem key={exp.id}>
+            <Card
+              spotlight
+              className="cursor-pointer h-full flex flex-col"
+              onClick={() => onExperienceSelect(exp.id)}
+            >
+              <CardHeader>
+                <CardTitle className="text-sm">{exp.title}</CardTitle>
+                <Badge variant="secondary" className="w-fit mt-2 text-[10px] font-mono">
+                  {exp.id.includes('univ') || exp.id === 'cnu' || exp.id === 'korea-univ' ? 'Education' : 'Professional'}
+                </Badge>
+              </CardHeader>
+              <CardContent className="mt-auto pt-2">
+                <button
+                  onClick={(e) => { e.stopPropagation(); onExperienceSelect(exp.id); }}
+                  className="text-xs font-medium text-muted-foreground hover:text-foreground transition-colors duration-150 flex items-center gap-1"
+                >
+                  View Details
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </button>
+              </CardContent>
+            </Card>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </Container>
   );
 };
 
-export default Experience; 
+export default Experience;
