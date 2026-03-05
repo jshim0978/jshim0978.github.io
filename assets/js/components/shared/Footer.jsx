@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="border-t border-slate-200/60 dark:border-slate-800/60 mt-16">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <span className="text-sm font-medium text-foreground">jshim</span>

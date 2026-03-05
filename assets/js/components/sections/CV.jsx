@@ -142,7 +142,7 @@ const CV = () => (
       </div>
     </AnimatedSection>
 
-    <div className="max-w-3xl space-y-10">
+    <div className="space-y-10">
       {/* Research Interests */}
       <AnimatedSection delay={0.05}>
         <SectionTitle>Research Interests</SectionTitle>

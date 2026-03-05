@@ -36,7 +36,7 @@ const Navigation = ({ currentSection, onSectionChange, darkMode, onToggleDarkMod
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 flex justify-between items-center h-14">
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 flex justify-between items-center h-14">
         <button
           onClick={() => onSectionChange('home')}
           className="flex items-center gap-2.5 group"

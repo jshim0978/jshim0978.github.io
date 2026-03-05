@@ -121,7 +121,7 @@ const Publications = () => (
         <h1 className="text-3xl sm:text-4xl font-semibold text-foreground mb-3 tracking-tight">
           Publications <span className="text-muted-foreground">&</span> Patents
         </h1>
-        <p className="text-[15px] text-muted-foreground max-w-xl leading-relaxed">
+        <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
           Research contributions including conference papers, journal submissions, and patents.
         </p>
       </div>

@@ -30,13 +30,13 @@ const Experience = ({ onExperienceSelect, selectedExperienceId }) => {
           <h1 className="text-3xl sm:text-4xl font-semibold text-foreground mb-3 tracking-tight">
             Experience <span className="text-muted-foreground">&</span> Education
           </h1>
-          <p className="text-[15px] text-muted-foreground max-w-xl leading-relaxed">
+          <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
             My professional journey and academic background in AI and Computer Science.
           </p>
         </div>
       </AnimatedSection>
 
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-3" staggerDelay={0.08}>
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" staggerDelay={0.08}>
         {experiences.map((exp) => (
           <StaggerItem key={exp.id}>
             <Card

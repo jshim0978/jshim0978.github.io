@@ -80,7 +80,7 @@ const Home = ({ onNavigate }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 max-w-2xl mx-auto"
+          className="relative z-10 max-w-3xl mx-auto"
         >
           <div className="mb-8">
             <span className="status-badge">
@@ -97,7 +97,7 @@ const Home = ({ onNavigate }) => {
             <TypingRole />
           </div>
 
-          <p className="text-[15px] text-muted-foreground max-w-lg mx-auto leading-relaxed mb-8">
+          <p className="text-[15px] sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed mb-8">
             AI Researcher at ETRI specializing in mitigating LLM hallucinations
             through multi-stage prompt refinement. Building practical AI systems
             that bridge research and real-world impact.
@@ -139,9 +139,9 @@ const Home = ({ onNavigate }) => {
 
       {/* About */}
       <AnimatedSection delay={0.15}>
-        <div className="mb-20 max-w-2xl mx-auto">
+        <div className="mb-20 max-w-3xl mx-auto">
           <p className="code-label mb-3">// about</p>
-          <p className="text-[15px] text-muted-foreground leading-relaxed">
+          <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed">
             I am an AI Researcher at ETRI (Electronics and Telecommunications Research Institute),
             recently completing my M.S. in Artificial Intelligence from Korea University.
             My research focuses on mitigating hallucinations in large language models through
@@ -193,15 +193,15 @@ const BentoCard = ({ title, description, icon, colSpan = '', rowSpan = '', onCli
   <motion.div
     whileHover={{ scale: 1.01 }}
     whileTap={{ scale: 0.99 }}
-    className={`glass-card rounded-xl p-5 cursor-pointer group ${colSpan} ${rowSpan} flex flex-col justify-between`}
+    className={`glass-card rounded-xl p-6 cursor-pointer group ${colSpan} ${rowSpan} flex flex-col justify-between`}
     onClick={onClick}
   >
     <div>
-      <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 w-fit mb-3 text-muted-foreground group-hover:text-foreground transition-colors duration-150">
+      <div className="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 w-fit mb-4 text-muted-foreground group-hover:text-foreground transition-colors duration-150">
         {icon}
       </div>
-      <h3 className="text-sm font-semibold text-foreground mb-1">{title}</h3>
-      <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
+      <h3 className="text-sm sm:text-base font-semibold text-foreground mb-1">{title}</h3>
+      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{description}</p>
     </div>
     <div className="mt-3 flex items-center text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-150">
       Explore

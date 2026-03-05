@@ -580,36 +580,41 @@ video {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1.25rem;
-  padding-left: 1.25rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
 }
-@media (min-width: 1200px) {
+@media (min-width: 1440px) {
 
   .container {
-    max-width: 1200px;
+    max-width: 1440px;
   }
 }
 .container {
   margin-left: auto;
   margin-right: auto;
-  max-width: 72rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  max-width: 80rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 @media (min-width: 640px) {
-
-  .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-@media (min-width: 1024px) {
 
   .container {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
+@media (min-width: 1024px) {
+
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media (min-width: 1536px) {
+    .container {
+      max-width: 1440px;
+    }
+  }
 /* Glass card */
 .glass-card {
   border-width: 1px;
@@ -668,20 +673,21 @@ video {
     top: -20%;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
+    width: 800px;
+    height: 500px;
     background: radial-gradient(ellipse, hsla(var(--accent), 0.08) 0%, transparent 70%);
   }
 /* Bento grid */
 .bento-grid {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(140px, auto);
+    grid-auto-rows: minmax(160px, auto);
 }
 @media (max-width: 768px) {
     .bento-grid {
       grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: minmax(140px, auto);
     }
   }
 @media (max-width: 480px) {
@@ -1046,6 +1052,9 @@ video {
 }
 .max-w-6xl {
   max-width: 72rem;
+}
+.max-w-7xl {
+  max-width: 80rem;
 }
 .max-w-lg {
   max-width: 32rem;
@@ -2182,6 +2191,11 @@ video {
     padding-right: 1.5rem;
   }
 
+  .sm\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .sm\:pb-16 {
     padding-bottom: 4rem;
   }
@@ -2198,6 +2212,16 @@ video {
   .sm\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .sm\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   .sm\:text-xl {
@@ -2235,6 +2259,19 @@ video {
 
 @media (min-width: 1024px) {
 
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lg\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -2243,6 +2280,13 @@ video {
   .lg\:text-6xl {
     font-size: 3.75rem;
     line-height: 1;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .\32xl\:max-w-\[1440px\] {
+    max-width: 1440px;
   }
 }
 

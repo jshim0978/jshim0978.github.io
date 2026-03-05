@@ -30,13 +30,13 @@ const Projects = ({ onProjectSelect, selectedProjectId }) => {
           <h1 className="text-3xl sm:text-4xl font-semibold text-foreground mb-3 tracking-tight">
             Projects
           </h1>
-          <p className="text-[15px] text-muted-foreground max-w-xl leading-relaxed">
+          <p className="text-[15px] sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
             A selection of research, development, and contest-winning projects.
           </p>
         </div>
       </AnimatedSection>
 
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-3" staggerDelay={0.06}>
+      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" staggerDelay={0.06}>
         {projects.map((project) => (
           <StaggerItem key={project.id}>
             <Card
