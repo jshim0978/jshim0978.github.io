@@ -31,13 +31,6 @@ const socials = [
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
     ),
   },
-  {
-    label: 'Google Scholar',
-    href: 'https://scholar.google.com/citations?user=YOUR_ID',
-    icon: (
-      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
-    ),
-  },
 ];
 
 const TypingRole = () => {
@@ -70,6 +63,14 @@ const TypingRole = () => {
     </span>
   );
 };
+
+const newsItems = [
+  { date: 'Mar 2026', text: 'POaaS paper published at FEVER Workshop @ EACL 2026' },
+  { date: 'Jul 2025', text: 'Joined ETRI as AI Researcher' },
+  { date: 'Feb 2025', text: 'Completed M.S. in AI at Korea University' },
+  { date: 'Oct 2024', text: 'CPR paper presented at IEEE SMC 2024' },
+  { date: 'Sep 2024', text: 'Filed patent for therapeutic prompt refinement methodology' },
+];
 
 const Home = ({ onNavigate }) => {
   return (
@@ -127,7 +128,7 @@ const Home = ({ onNavigate }) => {
           {[
             { label: 'Publications', value: '4+' },
             { label: 'Years Exp', value: '4+' },
-            { label: 'Projects', value: '10+' },
+            { label: 'Projects', value: '15+' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl font-semibold text-foreground">{stat.value}</div>
@@ -143,17 +144,40 @@ const Home = ({ onNavigate }) => {
           <p className="code-label mb-3">// about</p>
           <p className="text-[15px] sm:text-base text-muted-foreground leading-relaxed">
             I am an AI Researcher at ETRI (Electronics and Telecommunications Research Institute),
-            recently completing my M.S. in Artificial Intelligence from Korea University.
-            My research focuses on mitigating hallucinations in large language models through
-            multi-stage prompt refinement. I combine strong foundations in computer science
-            with hands-on experience in Python, React.js, and AI/ML frameworks to transform
-            innovative ideas into practical solutions.
+            focusing on AI semiconductor cloud platforms and LLM benchmarking.
+            I completed my M.S. in Artificial Intelligence from Korea University,
+            where my research on mitigating LLM hallucinations through multi-stage
+            prompt refinement was published at IEEE SMC 2024 and FEVER@EACL 2026.
+            I combine strong foundations in computer science with hands-on experience
+            in Python, PyTorch, React.js, and cloud infrastructure to build practical AI systems.
           </p>
         </div>
       </AnimatedSection>
 
-      {/* Bento Navigation Grid */}
+      {/* Recent News */}
       <AnimatedSection delay={0.2}>
+        <div className="mb-20 max-w-3xl mx-auto">
+          <p className="code-label mb-3">// recent news</p>
+          <div className="space-y-0">
+            {newsItems.map((item, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-3 py-2.5 border-b border-slate-200/50 dark:border-slate-800/50 last:border-0"
+              >
+                <span className="text-[11px] font-mono text-accent whitespace-nowrap mt-0.5 min-w-[70px]">
+                  {item.date}
+                </span>
+                <span className="text-[13px] sm:text-sm text-muted-foreground leading-relaxed">
+                  {item.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Bento Navigation Grid */}
+      <AnimatedSection delay={0.25}>
         <p className="code-label mb-4 text-center">// explore</p>
         <div className="bento-grid mb-16">
           <BentoCard
@@ -166,7 +190,7 @@ const Home = ({ onNavigate }) => {
           />
           <BentoCard
             title="Experience"
-            description="ETRI, Korea University, Mobile Entropy."
+            description="ETRI, Korea University, Mobile Entropy, CNU."
             icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
             onClick={() => onNavigate && onNavigate('experience')}
           />
@@ -177,10 +201,15 @@ const Home = ({ onNavigate }) => {
             onClick={() => onNavigate && onNavigate('publications')}
           />
           <BentoCard
+            title="Blog"
+            description="Technical writing on AI research and prompt engineering."
+            icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>}
+            onClick={() => onNavigate && onNavigate('blog')}
+          />
+          <BentoCard
             title="CV"
             description="Education, skills, certifications."
             icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>}
-            colSpan="col-span-2"
             onClick={() => onNavigate && onNavigate('cv')}
           />
         </div>

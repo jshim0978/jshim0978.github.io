@@ -34,9 +34,11 @@ const experience = [
     period: 'Jul 2025 \u2013 Present',
     location: 'Daejeon, Korea',
     highlights: [
-      'Conducting research in artificial intelligence and machine learning',
-      'Developing prompt optimization systems for on-device small LLMs (POaaS)',
-      'Contributing to innovative AI solutions and technologies',
+      'Developing MLPerf and LLM benchmark execution modules for AI Semiconductor Cloud Platform (RS-2025-02263869)',
+      'Building LLM deployment and evaluation systems (etri-llm-deployments, etri-llm-solution) on Kubernetes/OpenStack infrastructure',
+      'Research on LLM accuracy and hallucination benchmarking methodologies for AI accelerator hardware',
+      'Continuing POaaS research published at FEVER Workshop @ EACL 2026',
+      'Collaborating with industry partners (몬드리안AI, KETI, 경희대학교) on AI semiconductor evaluation solutions',
     ],
   },
   {
@@ -45,10 +47,12 @@ const experience = [
     period: 'Feb 2023 \u2013 Feb 2025',
     location: 'Seoul, Korea',
     highlights: [
-      'Researched LLM hallucination mitigation through curative/multi-stage prompt refinement (CPR)',
-      'Published at IEEE SMC 2024 and FEVER@EACL 2026',
-      'Filed patent for therapeutic prompt refinement methodology',
-      'Developed LLM integration for GenAI Academy and COMA projects',
+      'Developed CPR (Curative Prompt Refinement) achieving 96% win rate over original prompts; published at IEEE SMC 2024',
+      'Extended to MPR (Multi-stage Prompt Refinement) with 3-stage pipeline achieving 85%+ win rate; submitted to Pattern Recognition',
+      'Filed patent for therapeutic prompt refinement methodology (KR Application No. 10-2024-0102366)',
+      'Built LLM integration for GenAI Academy (Ducowise) and COMA projects; won Grand Prize at Ministry of Employment contest',
+      'Developed ElementaryGPT: LLM assistant for elementary teachers (I-Scream Education, May-Nov 2023)',
+      'Built LLM system for chemical control tasks (ADD, Oct 2023 - Jan 2024)',
     ],
   },
   {
@@ -57,10 +61,11 @@ const experience = [
     period: 'Feb 2021 \u2013 Jan 2023',
     location: 'Seoul, Korea',
     highlights: [
-      'Led frontend development for gas company web services',
-      'Integrated KakaoPay API for bill payments',
-      'Built system monitoring with Prometheus & Grafana on Naver Cloud',
-      'Developed IoT Smart Safety System with frontend and IoT logic',
+      'Led frontend development for gas company giro payment web service (OpenGiro, Jan-Apr 2022)',
+      'Integrated KakaoPay API for online bill payments with sandbox testing environment',
+      'Developed IoT Smart Safety System for gas infrastructure monitoring with real-time dashboard (Jun-Dec 2021)',
+      'Built system monitoring infrastructure using Prometheus & Grafana on Naver Cloud',
+      'Executed cloud migration from on-premise to NHN Cloud and subsequently to Naver Cloud',
     ],
   },
 ];
@@ -81,6 +86,11 @@ const cvPublications = [
     venue: 'Pattern Recognition (Under Review)',
     year: 2024,
   },
+  {
+    title: 'Method, Device, and Program for Reducing Hallucination Errors in Language Models through Therapeutic Prompt Refinement',
+    venue: 'KR Patent Application No. 10-2024-0102366',
+    year: 2024,
+  },
 ];
 
 const skills = {
@@ -88,6 +98,24 @@ const skills = {
   'AI / ML': ['Large Language Models', 'Prompt Engineering', 'NLP', 'Information Retrieval', 'Fine-tuning', 'RAG'],
   'Tools & Cloud': ['Git', 'Linux', 'Docker', 'Naver Cloud', 'Prometheus', 'Grafana'],
 };
+
+const awards = [
+  {
+    title: 'Grand Prize (1st Place)',
+    event: '3rd Ministry of Employment and Labor Contest (COMA)',
+    year: '2024',
+  },
+  {
+    title: 'GenAI Academy Award',
+    event: 'Metaverse Developer Competition',
+    year: '2024',
+  },
+  {
+    title: 'TensorFlow Developer Certificate',
+    event: 'Google',
+    year: '2022',
+  },
+];
 
 const certifications = [
   'TensorFlow Developer Certificate',
@@ -103,7 +131,8 @@ const researchInterests = [
   'Large Language Models',
   'Prompt Optimization',
   'Hallucination Mitigation',
-  'Generative AI',
+  'On-Device AI',
+  'LLM Benchmarking',
   'Natural Language Processing',
   'Information Retrieval',
 ];
@@ -273,9 +302,27 @@ const CV = () => (
         </div>
       </AnimatedSection>
 
+      {/* Awards & Honors */}
+      <AnimatedSection delay={0.3}>
+        <SectionTitle>Awards & Honors</SectionTitle>
+        <StaggerContainer className="space-y-2" staggerDelay={0.06}>
+          {awards.map((award) => (
+            <StaggerItem key={award.title + award.event}>
+              <div className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/30 border border-slate-200/50 dark:border-slate-800/50">
+                <svg className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <div className="flex-1">
+                  <p className="text-xs font-medium text-foreground leading-snug">{award.title}</p>
+                  <p className="text-[10px] text-muted-foreground mt-0.5 font-mono">{award.event} ({award.year})</p>
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+      </AnimatedSection>
+
       {/* Certifications & Languages */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <AnimatedSection delay={0.3}>
+        <AnimatedSection delay={0.35}>
           <SectionTitle>Certifications</SectionTitle>
           <Card spotlight>
             <CardContent className="pt-5">
@@ -291,7 +338,7 @@ const CV = () => (
           </Card>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.35}>
+        <AnimatedSection delay={0.4}>
           <SectionTitle>Language Scores</SectionTitle>
           <Card spotlight>
             <CardContent className="pt-5">

@@ -1,19 +1,63 @@
 import React from 'react';
-const ExperienceKoreaUniv = () => (
-  <div className="max-w-2xl mx-auto p-6 bg-glass/80 backdrop-blur-md rounded-2xl shadow-card border border-blue-100">
-    <h2 className="text-2xl font-bold mb-2 font-heading bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent drop-shadow-lg">Korea University Graduate School of Artificial Intelligence</h2>
-    <span className="inline-block bg-gradient-to-br from-purple-600 to-accent text-black px-2 py-1 rounded-full text-xs font-medium mb-2 shadow-card">M.S. in Artificial Intelligence</span>
-    <div className="text-gray-500 text-xs mb-2">2023/03 - 2025/02 (expected)</div>
-    <p className="text-gray-700 text-base mb-2 font-body">
-      Specialized in large language models and prompt engineering techniques, with research focused on reducing hallucinations in AI systems.
-    </p>
-    <ul className="list-disc pl-5 text-gray-600 text-sm mb-4 font-body">
-      <li>Master's Thesis: "Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models"</li>
-      <li>Research on mitigating LLM hallucinations</li>
-      <li>Published papers in top-tier conferences and journals</li>
-      <li>Active member of the AI research community</li>
-    </ul>
-    <p className="text-sm text-gray-500 font-body">Education. Add more details as needed.</p>
-  </div>
-);
-export default ExperienceKoreaUniv; 
+import ProjectDetailCard from '../shared/ProjectDetailCard';
+
+const ExperienceKoreaUniv = () => {
+  const tags = ["Python", "PyTorch", "Hugging Face Transformers", "QLoRA", "PEFT", "FastAPI", "React.js"];
+  return (
+    <ProjectDetailCard
+      title="Korea University - Pattern Recognition & Machine Learning Lab"
+      description="Graduate Researcher (M.S. in Artificial Intelligence) | Feb 2023 - Feb 2025 | Seoul, Korea"
+      tags={tags}
+    >
+      <p>
+        Completed a Master of Science in Artificial Intelligence (GPA: 4.21 / 4.5) under the supervision of
+        Prof. Seong-Whan Lee. Research focused on prompt engineering and hallucination mitigation in large
+        language models. Funded by IITP (No. 2019-0-00079, AI Graduate School Program at Korea University).
+      </p>
+
+      <h3>Thesis</h3>
+      <p>
+        "Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models"
+      </p>
+
+      <h3>Core Research</h3>
+      <ul>
+        <li>
+          <strong>CPR (Curative Prompt Refinement):</strong> Developed a method using a fine-tuned small language
+          model (SLM) to clean ill-formed prompts and generate descriptions with perplexity-based reranking.
+          Achieved a 96% win rate over original prompts with GPT-3.5. Published at IEEE SMC 2024.
+        </li>
+        <li>
+          <strong>MPR (Multi-stage Prompt Refinement):</strong> Extended CPR into a 3-stage approach
+          (punctuation correction, typographical correction, semantic refinement) with iterative description
+          generation using self-reflection. Achieved 85%+ win rate. Submitted to Pattern Recognition journal.
+        </li>
+        <li>Fine-tuned models using QLoRA on datasets including OLM Wikipedia, CoEdIT, MQR, and Magpie-Pro-300K</li>
+        <li>Evaluated on Well-formed Queries, GSM8K, SQuAD, and Natural Questions datasets</li>
+        <li>Filed patent for therapeutic prompt refinement methodology (KR Application No. 10-2024-0102366)</li>
+      </ul>
+
+      <h3>Industry & Academic Projects</h3>
+      <ul>
+        <li>
+          <strong>GenAI Academy (Ducowise), Jun 2024:</strong> Developed LLM integration for a generative AI
+          education platform
+        </li>
+        <li>
+          <strong>COMA - Ministry of Employment and Labor, Jun 2024:</strong> Public data analysis project;
+          won Grand Prize (1st Place)
+        </li>
+        <li>
+          <strong>LLM for Chemical Control (ADD), Oct 2023 - Jan 2024:</strong> Built an LLM assistant for
+          the Agency for Defense Development to support chemical control tasks
+        </li>
+        <li>
+          <strong>ElementaryGPT (I-Scream), May - Nov 2023:</strong> Built an LLM-based assistant designed
+          to support elementary school teachers
+        </li>
+      </ul>
+    </ProjectDetailCard>
+  );
+};
+
+export default ExperienceKoreaUniv;

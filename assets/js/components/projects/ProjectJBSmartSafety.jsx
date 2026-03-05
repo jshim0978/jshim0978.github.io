@@ -2,30 +2,35 @@ import React from 'react';
 import ProjectDetailCard from '../shared/ProjectDetailCard';
 
 const ProjectJBSmartSafety = () => {
-  const tags = ["jQuery", "JavaScript", "Spring Boot", "OracleDB", "MQTT", "WebSockets"];
+  const tags = ["IoT", "Safety Systems", "Full-Stack"];
   return (
-    <ProjectDetailCard 
-      title="JB Smart Safety System"
-      description="A real-time safety monitoring dashboard for industrial sites."
+    <ProjectDetailCard
+      title="JB Smart Safety System - IoT Gas Safety Monitoring"
+      description="Mobile Entropy, Jun - Dec 2021"
       tags={tags}
     >
       <div className="space-y-4">
         <p>
-          As the frontend lead and a backend support developer, I spearheaded the implementation of a real-time safety monitoring dashboard. My primary responsibilities included designing and developing responsive UI components and integrating RESTful APIs for device control and alarm management.
+          Developed a comprehensive IoT-based safety monitoring system for gas infrastructure. As the frontend lead and backend support developer, spearheaded the implementation of a real-time safety monitoring dashboard for industrial gas installations.
         </p>
-        <p>
-          I also contributed to the backend by assisting in the development of Spring Boot endpoints for safety evaluations and processing sensor data, which included implementing authentication and access control measures to secure the system.
-        </p>
+
+        <h3 className="text-base font-semibold text-foreground">Key Contributions</h3>
         <ul className="list-disc pl-6 space-y-2">
-          <li><strong>Role:</strong> Frontend Lead & Backend Support</li>
-          <li><strong>Technologies:</strong> jQuery, JavaScript, Spring Boot, OracleDB, MQTT, WebSockets</li>
-          <li>Developed IoT device manipulation logic and the corresponding frontend interfaces for enhancing workplace safety.</li>
-          <li>Contributed to improving safety standards by integrating smart IoT solutions into the existing infrastructure.</li>
-          <li><strong>Project period:</strong> Jun 2021 - Dec 2021</li>
+          <li><strong>Role:</strong> Frontend Lead and Backend Support</li>
+          <li>Built a real-time dashboard for monitoring gas leak sensors and safety equipment with live data visualization</li>
+          <li>Implemented IoT device integration logic for sensor data collection via MQTT and WebSocket protocols</li>
+          <li>Created an alerting system for safety threshold violations, enabling rapid response to gas pressure, temperature, and leak detection anomalies</li>
+          <li>Developed both the frontend dashboard and backend IoT communication layer</li>
+          <li>Contributed to Spring Boot endpoints for safety evaluations and sensor data processing, including authentication and access control</li>
         </ul>
+
+        <h3 className="text-base font-semibold text-foreground">Technologies</h3>
+        <p>
+          jQuery and JavaScript for the frontend, Spring Boot for the backend, OracleDB for data persistence, MQTT for IoT device communication, and WebSockets for real-time data streaming.
+        </p>
       </div>
     </ProjectDetailCard>
   );
 };
 
-export default ProjectJBSmartSafety; 
+export default ProjectJBSmartSafety;

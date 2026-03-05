@@ -10,6 +10,7 @@ const Navigation = ({ currentSection, onSectionChange, darkMode, onToggleDarkMod
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'publications', label: 'Publications' },
+    { id: 'blog', label: 'Blog' },
     { id: 'cv', label: 'CV' },
   ];
 

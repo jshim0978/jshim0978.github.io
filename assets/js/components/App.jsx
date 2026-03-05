@@ -6,6 +6,7 @@ import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import Publications from '@/components/sections/Publications';
 import CV from '@/components/sections/CV';
+import Blog from '@/components/sections/Blog';
 import Footer from '@/components/shared/Footer';
 
 function parseHash() {
@@ -86,6 +87,8 @@ const App = () => {
         return <Publications />;
       case 'cv':
         return <CV />;
+      case 'blog':
+        return <Blog />;
       default:
         return <Home onNavigate={navigate} />;
     }
