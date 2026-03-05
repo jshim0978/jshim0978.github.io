@@ -213,6 +213,19 @@
   }
 }
 
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid hsl(var(--accent));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  background: hsl(var(--accent));
+  transition: width 50ms linear;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   @apply w-1.5;

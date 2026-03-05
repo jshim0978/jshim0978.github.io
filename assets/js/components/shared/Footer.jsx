@@ -4,7 +4,40 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200/60 dark:border-slate-800/60 mt-16">
+    <footer className="mt-16">
+      {/* Contact CTA */}
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 pb-12">
+        <div className="rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 p-8 sm:p-10 text-center">
+          <p className="font-mono text-xs text-muted-foreground mb-3">// get in touch</p>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight mb-3">
+            Let's collaborate
+          </h2>
+          <p className="text-sm sm:text-[15px] text-muted-foreground max-w-lg mx-auto leading-relaxed mb-6">
+            I'm always open to discussing AI research, potential collaborations, or interesting projects. Feel free to reach out.
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <a
+              href="mailto:right_rain@etri.re.kr"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              Email me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jungwoo-shim-073100240/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-medium text-foreground hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer bar */}
+      <div className="border-t border-slate-200/60 dark:border-slate-800/60">
       <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -33,6 +66,7 @@ const Footer = () => {
             {currentYear} / react + tailwind
           </p>
         </div>
+      </div>
       </div>
     </footer>
   );

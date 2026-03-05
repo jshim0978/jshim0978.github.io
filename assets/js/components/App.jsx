@@ -26,6 +26,7 @@ const App = () => {
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [selectedExperienceId, setSelectedExperienceId] = useState(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') === 'dark' ||
@@ -45,8 +46,12 @@ const App = () => {
   }, [darkMode]);
 
   useEffect(() => {
-    const handleScroll = () => setShowBackToTop(window.scrollY > 400);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -88,6 +93,17 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Scroll progress bar */}
+      <div
+        className="fixed top-0 left-0 h-[2px] scroll-progress z-[60]"
+        style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="Page scroll progress"
+      />
+
       <Navigation
         currentSection={currentSection}
         onSectionChange={navigate}
@@ -95,7 +111,7 @@ const App = () => {
         onToggleDarkMode={() => setDarkMode(dm => !dm)}
       />
 
-      <main>
+      <main id="main-content">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSection + (selectedProjectId || '') + (selectedExperienceId || '')}

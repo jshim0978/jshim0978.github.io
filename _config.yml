@@ -1,4 +1,6 @@
 # Site
+url: "https://jshim0978.github.io"
+description: "Jungwoo Shim — AI Researcher at ETRI. Specializing in LLM hallucination mitigation, prompt optimization, and NLP research."
 repository: sproogen/resume-theme
 favicon: images/favicon.ico
 
@@ -29,6 +31,14 @@ content:
   - title: Publications & Patents # New section for publications
     layout: list
     content:
+      - layout: top-middle
+        title: "POaaS: Minimal-Edit Prompt Optimization as a Service to Lift Accuracy and Cut Hallucinations on On-Device sLLMs"
+        sub_title: "FEVER Workshop at EACL 2026"
+        caption: 2026
+        description: |
+          Jungwoo Shim, Dae Won Kim, Sun Wook Kim, Soo Young Kim, Myungcheol Lee, Jae-geun Cha, Hyunhwa Choi.
+          A lightweight prompt-optimization layer for on-device small LLMs that improves task accuracy and reduces hallucinations without expensive prompt search.
+
       - layout: top-middle
         title: "Patent: 치료적 프롬프트 정제를 통해 언어 모델의 환각 오류를 감소시키는 방법, 장치, 및 프로그램"
         sub_title: "KR Application No. 10-2024-0102366 · 출원일: 2024년 8월 1일"
