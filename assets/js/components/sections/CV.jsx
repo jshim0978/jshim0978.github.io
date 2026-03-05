@@ -20,7 +20,7 @@ const education = [
     department: 'Department of Computer Science',
     degree: 'B.S. in Computer Science',
     period: 'Mar 2015 \u2013 Feb 2021',
-    gpa: '3.18 / 4.5',
+    gpa: null,
     thesis: 'Developing Safe UI for Android OS',
     advisor: 'Prof. Jin-su Jang',
     location: 'Daejeon, Korea',
@@ -131,13 +131,13 @@ const CV = () => (
           <span>jshim0978.github.io</span>
         </div>
         <a
-          href="/assets/%EC%8B%AC%EC%A0%95%EC%9A%B0_CV_202408.pdf"
+          href="/assets/Jungwoo_Shim_CV.html"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground text-background text-xs font-medium hover:bg-foreground/90 transition-colors"
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-          Download PDF
+          View / Print CV
         </a>
       </div>
     </AnimatedSection>
@@ -177,11 +177,13 @@ const CV = () => (
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                    <div>
-                      <span className="text-muted-foreground">GPA: </span>
-                      <span className="font-medium text-foreground">{edu.gpa}</span>
-                    </div>
-                    <div className="sm:col-span-2">
+                    {edu.gpa && (
+                      <div>
+                        <span className="text-muted-foreground">GPA: </span>
+                        <span className="font-medium text-foreground">{edu.gpa}</span>
+                      </div>
+                    )}
+                    <div className={edu.gpa ? "sm:col-span-2" : "sm:col-span-3"}>
                       <span className="text-muted-foreground">Thesis: </span>
                       <span className="text-foreground">{edu.thesis}</span>
                     </div>

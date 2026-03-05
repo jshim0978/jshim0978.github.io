@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jungwoo Shim - Curriculum Vitae</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    font-size: 10pt;
+  }
+
+  @media print {
+    body { padding: 0; font-size: 9.5pt; }
+    .no-print { display: none; }
+    a { color: #1a1a1a; text-decoration: none; }
+  }
+
+  h1 { font-size: 22pt; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+  h2 {
+    font-size: 11pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+    border-bottom: 1.5px solid #1a1a1a; padding-bottom: 3px; margin-top: 20px; margin-bottom: 10px;
+  }
+  h3 { font-size: 10.5pt; font-weight: 600; }
+
+  .header { text-align: center; margin-bottom: 16px; }
+  .header .subtitle { font-size: 11pt; color: #555; margin-bottom: 6px; }
+  .header .contact { font-size: 9pt; color: #444; }
+  .header .contact a { color: #444; text-decoration: none; }
+  .header .contact span { margin: 0 6px; color: #ccc; }
+
+  .entry { margin-bottom: 12px; }
+  .entry-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .entry-header .right { text-align: right; font-size: 9pt; color: #555; white-space: nowrap; }
+  .entry-role { font-size: 9.5pt; color: #2563eb; font-weight: 500; }
+  .entry-dept { font-size: 9pt; color: #666; }
+  .entry-details { font-size: 9pt; color: #555; margin-top: 2px; }
+
+  ul { padding-left: 16px; margin-top: 4px; }
+  li { margin-bottom: 2px; font-size: 9.5pt; color: #333; }
+
+  .pub { margin-bottom: 8px; font-size: 9.5pt; }
+  .pub .venue { color: #555; font-style: italic; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .tag {
+    font-size: 8.5pt; padding: 2px 8px; background: #f1f5f9; border-radius: 4px;
+    color: #334155; font-weight: 500;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .print-btn {
+    position: fixed; bottom: 24px; right: 24px;
+    padding: 10px 20px; background: #1a1a1a; color: white;
+    border: none; border-radius: 8px; font-size: 13px; font-weight: 500;
+    cursor: pointer; font-family: inherit;
+  }
+  .print-btn:hover { background: #333; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Jungwoo Shim</h1>
+  <div class="subtitle">AI Researcher</div>
+  <div class="contact">
+    <a href="mailto:right_rain@etri.re.kr">right_rain@etri.re.kr</a>
+    <span>|</span>
+    <a href="mailto:jshim0978@gmail.com">jshim0978@gmail.com</a>
+    <span>|</span>
+    <a href="https://github.com/jshim0978">github.com/jshim0978</a>
+    <span>|</span>
+    <a href="https://www.linkedin.com/in/jungwoo-shim-073100240/">LinkedIn</a>
+    <span>|</span>
+    <a href="https://jshim0978.github.io">jshim0978.github.io</a>
+  </div>
+</div>
+
+<h2>Research Interests</h2>
+<div class="tags">
+  <span class="tag">Large Language Models</span>
+  <span class="tag">Prompt Optimization</span>
+  <span class="tag">Hallucination Mitigation</span>
+  <span class="tag">Generative AI</span>
+  <span class="tag">Natural Language Processing</span>
+  <span class="tag">Information Retrieval</span>
+</div>
+
+<h2>Education</h2>
+
+<div class="entry">
+  <div class="entry-header">
+    <h3>Korea University</h3>
+    <div class="right">Seoul, Korea<br>Feb 2023 &ndash; Feb 2025</div>
+  </div>
+  <div class="entry-role">M.S. in Artificial Intelligence</div>
+  <div class="entry-dept">Graduate School of Artificial Intelligence</div>
+  <div class="entry-details">
+    GPA: 4.21 / 4.5 &nbsp;&bull;&nbsp; Advisor: Prof. Seong Whan Lee<br>
+    Thesis: &ldquo;Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models&rdquo;
+  </div>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <h3>Chungnam National University</h3>
+    <div class="right">Daejeon, Korea<br>Mar 2015 &ndash; Feb 2021</div>
+  </div>
+  <div class="entry-role">B.S. in Computer Science</div>
+  <div class="entry-dept">Department of Computer Science</div>
+  <div class="entry-details">
+    Advisor: Prof. Jin-su Jang<br>
+    Thesis: &ldquo;Developing Safe UI for Android OS&rdquo;
+  </div>
+</div>
+
+<h2>Professional Experience</h2>
+
+<div class="entry">
+  <div class="entry-header">
+    <h3>Electronics and Telecommunications Research Institute (ETRI)</h3>
+    <div class="right">Daejeon, Korea<br>Jul 2025 &ndash; Present</div>
+  </div>
+  <div class="entry-role">AI Researcher</div>
+  <ul>
+    <li>Conducting research in artificial intelligence and machine learning</li>
+    <li>Developing prompt optimization systems for on-device small LLMs (POaaS)</li>
+    <li>Contributing to innovative AI solutions and technologies</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <h3>Korea University &ndash; Pattern Recognition &amp; Machine Learning Lab</h3>
+    <div class="right">Seoul, Korea<br>Feb 2023 &ndash; Feb 2025</div>
+  </div>
+  <div class="entry-role">Graduate Researcher</div>
+  <ul>
+    <li>Researched LLM hallucination mitigation through curative/multi-stage prompt refinement (CPR)</li>
+    <li>Published at IEEE SMC 2024 and FEVER@EACL 2026</li>
+    <li>Filed patent for therapeutic prompt refinement methodology</li>
+    <li>Developed LLM integration for GenAI Academy and COMA projects</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-header">
+    <h3>Mobile Entropy</h3>
+    <div class="right">Seoul, Korea<br>Feb 2021 &ndash; Jan 2023</div>
+  </div>
+  <div class="entry-role">Web Developer</div>
+  <ul>
+    <li>Led frontend development for gas company web services</li>
+    <li>Integrated KakaoPay API for bill payments</li>
+    <li>Built system monitoring with Prometheus &amp; Grafana on Naver Cloud</li>
+    <li>Developed IoT Smart Safety System with frontend and IoT logic</li>
+  </ul>
+</div>
+
+<h2>Publications &amp; Patents</h2>
+
+<div class="pub">
+  [1] <strong>J. Shim</strong>, D. W. Kim, S. W. Kim, S. Y. Kim, M. Lee, J. Cha, H. Choi.
+  &ldquo;POaaS: Minimal-Edit Prompt Optimization as a Service to Lift Accuracy and Cut Hallucinations on On-Device sLLMs,&rdquo;
+  <span class="venue">FEVER Workshop at EACL 2026.</span>
+</div>
+
+<div class="pub">
+  [2] <strong>J. Shim</strong>, S. W. Lee.
+  &ldquo;CPR: Mitigating Large Language Model Hallucinations with Curative Prompt Refinement,&rdquo;
+  <span class="venue">IEEE International Conference on Systems, Man, and Cybernetics (IEEE SMC 2024).</span>
+</div>
+
+<div class="pub">
+  [3] <strong>J. Shim</strong>, S. W. Lee.
+  &ldquo;Multi-stage Prompt Refinement for Mitigating Hallucinations in Large Language Models,&rdquo;
+  <span class="venue">Pattern Recognition (Under Review).</span>
+</div>
+
+<div class="pub">
+  [4] <strong>Patent:</strong> Method, Device, and Program for Reducing Hallucination Errors in Language Models through Therapeutic Prompt Refinement.
+  <span class="venue">KR Application No. 10-2024-0102366, Filed Aug 2024.</span>
+</div>
+
+<h2>Skills &amp; Technologies</h2>
+
+<div class="two-col">
+  <div>
+    <strong style="font-size: 9pt; color: #555;">Languages &amp; Frameworks</strong>
+    <div class="tags" style="margin-top: 4px;">
+      <span class="tag">Python</span>
+      <span class="tag">PyTorch</span>
+      <span class="tag">TensorFlow</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Django</span>
+      <span class="tag">Java</span>
+      <span class="tag">Spring Boot</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">React.js</span>
+      <span class="tag">Next.js</span>
+      <span class="tag">SQL</span>
+    </div>
+  </div>
+  <div>
+    <strong style="font-size: 9pt; color: #555;">AI / ML</strong>
+    <div class="tags" style="margin-top: 4px;">
+      <span class="tag">Large Language Models</span>
+      <span class="tag">Prompt Engineering</span>
+      <span class="tag">NLP</span>
+      <span class="tag">Information Retrieval</span>
+      <span class="tag">Fine-tuning</span>
+      <span class="tag">RAG</span>
+    </div>
+    <strong style="font-size: 9pt; color: #555; display: block; margin-top: 8px;">Tools &amp; Cloud</strong>
+    <div class="tags" style="margin-top: 4px;">
+      <span class="tag">Git</span>
+      <span class="tag">Linux</span>
+      <span class="tag">Docker</span>
+      <span class="tag">Naver Cloud</span>
+      <span class="tag">Prometheus</span>
+      <span class="tag">Grafana</span>
+    </div>
+  </div>
+</div>
+
+<h2>Certifications &amp; Language Scores</h2>
+
+<div class="two-col">
+  <div>
+    <ul>
+      <li>TensorFlow Developer Certificate</li>
+      <li>Google Machine Learning Bootcamp (Completed)</li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li>TOEIC: 980</li>
+      <li>TEPS: 556</li>
+    </ul>
+  </div>
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">Print / Save as PDF</button>
+
+</body>
+</html>
