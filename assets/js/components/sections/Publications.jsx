@@ -13,6 +13,8 @@ const publications = [
     venue: 'FEVER Workshop at EACL 2026',
     year: 2026,
     description: 'A lightweight prompt-optimization layer for on-device small LLMs that improves task accuracy and reduces hallucinations without expensive prompt search.',
+    image: '/images/publicationImages/POaaS.png',
+    imageAlt: 'POaaS Paper Figure',
     link: '/assets/EACL_2026_Accepted_Paper.pdf',
     linkLabel: 'PDF',
     bibtex: `@inproceedings{shim2026poaas,
