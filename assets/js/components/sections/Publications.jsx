@@ -74,6 +74,13 @@ const publications = [
   },
 ];
 
+const typeColors = {
+  'Workshop': 'bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-950/30 dark:text-sky-400 dark:border-sky-800',
+  'Conference': 'bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800',
+  'Patent': 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/30 dark:text-amber-400 dark:border-amber-800',
+  'Under Review': 'bg-violet-50 text-violet-700 border-violet-200 dark:bg-violet-950/30 dark:text-violet-400 dark:border-violet-800',
+};
+
 const yearGroups = publications.reduce((groups, pub) => {
   if (!groups[pub.year]) groups[pub.year] = [];
   groups[pub.year].push(pub);
@@ -155,7 +162,7 @@ const Publications = () => (
                     <div className={pub.image ? "md:col-span-3" : ""}>
                       <CardHeader className="pb-2">
                         <div className="flex items-center gap-2 mb-1.5">
-                          <Badge variant="outline" className="font-mono text-[10px]">{pub.type}</Badge>
+                          <Badge variant="outline" className={`font-mono text-[10px] ${typeColors[pub.type] || ''}`}>{pub.type}</Badge>
                         </div>
                         <CardTitle className="text-sm leading-snug">{pub.title}</CardTitle>
                         {pub.authors && (

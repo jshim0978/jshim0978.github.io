@@ -90,6 +90,14 @@ const Home = ({ onNavigate }) => {
             </span>
           </div>
 
+          <div className="mb-6">
+            <img
+              src="/images/profile.jpg"
+              alt="Jungwoo Shim"
+              className="w-28 h-28 rounded-full mx-auto object-cover border-4 border-white dark:border-slate-800 shadow-lg ring-2 ring-accent/20"
+            />
+          </div>
+
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground mb-4 tracking-tight leading-[1.1]">
             심정우 | Jungwoo Shim
           </h1>
@@ -126,12 +134,12 @@ const Home = ({ onNavigate }) => {
       <AnimatedSection delay={0.1}>
         <div className="flex items-center justify-center gap-8 sm:gap-12 mb-20 -mt-4">
           {[
-            { label: 'Publications', value: '4+' },
-            { label: 'Years Exp', value: '4+' },
-            { label: 'Projects', value: '15+' },
+            { label: 'Publications', value: '4+', color: 'text-sky-500' },
+            { label: 'Years Exp', value: '4+', color: 'text-violet-500' },
+            { label: 'Projects', value: '15+', color: 'text-emerald-500' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-2xl font-semibold text-foreground">{stat.value}</div>
+              <div className={`text-2xl font-semibold ${stat.color}`}>{stat.value}</div>
               <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
             </div>
           ))}

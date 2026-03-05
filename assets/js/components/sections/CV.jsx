@@ -137,6 +137,12 @@ const researchInterests = [
   'Information Retrieval',
 ];
 
+const skillCategoryColors = {
+  'Languages & Frameworks': 'border-t-2 border-t-sky-500',
+  'AI / ML': 'border-t-2 border-t-violet-500',
+  'Tools & Cloud': 'border-t-2 border-t-emerald-500',
+};
+
 const SectionTitle = ({ children }) => (
   <h2 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
     <span className="w-0.5 h-4 rounded-full bg-accent inline-block" />
@@ -147,27 +153,34 @@ const SectionTitle = ({ children }) => (
 const CV = () => (
   <Container>
     <AnimatedSection>
-      <div className="mb-12">
-        <p className="code-label mb-2">// curriculum vitae</p>
-        <h1 className="text-3xl sm:text-4xl font-semibold text-foreground mb-3 tracking-tight">
-          Curriculum <span className="gradient-text">Vitae</span>
-        </h1>
-        <div className="flex items-center gap-3 flex-wrap text-xs text-muted-foreground font-mono mb-4">
-          <span>right_rain@etri.re.kr</span>
-          <span className="text-slate-300 dark:text-slate-700">/</span>
-          <span>jshim0978@gmail.com</span>
-          <span className="text-slate-300 dark:text-slate-700">/</span>
-          <span>jshim0978.github.io</span>
+      <div className="mb-12 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+        <div>
+          <p className="code-label mb-2">// curriculum vitae</p>
+          <h1 className="text-3xl sm:text-4xl font-semibold text-foreground mb-3 tracking-tight">
+            Curriculum <span className="gradient-text">Vitae</span>
+          </h1>
+          <div className="flex items-center gap-3 flex-wrap text-xs text-muted-foreground font-mono mb-4">
+            <span>right_rain@etri.re.kr</span>
+            <span className="text-slate-300 dark:text-slate-700">/</span>
+            <span>jshim0978@gmail.com</span>
+            <span className="text-slate-300 dark:text-slate-700">/</span>
+            <span>jshim0978.github.io</span>
+          </div>
+          <a
+            href="/assets/Jungwoo_Shim_CV.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground text-background text-xs font-medium hover:bg-foreground/90 transition-colors"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            View / Print CV
+          </a>
         </div>
-        <a
-          href="/assets/Jungwoo_Shim_CV.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-foreground text-background text-xs font-medium hover:bg-foreground/90 transition-colors"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-          View / Print CV
-        </a>
+        <img
+          src="/images/profile.jpg"
+          alt="Jungwoo Shim"
+          className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover border-2 border-slate-200 dark:border-slate-700 shadow-md shrink-0"
+        />
       </div>
     </AnimatedSection>
 
@@ -286,7 +299,7 @@ const CV = () => (
         <SectionTitle>Skills & Technologies</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {Object.entries(skills).map(([category, items]) => (
-            <Card key={category} spotlight>
+            <Card key={category} spotlight className={skillCategoryColors[category] || ''}>
               <CardHeader className="pb-2">
                 <CardTitle className="text-[11px] font-mono text-muted-foreground uppercase tracking-wider">{category}</CardTitle>
               </CardHeader>

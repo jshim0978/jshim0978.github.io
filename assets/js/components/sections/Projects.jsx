@@ -6,6 +6,16 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import AnimatedSection, { StaggerContainer, StaggerItem } from '@/components/shared/AnimatedSection';
 
+const projectImages = {
+  'jb-smartsafety': '/images/projectImages/JB_SSS.png',
+  'monitoring-system': '/images/projectImages/MonitoringSystem.png',
+  'opengiro': '/images/projectImages/OpenGiro.png',
+  'kakaopay-sandbox': '/images/projectImages/Smart_Sandbox.png',
+  'poaas': '/images/publicationImages/POaaS.png',
+  'mpr-saas': '/images/publicationImages/MPR.png',
+  'rusure': '/images/publicationImages/CPR.png',
+};
+
 const Projects = ({ onProjectSelect, selectedProjectId }) => {
   const [selectedTags, setSelectedTags] = useState(new Set());
 
@@ -95,9 +105,18 @@ const Projects = ({ onProjectSelect, selectedProjectId }) => {
           <StaggerItem key={project.id}>
             <Card
               spotlight
-              className="cursor-pointer h-full flex flex-col"
+              className={`cursor-pointer h-full flex flex-col overflow-hidden ${!projectImages[project.id] ? 'border-l-2 border-l-accent/30' : ''}`}
               onClick={() => onProjectSelect(project.id)}
             >
+              {projectImages[project.id] && (
+                <div className="h-32 overflow-hidden bg-slate-100 dark:bg-slate-800/50">
+                  <img
+                    src={projectImages[project.id]}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
               <CardHeader>
                 <CardTitle className="text-sm">{project.title}</CardTitle>
                 <p className="text-xs text-muted-foreground leading-relaxed mt-1">{project.description}</p>
