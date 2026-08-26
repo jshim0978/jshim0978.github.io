@@ -1,41 +1,712 @@
-<!doctype html>
-<html lang="en">
-<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Interactive artifact replay for Which Text Is Wrong, or Why — J-Halu evidence-retention framework.">
-<title>J-Halu — Which Text Is Wrong, or Why?</title>
+<title>Which Text Is Wrong, or Why</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
 <style>
-:root{--bg:#071015;--bg2:#0c171d;--panel:#101e25;--panel2:#13242d;--text:#eaf2f2;--muted:#91a4aa;--line:#223740;--cyan:#67e8d7;--cyan2:#143c3b;--red:#ff8e78;--red2:#42241f;--amber:#eecb70;--amber2:#3b321d;--blue:#8ebcff;--shadow:0 22px 70px rgba(0,0,0,.32);--r:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 550px at 82% -8%,rgba(103,232,215,.12),transparent 60%),radial-gradient(700px 500px at -10% 28%,rgba(142,188,255,.08),transparent 60%),var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif;line-height:1.55}.shell{max-width:1240px;margin:auto;padding:28px 24px 90px}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 0 54px}.brand{font-family:"DM Mono";font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}.navlinks{display:flex;gap:22px;font-size:13px}.nav a{color:var(--muted);text-decoration:none}.nav a:hover{color:var(--text)}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:end;padding:18px 0 70px}.eyebrow{font-family:"DM Mono";font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}.hero h1{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(52px,7.2vw,96px);font-weight:400;line-height:.91;letter-spacing:-.035em;margin:0;max-width:11ch}.hero h1 em{color:var(--cyan);font-weight:400}.hero-copy{padding-bottom:6px}.claim{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(23px,2.2vw,31px);line-height:1.25;color:#dbe8e9;margin:0 0 22px}.sub{color:var(--muted);max-width:58ch;font-size:15px}.badge{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-family:"DM Mono";font-size:11px;color:var(--muted);background:rgba(16,30,37,.72)}.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--line);gap:1px;margin:0 0 72px}.stat{background:var(--panel);padding:24px}.stat b{display:block;font-family:"Instrument Serif";font-size:34px;font-weight:400;color:var(--text);line-height:1}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:8px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin:0 0 24px}.section-head h2{font-family:"Instrument Serif";font-size:42px;font-weight:400;line-height:1;margin:0}.section-head p{color:var(--muted);max-width:52ch;margin:0;font-size:14px}.lab{border:1px solid var(--line);background:linear-gradient(180deg,rgba(19,36,45,.9),rgba(11,22,28,.95));border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.labbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line);background:rgba(7,16,21,.52)}.labbar .mode{font-family:"DM Mono";font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:.09em}.labbar .truth{font-size:11px;color:var(--muted)}.controls{display:flex;flex-wrap:wrap;gap:10px;padding:18px;border-bottom:1px solid var(--line)}button{font:inherit}.pill{appearance:none;border:1px solid var(--line);color:var(--muted);background:var(--bg2);padding:9px 13px;border-radius:999px;font-family:"DM Mono";font-size:11px;cursor:pointer;transition:.15s}.pill:hover{border-color:#3f5d68;color:var(--text)}.pill.active{background:var(--cyan);border-color:var(--cyan);color:#061012}.basis-wrap{margin-left:auto;display:flex;gap:7px}.workspace{display:grid;grid-template-columns:.78fr 1.22fr;min-height:570px}.response-col{padding:28px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:20px}.tiny{font-family:"DM Mono";font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted)}.response-text{font-family:"Instrument Serif";font-size:29px;line-height:1.22;margin:0}.explain{color:var(--muted);font-size:13px}.flow{display:grid;grid-template-columns:1fr;gap:8px;margin-top:auto}.flowstep{display:flex;align-items:center;gap:12px;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-radius:10px;font-size:12px}.flowstep strong{font-family:"DM Mono";font-size:10px;color:var(--cyan);font-weight:500}.source-col{padding:28px}.arm-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}.armbtn{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:left;background:var(--bg2);color:var(--muted);cursor:pointer}.armbtn b{font-family:"DM Mono";font-size:11px;display:block;color:var(--text)}.armbtn span{font-size:11px}.armbtn.active.a0{border-color:var(--cyan);background:var(--cyan2)}.armbtn.active.a1{border-color:var(--red);background:var(--red2)}.armbtn.active.a2{border-color:var(--amber);background:var(--amber2)}.source-card{background:#071115;border:1px solid var(--line);border-radius:14px;padding:18px;min-height:218px;max-height:300px;overflow:auto;font-family:"DM Mono";font-size:11px;line-height:1.65;color:#b5c5c9;white-space:pre-wrap}.source-card mark{padding:1px 4px;border-radius:4px;background:var(--red2);color:var(--red)}.source-card.a2 mark{background:var(--amber2);color:var(--amber)}.source-card.a0 mark{background:var(--cyan2);color:var(--cyan)}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.metric{border:1px solid var(--line);background:var(--bg2);border-radius:13px;padding:14px}.metric-head{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted)}.metric-head b{font-family:"DM Mono";font-size:13px;color:var(--text)}.meter{height:7px;background:#071115;border-radius:99px;position:relative;margin-top:12px;overflow:hidden}.meter:after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#3a5058}.fill{position:absolute;height:100%;border-radius:99px;background:var(--cyan)}.correlates{margin-top:16px;border:1px solid var(--line);border-radius:13px;padding:14px;background:var(--bg2)}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.chip{font-family:"DM Mono";font-size:11px;padding:6px 8px;background:#071115;border:1px solid var(--line);border-radius:7px;color:#b8c9cd}.chip.hit{border-color:var(--red);color:var(--red)}.annotation{margin-top:10px;color:var(--muted);font-size:11px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:72px 0}.card{border:1px solid var(--line);border-radius:var(--r);padding:23px;background:var(--panel)}.card .n{font-family:"DM Mono";font-size:10px;color:var(--cyan);letter-spacing:.1em}.card h3{font-family:"Instrument Serif";font-size:28px;font-weight:400;line-height:1.1;margin:13px 0 11px}.card p{font-size:13px;color:var(--muted);margin:0}.truth-table{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}.tr{display:grid;grid-template-columns:1.2fr repeat(3,.8fr);background:var(--panel);border-bottom:1px solid var(--line)}.tr:last-child{border-bottom:0}.tr>div{padding:14px 16px;font-size:12px}.tr.head{background:var(--bg2);color:var(--muted);font-family:"DM Mono";font-size:10px}.tr .num{font-family:"DM Mono";text-align:right}.warn{margin-top:18px;padding:15px 18px;border-left:3px solid var(--amber);background:rgba(59,50,29,.5);color:#cdbf96;font-size:12px}.footer{margin-top:78px;border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:12px}.footer strong{color:var(--text)}
-@media(max-width:900px){.hero{grid-template-columns:1fr;gap:28px}.stats{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:1fr}.response-col{border-right:0;border-bottom:1px solid var(--line)}.cards{grid-template-columns:1fr}.navlinks{display:none}.basis-wrap{margin-left:0}.tr{grid-template-columns:1.4fr repeat(3,.7fr)}}
-@media(max-width:560px){.shell{padding:18px 14px 64px}.hero h1{font-size:56px}.stats{grid-template-columns:1fr 1fr}.stat{padding:18px}.controls{gap:7px}.workspace .response-col,.workspace .source-col{padding:18px}.arm-tabs{grid-template-columns:1fr}.metrics{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}.tr{grid-template-columns:1.6fr repeat(3,.8fr)}.tr>div{padding:10px 8px;font-size:10px}}
+:root {
+  --ink: #12181b;
+  --ink-soft: #3a484f;
+  --muted: #5f7178;
+  --faint: #8ea0a7;
+  --ground: #eef1f2;
+  --surface: #fcfdfd;
+  --sunken: #e4e9ea;
+  --line: #ccd6d9;
+  --hair: #dde4e6;
+  --pred: #0d6a68;
+  --pred-wash: #dceceb;
+  --ground-c: #a4402c;
+  --ground-wash: #f7e5e0;
+  --placebo: #7c6a30;
+  --placebo-wash: #f2ecdc;
+  --rot: #5c6f77;
+  --shadow: 0 1px 2px rgba(18,24,27,.05), 0 10px 30px rgba(18,24,27,.06);
+
+  --s--1: clamp(.78rem, .76rem + .1vw, .84rem);
+  --s-0: clamp(.97rem, .94rem + .15vw, 1.05rem);
+  --s-1: clamp(1.12rem, 1.05rem + .34vw, 1.32rem);
+  --s-2: clamp(1.35rem, 1.2rem + .7vw, 1.85rem);
+  --s-3: clamp(1.7rem, 1.4rem + 1.4vw, 2.6rem);
+  --s-4: clamp(2.1rem, 1.5rem + 3vw, 4.1rem);
+
+  --measure: 34rem;
+  --wide: 60rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e7eef0; --ink-soft: #b6c5ca; --muted: #91a3aa; --faint: #6c7e85;
+    --ground: #0d1315; --surface: #161f22; --sunken: #1d282c;
+    --line: #2b393e; --hair: #232f33;
+    --pred: #5cc3bd; --pred-wash: #12302f;
+    --ground-c: #e0866d; --ground-wash: #341f1a;
+    --placebo: #c9b475; --placebo-wash: #2a2517;
+    --rot: #93a5ac;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e7eef0; --ink-soft: #b6c5ca; --muted: #91a3aa; --faint: #6c7e85;
+  --ground: #0d1315; --surface: #161f22; --sunken: #1d282c;
+  --line: #2b393e; --hair: #232f33;
+  --pred: #5cc3bd; --pred-wash: #12302f;
+  --ground-c: #e0866d; --ground-wash: #341f1a;
+  --placebo: #c9b475; --placebo-wash: #2a2517;
+  --rot: #93a5ac;
+  --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size: var(--s-0);
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { display: flex; flex-direction: column; }
+
+section {
+  padding-inline: clamp(1.1rem, .5rem + 2.6vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.col { width: 100%; max-width: var(--measure); }
+.wide { width: 100%; max-width: var(--wide); }
+
+h1, h2, h3 { font-family: Newsreader, ui-serif, Georgia, serif; font-weight: 400; text-wrap: balance; }
+h1 { font-size: var(--s-4); line-height: 1.02; letter-spacing: -.025em; margin: 0; }
+h2 { font-size: var(--s-2); line-height: 1.15; letter-spacing: -.015em; margin: 0 0 .2rem; }
+h3 { font-size: var(--s-1); margin: 0 0 .3rem; }
+p { margin: 0 0 1rem; }
+a { color: var(--pred); text-underline-offset: 3px; }
+
+.eyebrow {
+  font-size: var(--s--1); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--muted); font-weight: 500; margin: 0 0 .8rem;
+}
+.lede { font-family: Newsreader, ui-serif, Georgia, serif; font-size: var(--s-1); color: var(--ink-soft); }
+.note { font-size: var(--s--1); color: var(--muted); line-height: 1.6; }
+.mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+/* ---------------- hero ---------------- */
+.hero { padding-block: clamp(3rem, 2rem + 7vw, 7rem) clamp(2rem, 1rem + 4vw, 4rem); }
+.hero .claim {
+  font-family: Newsreader, ui-serif, Georgia, serif;
+  font-size: var(--s-1); line-height: 1.5; color: var(--ink-soft);
+  border-left: 2px solid var(--pred); padding-left: 1rem; margin: 1.6rem 0 0;
+}
+.hero h1 em { font-style: italic; color: var(--pred); }
+.actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.8rem; }
+.btn {
+  font-size: var(--s--1); font-weight: 500; letter-spacing: .01em;
+  border: 1px solid var(--line); border-radius: 3px; background: var(--surface);
+  color: var(--ink); padding: .55rem 1rem; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: .4rem;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--pred); border-color: var(--pred); color: var(--surface); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--pred); outline-offset: 2px;
+}
+.replay-badge {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: var(--s--1); color: var(--muted);
+  border: 1px dashed var(--line); border-radius: 999px;
+  padding: .3rem .8rem; margin-top: 1.6rem;
+}
+.replay-badge b { color: var(--ink); font-weight: 600; }
+
+/* ---------------- generic blocks ---------------- */
+.band { padding-block: clamp(2.4rem, 1.6rem + 3.5vw, 5rem); }
+.band + .band { border-top: 1px solid var(--hair); }
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 4px;
+  box-shadow: var(--shadow); padding: clamp(1rem, .7rem + 1.2vw, 1.6rem);
+}
+figcaption { font-size: var(--s--1); color: var(--muted); line-height: 1.6; margin-top: .8rem; }
+figure { margin: 0; }
+
+/* ---------------- explainer ---------------- */
+.explainer { display: grid; gap: .8rem; margin-top: 1.4rem; }
+@media (min-width: 800px) { .explainer { grid-template-columns: repeat(3, 1fr); } }
+.arm {
+  background: var(--surface); border: 1px solid var(--line);
+  border-top: 3px solid var(--edge); border-radius: 4px;
+  padding: .9rem 1rem 1rem; display: flex; flex-direction: column; gap: .6rem;
+}
+.arm.a0 { --edge: var(--pred); --wash: var(--pred-wash); }
+.arm.a1 { --edge: var(--ground-c); --wash: var(--ground-wash); }
+.arm.a2 { --edge: var(--placebo); --wash: var(--placebo-wash); }
+.arm .tag {
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: var(--s--1);
+  color: var(--edge); font-weight: 500; letter-spacing: .03em;
+}
+.arm .src {
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: var(--s--1);
+  line-height: 1.75; white-space: pre-wrap; word-break: break-word;
+  background: var(--sunken); border-radius: 3px; padding: .6rem .7rem;
+  color: var(--ink-soft); max-height: 15rem; overflow: auto;
+}
+.arm .src mark { background: var(--wash); color: var(--edge); font-weight: 600; padding: .05em .25em; border-radius: 2px; }
+.fixed-response {
+  background: var(--sunken); border-radius: 4px; padding: 1rem 1.15rem;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.fixed-response .label { font-size: var(--s--1); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.fixed-response blockquote { margin: 0; font-family: Newsreader, ui-serif, Georgia, serif; font-size: var(--s-1); line-height: 1.5; }
+
+/* ---------------- controls ---------------- */
+.controls { display: flex; flex-wrap: wrap; gap: .8rem 1.4rem; align-items: center; margin: 1.2rem 0 .4rem; }
+.ctl { display: flex; align-items: center; gap: .45rem; flex-wrap: wrap; }
+.ctl > .lbl { font-size: var(--s--1); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+.seg button {
+  font: inherit; font-size: var(--s--1); border: 0; background: var(--surface);
+  color: var(--muted); padding: .38rem .8rem; cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.seg button + button { border-left: 1px solid var(--line); }
+/* A joined segmented control assumes one row; wrapped, it staircases and
+   the shared borders come apart. The item picker has twelve entries, so it
+   gets separate chips instead. */
+.seg.wrapped { border: 0; gap: .35rem; flex-wrap: wrap; }
+.seg.wrapped button { border: 1px solid var(--line); border-radius: 3px; }
+.seg.wrapped button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--pred); color: var(--surface); }
+.seg button:hover:not([aria-pressed="true"]) { color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.chip {
+  font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: var(--s--1);
+  border: 1px solid var(--line); border-radius: 2px; padding: .18rem .45rem;
+  color: var(--ink-soft); background: var(--sunken); white-space: pre;
+}
+.chip.hit { border-color: var(--edge, var(--ground-c)); color: var(--edge, var(--ground-c)); background: var(--wash, var(--ground-wash)); font-weight: 600; }
+
+/* ---------------- charts ---------------- */
+.chartbox { width: 100%; overflow-x: auto; }
+svg.chart { display: block; width: 100%; height: auto; min-width: 470px; }
+.chartbox { -webkit-overflow-scrolling: touch; }
+.chartbox::after { content: ""; }
+svg.chart text { font-family: "IBM Plex Sans", sans-serif; fill: var(--muted); }
+svg.chart .axis line, svg.chart .axis path { stroke: var(--line); }
+svg.chart .grid line { stroke: var(--hair); }
+svg.chart .lbl { fill: var(--ink); font-weight: 500; }
+.draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: draw 1.1s ease forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* ---------------- risk meter ---------------- */
+.meter { position: relative; height: 7px; background: var(--sunken); border-radius: 4px; overflow: hidden; margin-top: .3rem; }
+.meter .zero { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.meter .fill { position: absolute; top: 0; bottom: 0; background: var(--edge); border-radius: 4px; transition: left .3s ease, width .3s ease; }
+.metricrow { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; font-size: var(--s--1); color: var(--muted); }
+.metricrow .v { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 600; }
+
+/* ---------------- tables ---------------- */
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: var(--s--1); font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: .45rem .65rem; border-bottom: 1px solid var(--hair); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+thead th { color: var(--muted); font-weight: 500; }
+tbody td { font-family: "IBM Plex Mono", ui-monospace, monospace; color: var(--ink-soft); }
+tbody td:first-child { font-family: "IBM Plex Sans", sans-serif; color: var(--ink); }
+td.neg { color: var(--ground-c); font-weight: 600; }
+td.pos { color: var(--pred); }
+
+/* ---------------- domains + adverse ---------------- */
+.grid3 { display: grid; gap: .8rem; margin-top: 1.3rem; }
+@media (min-width: 760px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1rem 1.1rem; }
+.card h3 { font-family: "IBM Plex Sans", sans-serif; font-size: var(--s-0); font-weight: 600; margin: 0 0 .3rem; }
+.card .n { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: var(--s--1); color: var(--pred); }
+
+.adverse { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-top: 1.3rem; }
+.adverse .row { background: var(--surface); padding: .9rem 1.1rem; display: grid; gap: .15rem .9rem; }
+@media (min-width: 720px) { .adverse .row { grid-template-columns: 13rem 8rem 1fr; align-items: baseline; } }
+.adverse .k { font-weight: 600; }
+.adverse .v { font-family: "IBM Plex Mono", ui-monospace, monospace; color: var(--ground-c); font-weight: 600; }
+.adverse .n { font-size: var(--s--1); color: var(--muted); line-height: 1.55; }
+
+footer { border-top: 1px solid var(--hair); padding-block: 2.4rem 3.4rem; }
+footer .note { max-width: var(--measure); }
+code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; background: var(--sunken); padding: .1em .35em; border-radius: 2px; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 1rem; top: 1rem; z-index: 10; background: var(--surface); padding: .6rem 1rem; border: 1px solid var(--pred); border-radius: 3px; }
 </style>
-</head>
-<body>
-<div class="shell">
-<nav class="nav"><div class="brand">J-Halu / Evidence Retention</div><div class="navlinks"><a href="#lab">Artifact Lab</a><a href="#findings">Findings</a><a href="https://github.com/jshim0978" target="_blank" rel="noopener">GitHub</a></div></nav>
-<section class="hero"><div><div class="eyebrow">NAACL Main candidate · interactive research artifact</div><h1>Which text is <em>wrong</em>, or why?</h1></div><div class="hero-copy"><p class="claim">Sparse compression preserves which text is wrong far better than why the evidence makes it wrong.</p><p class="sub">Hold a response byte-identical. Change only its source evidence. Then watch the dense detector react — and inspect what the readable sparse code actually says.</p><div class="badge"><span class="dot"></span>Replay mode · real frozen framework outputs · no live generation</div></div></section>
-<div class="stats"><div class="stat"><b>0.89</b><span>prediction retention at k=25, cohort 1 W_U</span></div><div class="stat"><b>0.31</b><span>grounding retention at k=25, cohort 1 W_U</span></div><div class="stat"><b>3</b><span>source domains · E2E / ToTTo / WikiBio</span></div><div class="stat"><b>2</b><span>readable dictionaries · W_U / Jacobian</span></div></div>
-<section id="lab"><div class="section-head"><div><div class="eyebrow">Artifact Replay Lab</div><h2>Change the evidence, not the sentence.</h2></div><p>This interface replays measured outputs from the frozen J-Halu pipeline. It is intentionally not a simulated “live model” demo.</p></div>
-<div class="lab"><div class="labbar"><div class="mode">● framework replay / k=25</div><div class="truth">A0 published · A1 deciding evidence flipped · A2 placebo</div></div><div class="controls" id="sampleButtons"></div><div class="workspace"><div class="response-col"><div class="tiny">Fixed model response</div><p class="response-text" id="responseText"></p><p class="explain" id="sampleMeta"></p><div class="flow"><div class="flowstep"><strong>01</strong> Hold response text fixed</div><div class="flowstep"><strong>02</strong> Flip one source field</div><div class="flowstep"><strong>03</strong> Read dense risk + sparse correlates</div></div></div><div class="source-col"><div class="arm-tabs" id="armTabs"></div><div class="source-card" id="sourceCard"></div><div class="metrics"><div class="metric"><div class="metric-head"><span>Dense risk</span><b id="riskValue"></b></div><div class="meter"><span class="fill" id="riskFill"></span></div></div><div class="metric"><div class="metric-head"><span>Changed field</span><b id="fieldValue"></b></div><div class="annotation" id="changeValue"></div></div></div><div class="correlates"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><div class="tiny">Readable correlates</div><div class="basis-wrap" id="basisButtons"></div></div><div class="chips" id="chips"></div><div class="annotation">Highlighted token = overlaps the deciding value by the benchmark's token-identity rule. These are <b>correlates/readouts, not faithful explanations.</b></div></div></div></div></div></section>
-<section id="findings"><div class="cards"><article class="card"><div class="n">01 / RETENTION</div><h3>Classification survives compression better than evidence tracking.</h3><p>The sealed cohort measures both quantities on the same response tokens. Their retention curves separate sharply.</p></article><article class="card"><div class="n">02 / CONTROL</div><h3>Vocabulary meaning is not required for the gap.</h3><p>Three meaning-free rotations reproduce a positive gap on a fresh cohort. The control gate remains unresolved because dictionary identity materially changes magnitude.</p></article><article class="card"><div class="n">03 / INTERPRETATION</div><h3>Readable does not mean deciding-evidence grounded.</h3><p>For W_U, top readable coordinates identify the deciding value less often than a size-matched sample of other source tokens. Jacobian behaves differently, so the paper does not generalize that verdict across bases.</p></article></div>
-<div class="section-head"><div><div class="eyebrow">Attribution stress test</div><h2>Do the readable tokens name the deciding evidence?</h2></div><p>Build-split exploratory attribution, reported alongside the visualization so “readable” cannot be mistaken for “explanatory.”</p></div><div class="truth-table"><div class="tr head"><div>basis · top 25</div><div class="num">deciding value</div><div class="num">matched source</div><div class="num">random vocab</div></div><div class="tr"><div>W_U</div><div class="num">0.229</div><div class="num">0.341</div><div class="num">0.005</div></div><div class="tr"><div>Jacobian</div><div class="num">0.629</div><div class="num">0.173</div><div class="num">0.008</div></div></div><div class="warn"><strong>Important:</strong> the Main paper does not claim a “readability tax,” generic-sparsity equivalence, faithful explanation, or successful recovery. The fresh control is <b>CONTROL-UNRESOLVED</b>; W_U actually has the highest grounding retention among the five cohort-2 bases.</div></section>
-<footer class="footer"><div><strong>J-Halu</strong><br>Interactive companion to “Which Text Is Wrong, or Why?”</div><div>Frozen research artifact replay · canonical submission tag: <code>naacl-main-submission-v1</code></div></footer>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+
+<section class="hero">
+  <div class="col">
+    <p class="eyebrow">Preregistered &middot; sealed-once &middot; NAACL Main submission</p>
+    <h1>Which text is wrong,<br>or <em>why</em>?</h1>
+    <p class="claim" id="claim"></p>
+    <div class="actions">
+      <a class="btn primary" href="#result">See the result</a>
+      <a class="btn" href="#lab">Artifact Replay Lab</a>
+      <a class="btn" href="#reproduce">Code &amp; data</a>
+    </div>
+    <div class="replay-badge">
+      <span aria-hidden="true">&#9673;</span>
+      <span><b>Artifact Replay.</b> <span id="disclaimer"></span></span>
+    </div>
+  </div>
+</section>
+
+<main id="main">
+
+<section class="band">
+  <div class="col">
+    <h2>Same sentence, different evidence</h2>
+    <p class="lede">A probe can tell you a response contradicts its source. That is a
+    question about differences <em>between</em> items. Whether the representation
+    <em>tracks the evidence</em> is a question about differences <em>within</em> one
+    item &mdash; and the two come apart.</p>
+    <p>To separate them we hold the response fixed, byte for byte, and edit the
+    source underneath it. Nothing is regenerated, so the scored tokens are identical
+    in all three conditions and nothing that moves can be blamed on wording or
+    length.</p>
+  </div>
+  <div class="wide" style="margin-top:1.4rem">
+    <div class="fixed-response">
+      <span class="label">One response, byte-identical in all three</span>
+      <blockquote id="ex-response"></blockquote>
+    </div>
+    <div class="explainer" id="explainer"></div>
+    <figcaption><b>A1</b> replaces a value the response asserts, making it false.
+    <b>A2</b> replaces a value the response never mentions, leaving it true; it is
+    the control that separates grounding from sensitivity to any edit at all.
+    Without A2, a representation that reacts to <em>any</em> change would pass for
+    one that tracks evidence.</figcaption>
+  </div>
+</section>
+
+<section class="band" id="result">
+  <div class="col">
+    <h2>What compression keeps</h2>
+    <p class="lede">Compress the hidden state into <span class="mono">k</span>
+    readable coordinates and measure two things separately: how much of the ability
+    to flag the contradicted response survives, and how much of the sensitivity to
+    the deciding evidence survives.</p>
+  </div>
+  <div class="wide">
+    <div class="controls">
+      <div class="ctl">
+        <span class="lbl" id="basis-lbl">Readable basis</span>
+        <div class="seg" role="group" aria-labelledby="basis-lbl" id="basis-seg"></div>
+      </div>
+    </div>
+    <figure class="panel">
+      <div class="chartbox"><svg class="chart" id="chart-retention" viewBox="0 0 720 320" role="img" aria-labelledby="ret-title"><title id="ret-title">Retention against k</title></svg></div>
+      <figcaption id="ret-cap"></figcaption>
+    </figure>
+  </div>
+  <div class="col" style="margin-top:1.6rem">
+    <p>Prediction saturates quickly. Grounding peaks early, low, and then
+    <em>declines</em> as more coordinates are added. Adding coordinates buys
+    prediction and does not buy grounding.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="col">
+    <h2>Three domains, no adjudicator</h2>
+    <p class="lede">The benchmark records which field was flipped and to what, so
+    &ldquo;the deciding evidence&rdquo; is a fact of construction rather than an
+    annotation. No judge is involved.</p>
+  </div>
+  <div class="wide"><div class="grid3" id="domains"></div></div>
+</section>
+
+<section class="band">
+  <div class="col">
+    <h2>The control: does readability matter?</h2>
+    <p class="lede">Rotate the dictionary. <span class="mono">D&prime; = DQ</span>
+    keeps atom count, norms and the entire Gram matrix, and destroys only the
+    correspondence between a coordinate and a vocabulary token. Same geometry, no
+    meaning.</p>
+    <p>On a second, source-disjoint cohort, all three frozen rotation seeds
+    reproduce the gap at every <span class="mono">k</span>. Vocabulary meaning is
+    not necessary for the effect. But the readable bases <em>bracket</em> the
+    rotations rather than matching them, and the seeds differ from each other &mdash;
+    so our preregistered control gate came back <b id="gate-word"></b>, and we do
+    not claim generic sparsity is confirmed.</p>
+  </div>
+  <div class="wide">
+    <figure class="panel">
+      <div class="chartbox"><svg class="chart" id="chart-control" viewBox="0 0 720 300" role="img" aria-labelledby="ctl-title"><title id="ctl-title">Cohort 2 pooled gaps with intervals</title></svg></div>
+      <figcaption id="ctl-cap"></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band" id="lab">
+  <div class="col">
+    <h2>Artifact Replay Lab</h2>
+    <p class="lede">Switch the source and watch the measured outputs change. These
+    are <b>frozen recorded measurements</b> from the sealed study, replayed &mdash;
+    not a model running now.</p>
+  </div>
+  <div class="wide">
+    <div class="controls">
+      <div class="ctl">
+        <span class="lbl" id="item-lbl">Item</span>
+        <div class="seg wrapped" role="group" aria-labelledby="item-lbl" id="item-seg"></div>
+      </div>
+      <div class="ctl">
+        <span class="lbl" id="lab-basis-lbl">Coordinates</span>
+        <div class="seg" role="group" aria-labelledby="lab-basis-lbl" id="lab-basis-seg"></div>
+      </div>
+    </div>
+    <div class="fixed-response" style="margin-bottom:.9rem">
+      <span class="label">Model response &mdash; identical in all three panels</span>
+      <blockquote id="lab-response"></blockquote>
+    </div>
+    <div class="explainer" id="lab-arms"></div>
+    <figcaption>Dense risk is the layer-19 probe's signed score. The chips are the
+    top readable coordinates by signed contribution; a highlighted chip is one whose
+    token is part of the deciding value. They are <b>readable correlates</b>, not
+    explanations &mdash; see below.</figcaption>
+  </div>
+</section>
+
+<section class="band">
+  <div class="col">
+    <h2>Do those coordinates name the deciding evidence?</h2>
+    <p class="lede">Mostly not, and for one basis they lose to chance-matched
+    controls. We rank each item's coordinates by contribution and ask whether the
+    top ones contain tokens of the flipped value &mdash; against a control that
+    samples <em>other</em> source tokens at exactly the same set size.</p>
+  </div>
+  <div class="wide">
+    <figure class="panel">
+      <div class="tablewrap"><table id="attr-table">
+        <thead><tr><th>Basis, top coordinates</th><th>Deciding value</th><th>Size-matched source</th><th>Random vocabulary</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <figcaption id="attr-cap"></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band">
+  <div class="col">
+    <h2>What this does <em>not</em> show</h2>
+    <p class="lede">A page that claims more than its paper is a failed page. Every
+    adverse result below is in the manuscript body, and stays here.</p>
+  </div>
+  <div class="wide"><div class="adverse" id="adverse"></div></div>
+  <div class="col" style="margin-top:1.5rem">
+    <p class="note">We do not claim that readability causes the loss of grounding;
+    on the confirmation cohort the readable unembedding basis has the
+    <em>highest</em> grounding retention of every basis tested, meaning-free
+    rotations included. We do not claim these coordinates faithfully explain a
+    decision. We do not report a working recovery or mitigation method. The
+    free-generation steering intervention was null and is retained as a boundary
+    condition.</p>
+  </div>
+</section>
+
+<section class="band" id="reproduce">
+  <div class="col">
+    <h2>Reproduce it</h2>
+    <p>Every number on this page and in the paper is generated from frozen result
+    JSON by the repository's builders. The submitted artifact is the annotated tag
+    <code id="tag-name"></code>, whose PDF has SHA-256 <span class="mono"
+    id="pdf-sha" style="word-break:break-all"></span>.</p>
+    <p class="note">Build the paper deterministically with
+    <code>SOURCE_DATE_EPOCH=1451606400 FORCE_SOURCE_DATE=1</code>; two builds are
+    byte-identical. The sealed split of each cohort was opened exactly once.</p>
+    <div class="actions">
+      <a class="btn primary" href="#result">Back to the result</a>
+      <a class="btn" href="#lab">Replay Lab</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="col">
+    <p class="note" id="foot"></p>
+  </div>
+</footer>
+</main>
 </div>
+
+<script id="payload" type="application/json">{"kind": "artifact_replay", "disclaimer": "Frozen measured outputs, replayed. This page runs no model and performs no inference.", "paper": {"title": "Which Text Is Wrong, or Why: What Sparse Readable Codes Retain of a Model's Grounding", "claim": "Sparse compression of hidden states preserves which text is wrong far better than why the evidence makes it wrong, and making the compression human-readable does not recover the difference.", "tag": "naacl-main-submission-v1", "pdf_sha256": "0b72d17950a171b9017fe194f45558a6c88063e903128f2639f8c83f294fd7f3"}, "ks": [1, 5, 10, 25, 50, 100], "cohort1": {"items": 2200, "clusters": 2200, "dense": {"prediction_auroc": 0.9929216942148761, "grounding_std": -5.164079628287306, "transfer_auroc": 0.9718939049586776}, "curves": {"wu": {"pred": [0.3418594055264169, 0.7866143055763387, 0.8548700382816071, 0.8898455448433, 0.8830623273859147, 0.8796935627128006], "ground": [0.017369439215458325, 0.2823440377504123, 0.32528148497489473, 0.31139948363743064, 0.2736332808059976, 0.24437298424590934]}, "jacobian": {"pred": [0.4413478873021001, 0.7783711643468421, 0.8264386201184455, 0.8758104924214322, 0.8858606194050401, 0.8821804210934883], "ground": [0.04489202363055621, 0.1382524491664017, 0.12840124899009006, 0.1680333199686015, 0.18550338522774593, 0.16665715515803994]}}, "gap": {"wu": {"point": 0.5159313444439124, "ci": [0.49399246972062727, 0.5375225867002532], "k_positive": 6, "domains_consistent": true}, "jacobian": {"point": 0.6342256763824605, "ci": [0.608051810784532, 0.659404591342407], "k_positive": 6, "domains_consistent": true}}, "per_domain": {"e2e": {"wu": 0.5860969865391458, "jacobian": 0.7596877661615188}, "totto": {"wu": 0.30913659796812615, "jacobian": 0.31643642711783354}, "wikibio": {"wu": 0.48581802078962555, "jacobian": 0.5720224436512439}}}, "cohort2": {"items": 1078, "clusters": 1077, "gate": "CONTROL-UNRESOLVED", "margin": 0.3797, "margin_informative": false, "seeds": ["rot20260825", "rot20260826", "rot20260827"], "gap_per_k": {"jacobian": [0.31077004072568293, 0.5207024872887159, 0.584368442407851, 0.5614696477732566, 0.5476828387085502, 0.5630037897677227], "rot20260825": [0.30825059615379474, 0.47684075954995925, 0.457847335013875, 0.47254366157315836, 0.47201213636828543, 0.5007418912435082], "rot20260826": [0.19346640492378442, 0.3476471763171452, 0.30862369737305845, 0.341145001789249, 0.34708241810582874, 0.38838155475535885], "rot20260827": [0.22055569494582106, 0.5280812405627824, 0.5102896116031047, 0.49096962548014766, 0.5040702569663862, 0.5247677848417848], "wu": [0.2078136944167729, 0.30268360759435786, 0.31866012051233067, 0.2900960553645683, 0.2698899404956382, 0.28282638961867623]}, "pooled": {"jacobian": {"point": 0.5095117080951105, "ci": [0.4503904940361676, 0.5709344287720088], "readable": true}, "rot20260825": {"point": 0.44438300776929485, "ci": [0.3847706259786874, 0.5056112218670871], "readable": false}, "rot20260826": {"point": 0.31573053901383585, "ci": [0.25829768515559054, 0.3783191049563198], "readable": false}, "rot20260827": {"point": 0.4608861518585855, "ci": [0.39769148759312384, 0.5259530422891173], "readable": false}, "wu": {"point": 0.2802676538622665, "ci": [0.22666347391777258, 0.3373745194377821], "readable": true}}, "grounding": {"jacobian": 0.21650949328383903, "rot20260825": 0.24798732266486334, "rot20260826": 0.40576029002097547, "rot20260827": 0.179175961556959, "wu": 0.4413229384520003}, "per_domain": {"e2e": {"jacobian": 0.5743503340492992, "rot20260825": 0.5457492622420358, "rot20260826": 0.28044904631354206, "rot20260827": 0.6017596852762934, "wu": 0.363626280599758}, "totto": {"jacobian": 0.09700612321652163, "rot20260825": 0.16680668754405553, "rot20260826": 0.08206445188260564, "rot20260827": 0.20808302190103922, "wu": -0.01441373525647005}, "wikibio": {"jacobian": 0.4987609126367295, "rot20260825": 0.3693387044785187, "rot20260826": 0.3917103723660702, "rot20260827": 0.3654478220766109, "wu": 0.21600301418641982}}, "readable_minus_rotated": {"wu": {"point": -0.12673224568497227, "ci": [-0.18211575670319233, -0.07003846803594929]}, "jacobian": {"point": 0.10251180854787173, "ci": [0.04549755081140018, 0.15303595695074998]}}}, "phi": {"gap": 0.48940280945767534, "ci": [0.45469493378676923, 0.523955959904594], "items": 1059, "caveat": "A direction check on its own frozen eligible subset, not a controlled architecture comparison: model, tokenizer, item set and vocabulary all differ at once."}, "domains": [{"key": "e2e", "name": "E2E", "blurb": "Restaurant meaning representations. Slot-value pairs with a short human description.", "items": 2180, "median_prompt_tokens": 62}, {"key": "totto", "name": "ToTTo", "blurb": "Wikipedia table cells, with the highlighted cells and a window of their neighbours.", "items": 1666, "median_prompt_tokens": 158}, {"key": "wikibio", "name": "WikiBio", "blurb": "Biography infoboxes, which carry many more fields than any one opening sentence mentions.", "items": 1653, "median_prompt_tokens": 155}], "attribution": {"wu": {"items": 2200, "rates": {"1": {"value": 0.005909090909090909, "field": 0.00045454545454545455, "overlap_ctrl": 0.05227272727272727, "overlap_matched_ctrl": 0.01, "random_ctrl": 0.0}, "5": {"value": 0.031363636363636364, "field": 0.0027272727272727275, "overlap_ctrl": 0.475, "overlap_matched_ctrl": 0.10681818181818181, "random_ctrl": 0.0}, "10": {"value": 0.09545454545454546, "field": 0.008181818181818182, "overlap_ctrl": 0.7304545454545455, "overlap_matched_ctrl": 0.21681818181818183, "random_ctrl": 0.0009090909090909091}, "25": {"value": 0.2290909090909091, "field": 0.23545454545454544, "overlap_ctrl": 0.8868181818181818, "overlap_matched_ctrl": 0.3409090909090909, "random_ctrl": 0.004545454545454545}, "50": {"value": 0.35545454545454547, "field": 0.30863636363636365, "overlap_ctrl": 0.9490909090909091, "overlap_matched_ctrl": 0.4490909090909091, "random_ctrl": 0.015}}}, "jacobian": {"items": 2200, "rates": {"1": {"value": 0.06272727272727273, "field": 0.0009090909090909091, "overlap_ctrl": 0.10181818181818182, "overlap_matched_ctrl": 0.02727272727272727, "random_ctrl": 0.00045454545454545455}, "5": {"value": 0.3322727272727273, "field": 0.005454545454545455, "overlap_ctrl": 0.43636363636363634, "overlap_matched_ctrl": 0.10954545454545454, "random_ctrl": 0.0022727272727272726}, "10": {"value": 0.44727272727272727, "field": 0.011818181818181818, "overlap_ctrl": 0.5472727272727272, "overlap_matched_ctrl": 0.13954545454545456, "random_ctrl": 0.0036363636363636364}, "25": {"value": 0.6286363636363637, "field": 0.03227272727272727, "overlap_ctrl": 0.6654545454545454, "overlap_matched_ctrl": 0.1731818181818182, "random_ctrl": 0.007727272727272728}, "50": {"value": 0.7222727272727273, "field": 0.06, "overlap_ctrl": 0.8031818181818182, "overlap_matched_ctrl": 0.245, "random_ctrl": 0.016363636363636365}}}}, "replay": {"k": 25, "rows": [{"domain": "e2e", "source_id": "e2e-1288", "response": "The Golden Curry is a non children friendly fast food restaurant. It has a high price range, and is near The Bakers.", "prompts": {"A0": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Golden Curry\n- food: Fast food\n- priceRange: high\n- familyFriendly: no\n- near: The Bakers\n\nDescription:", "A1": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Plough\n- food: Fast food\n- priceRange: high\n- familyFriendly: no\n- near: The Bakers\n\nDescription:", "A2": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Golden Curry\n- food: Fast food\n- priceRange: high\n- familyFriendly: yes\n- near: The Bakers\n\nDescription:"}, "changed": {"relevant": {"field": "name", "from": "The Golden Curry", "to": "The Plough"}, "placebo": {"field": "familyFriendly", "from": "no", "to": "yes"}}, "dense_risk": {"A0": -9.411, "A1": 6.5422, "A2": -8.7483}, "nll": {"A0": 0.0064, "A1": 9.1426, "A2": 0.0047}, "correlates": {"wu": {"A0": [{"token": "?", "weight": 0.34665, "hit": false}, {"token": " (", "weight": 0.31266, "hit": false}, {"token": " B", "weight": 0.27307, "hit": false}, {"token": " $", "weight": 0.10919, "hit": false}, {"token": " \u2014", "weight": 0.10255, "hit": false}, {"token": " -", "weight": 0.0684, "hit": false}, {"token": "iz", "weight": 0.05803, "hit": false}, {"token": " name", "weight": 0.05163, "hit": true}], "A1": [{"token": " *", "weight": 0.9521, "hit": false}, {"token": " (", "weight": 0.73989, "hit": false}, {"token": "?", "weight": 0.70654, "hit": false}, {"token": "/", "weight": 0.60316, "hit": false}, {"token": " R", "weight": 0.52394, "hit": false}, {"token": ":", "weight": 0.33793, "hit": false}, {"token": " B", "weight": 0.33723, "hit": false}, {"token": " o", "weight": 0.1774, "hit": false}], "A2": [{"token": " (", "weight": 0.48906, "hit": false}, {"token": "?", "weight": 0.3052, "hit": false}, {"token": " B", "weight": 0.26737, "hit": false}, {"token": " $", "weight": 0.10227, "hit": false}, {"token": " \u2014", "weight": 0.09928, "hit": false}, {"token": " -", "weight": 0.07229, "hit": false}, {"token": "iz", "weight": 0.05888, "hit": false}, {"token": "y", "weight": 0.05632, "hit": false}]}, "jacobian": {"A0": [{"token": " Cafe", "weight": 0.99323, "hit": false}, {"token": " Dining", "weight": 0.58954, "hit": false}, {"token": " Hotel", "weight": 0.31923, "hit": false}, {"token": "\u2014\u2014", "weight": 0.30444, "hit": false}, {"token": " Restaurant", "weight": 0.17914, "hit": false}, {"token": " Inn", "weight": 0.07364, "hit": false}, {"token": " BBQ", "weight": 0.07285, "hit": false}, {"token": " Spa", "weight": 0.05599, "hit": false}], "A1": [{"token": " Cafe", "weight": 1.61807, "hit": false}, {"token": " Dining", "weight": 0.67859, "hit": false}, {"token": ":", "weight": 0.63587, "hit": false}, {"token": " Golden", "weight": 0.37922, "hit": true}, {"token": "!.", "weight": 0.35014, "hit": false}, {"token": " Club", "weight": 0.22295, "hit": false}, {"token": " BBQ", "weight": 0.22052, "hit": false}, {"token": " Centre", "weight": 0.20783, "hit": false}], "A2": [{"token": " Cafe", "weight": 1.3887, "hit": false}, {"token": " Dining", "weight": 0.43183, "hit": false}, {"token": " Hotel", "weight": 0.28928, "hit": false}, {"token": "\u2014\u2014", "weight": 0.28242, "hit": false}, {"token": " Restaurant", "weight": 0.21646, "hit": false}, {"token": " Inn", "weight": 0.07744, "hit": false}, {"token": " BBQ", "weight": 0.06637, "hit": false}, {"token": " Spa", "weight": 0.05958, "hit": false}]}}}, {"domain": "e2e", "source_id": "e2e-2012", "response": "A five out of five restaurant serving English food if the Loch Fyne which is in the city centre near The Rice Boat.", "prompts": {"A0": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: Loch Fyne\n- food: English\n- customer rating: 5 out of 5\n- area: city centre\n- near: The Rice Boat\n\nDescription:", "A1": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: Taste of Cambridge\n- food: English\n- customer rating: 5 out of 5\n- area: city centre\n- near: The Rice Boat\n\nDescription:", "A2": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: Loch Fyne\n- food: English\n- customer rating: 1 out of 5\n- area: city centre\n- near: The Rice Boat\n\nDescription:"}, "changed": {"relevant": {"field": "name", "from": "Loch Fyne", "to": "Taste of Cambridge"}, "placebo": {"field": "customer rating", "from": "5 out of 5", "to": "1 out of 5"}}, "dense_risk": {"A0": -7.7344, "A1": 11.793, "A2": -7.4789}, "nll": {"A0": 1.3528, "A1": 7.391, "A2": 3.0331}, "correlates": {"wu": {"A0": [{"token": " (", "weight": 0.98987, "hit": false}, {"token": " -", "weight": 0.27066, "hit": false}, {"token": "*", "weight": 0.237, "hit": false}, {"token": " @", "weight": 0.08, "hit": false}, {"token": " current", "weight": 0.05466, "hit": false}, {"token": "|", "weight": 0.05198, "hit": false}, {"token": "p", "weight": 0.0476, "hit": false}, {"token": " pres", "weight": 0.04341, "hit": false}], "A1": [{"token": "...", "weight": 1.64789, "hit": false}, {"token": " R", "weight": 1.00924, "hit": false}, {"token": " (", "weight": 0.72454, "hit": false}, {"token": "/", "weight": 0.7018, "hit": false}, {"token": "-", "weight": 0.45918, "hit": false}, {"token": " a", "weight": 0.3519, "hit": false}, {"token": "?", "weight": 0.33032, "hit": false}, {"token": ":", "weight": 0.2301, "hit": false}], "A2": [{"token": " (", "weight": 0.7386, "hit": false}, {"token": "...", "weight": 0.36066, "hit": false}, {"token": "*", "weight": 0.33509, "hit": false}, {"token": " -", "weight": 0.3016, "hit": false}, {"token": " [", "weight": 0.28133, "hit": false}, {"token": " @", "weight": 0.21618, "hit": false}, {"token": " B", "weight": 0.18181, "hit": false}, {"token": " $", "weight": 0.15208, "hit": false}]}, "jacobian": {"A0": [{"token": " Hotel", "weight": 1.15609, "hit": false}, {"token": " Cafe", "weight": 1.03536, "hit": false}, {"token": " Centre", "weight": 0.25965, "hit": false}, {"token": "'s", "weight": 0.25684, "hit": false}, {"token": " Club", "weight": 0.17433, "hit": false}, {"token": "?", "weight": 0.12348, "hit": false}, {"token": " was", "weight": 0.10777, "hit": false}, {"token": " Inn", "weight": 0.07717, "hit": false}], "A1": [{"token": "y", "weight": 1.30348, "hit": false}, {"token": "!.", "weight": 0.77415, "hit": false}, {"token": " Cafe", "weight": 0.59455, "hit": false}, {"token": " Centre", "weight": 0.45934, "hit": false}, {"token": "ba", "weight": 0.22771, "hit": false}, {"token": " Creek", "weight": 0.18324, "hit": false}, {"token": "z", "weight": 0.16675, "hit": false}, {"token": "ie", "weight": 0.15532, "hit": false}], "A2": [{"token": " Hotel", "weight": 1.41821, "hit": false}, {"token": "'s", "weight": 0.41277, "hit": false}, {"token": "????", "weight": 0.36003, "hit": false}, {"token": " Cafe", "weight": 0.29373, "hit": false}, {"token": "y", "weight": 0.14497, "hit": false}, {"token": "?", "weight": 0.14449, "hit": false}, {"token": " Centre", "weight": 0.11254, "hit": false}, {"token": ":", "weight": 0.09696, "hit": false}]}}}, {"domain": "e2e", "source_id": "e2e-2932", "response": "There is a family pub in the mid-price range called The Plough. It serves British cuisine and is located just north of Caf\u00e9 Rouge.", "prompts": {"A0": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Plough\n- eatType: pub\n- food: English\n- priceRange: moderate\n- familyFriendly: yes\n- near: Caf\u00e9 Rouge\n\nDescription:", "A1": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Golden Curry\n- eatType: pub\n- food: English\n- priceRange: moderate\n- familyFriendly: yes\n- near: Caf\u00e9 Rouge\n\nDescription:", "A2": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Plough\n- eatType: pub\n- food: Japanese\n- priceRange: moderate\n- familyFriendly: yes\n- near: Caf\u00e9 Rouge\n\nDescription:"}, "changed": {"relevant": {"field": "name", "from": "The Plough", "to": "The Golden Curry"}, "placebo": {"field": "food", "from": "English", "to": "Japanese"}}, "dense_risk": {"A0": -6.0844, "A1": 6.206, "A2": -5.2025}, "nll": {"A0": 0.0205, "A1": 7.4659, "A2": 0.0213}, "correlates": {"wu": {"A0": [{"token": " (", "weight": 0.56963, "hit": false}, {"token": "?", "weight": 0.30262, "hit": false}, {"token": " \u2014", "weight": 0.07888, "hit": false}, {"token": " pres", "weight": 0.07106, "hit": false}, {"token": "or", "weight": 0.05529, "hit": false}, {"token": "C", "weight": 0.04774, "hit": false}, {"token": "\u2014\u2014", "weight": 0.02756, "hit": false}, {"token": " name", "weight": 0.02737, "hit": true}], "A1": [{"token": "...", "weight": 1.07254, "hit": false}, {"token": " B", "weight": 0.83911, "hit": false}, {"token": "?", "weight": 0.79373, "hit": false}, {"token": " (", "weight": 0.61693, "hit": false}, {"token": "*", "weight": 0.42337, "hit": false}, {"token": "t", "weight": 0.28673, "hit": false}, {"token": " o", "weight": 0.28513, "hit": false}, {"token": " h", "weight": 0.18279, "hit": false}], "A2": [{"token": " (", "weight": 0.75739, "hit": false}, {"token": "?", "weight": 0.26174, "hit": false}, {"token": "*", "weight": 0.24228, "hit": false}, {"token": " pres", "weight": 0.10192, "hit": false}, {"token": "C", "weight": 0.0356, "hit": false}, {"token": " name", "weight": 0.0298, "hit": true}, {"token": "B", "weight": 0.02133, "hit": false}, {"token": "\u2014\u2014", "weight": 0.01066, "hit": false}]}, "jacobian": {"A0": [{"token": " Cafe", "weight": 0.56127, "hit": false}, {"token": " Dining", "weight": 0.26338, "hit": false}, {"token": "\u2014\u2014", "weight": 0.12585, "hit": false}, {"token": "ov", "weight": 0.11909, "hit": false}, {"token": "z", "weight": 0.08741, "hit": false}, {"token": " Inn", "weight": 0.0777, "hit": false}, {"token": " dining", "weight": 0.07214, "hit": false}, {"token": "id", "weight": 0.01672, "hit": false}], "A1": [{"token": " Hotel", "weight": 1.60372, "hit": false}, {"token": " Cafe", "weight": 1.32927, "hit": false}, {"token": "y", "weight": 1.14568, "hit": false}, {"token": " Dining", "weight": 0.37061, "hit": false}, {"token": "ba", "weight": 0.19153, "hit": false}, {"token": "\u2014\u2014", "weight": 0.18455, "hit": false}, {"token": " Centre", "weight": 0.15413, "hit": false}, {"token": "!.", "weight": 0.15383, "hit": false}], "A2": [{"token": " Cafe", "weight": 0.75779, "hit": false}, {"token": "\u2014\u2014", "weight": 0.30226, "hit": false}, {"token": " Dining", "weight": 0.22301, "hit": false}, {"token": " dining", "weight": 0.14856, "hit": false}, {"token": "ov", "weight": 0.11187, "hit": false}, {"token": "z", "weight": 0.08474, "hit": false}, {"token": "id", "weight": 0.0295, "hit": false}, {"token": " Restaurant", "weight": 0.02173, "hit": false}]}}}, {"domain": "e2e", "source_id": "e2e-3901", "response": "The Punter is low priced.  It is located below the river near The Portland Arms.  This is not a family restaurant.", "prompts": {"A0": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Punter\n- priceRange: less than \u00a320\n- area: riverside\n- familyFriendly: no\n- near: The Portland Arms\n\nDescription:", "A1": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: Aromi\n- priceRange: less than \u00a320\n- area: riverside\n- familyFriendly: no\n- near: The Portland Arms\n\nDescription:", "A2": "Write a short description of this restaurant based only on the structured data. Do not add information.\nStructured data:\n- name: The Punter\n- priceRange: more than \u00a330\n- area: riverside\n- familyFriendly: no\n- near: The Portland Arms\n\nDescription:"}, "changed": {"relevant": {"field": "name", "from": "The Punter", "to": "Aromi"}, "placebo": {"field": "priceRange", "from": "less than \u00a320", "to": "more than \u00a330"}}, "dense_risk": {"A0": -9.4862, "A1": 7.6087, "A2": -9.3942}, "nll": {"A0": 0.0166, "A1": 9.1597, "A2": 0.0315}, "correlates": {"wu": {"A0": [{"token": " B", "weight": 0.77494, "hit": false}, {"token": " (", "weight": 0.51481, "hit": false}, {"token": "?", "weight": 0.36778, "hit": false}, {"token": " o", "weight": 0.24617, "hit": false}, {"token": " \u2014", "weight": 0.07792, "hit": false}, {"token": "*", "weight": 0.06169, "hit": false}, {"token": " bar", "weight": 0.05273, "hit": false}, {"token": " name", "weight": 0.05102, "hit": true}], "A1": [{"token": " B", "weight": 1.26588, "hit": false}, {"token": "/", "weight": 1.25402, "hit": false}, {"token": "...", "weight": 0.49776, "hit": false}, {"token": ":", "weight": 0.37015, "hit": false}, {"token": " *", "weight": 0.27924, "hit": false}, {"token": " (", "weight": 0.27782, "hit": false}, {"token": "'s", "weight": 0.23496, "hit": false}, {"token": " r", "weight": 0.206, "hit": false}], "A2": [{"token": " B", "weight": 0.88956, "hit": false}, {"token": " (", "weight": 0.47896, "hit": false}, {"token": "?", "weight": 0.33482, "hit": false}, {"token": " o", "weight": 0.14021, "hit": false}, {"token": "*", "weight": 0.13032, "hit": false}, {"token": " name", "weight": 0.0524, "hit": true}, {"token": " <", "weight": 0.0461, "hit": false}, {"token": "|", "weight": 0.04393, "hit": false}]}, "jacobian": {"A0": [{"token": " Dining", "weight": 0.9228, "hit": false}, {"token": " Cafe", "weight": 0.54444, "hit": false}, {"token": " Restaurant", "weight": 0.21465, "hit": false}, {"token": "*", "weight": 0.1408, "hit": false}, {"token": "\u2014\u2014", "weight": 0.13753, "hit": false}, {"token": "z", "weight": 0.11629, "hit": false}, {"token": " Tas", "weight": 0.11484, "hit": false}, {"token": " Club", "weight": 0.10525, "hit": false}], "A1": [{"token": ":", "weight": 1.25374, "hit": false}, {"token": " Club", "weight": 0.70765, "hit": false}, {"token": " Dining", "weight": 0.62909, "hit": false}, {"token": "'s", "weight": 0.45522, "hit": false}, {"token": " Hotel", "weight": 0.32759, "hit": false}, {"token": "\u2014\u2014", "weight": 0.30199, "hit": false}, {"token": "z", "weight": 0.29639, "hit": false}, {"token": "er", "weight": 0.20612, "hit": false}], "A2": [{"token": " Dining", "weight": 0.99266, "hit": false}, {"token": " Cafe", "weight": 0.45735, "hit": false}, {"token": " Restaurant", "weight": 0.25641, "hit": false}, {"token": "\u2014\u2014", "weight": 0.19469, "hit": false}, {"token": "*", "weight": 0.13509, "hit": false}, {"token": "z", "weight": 0.1283, "hit": false}, {"token": " Club", "weight": 0.12541, "hit": false}, {"token": " Spa", "weight": 0.10048, "hit": false}]}}}, {"domain": "totto", "source_id": "totto-160", "response": "Progress Party won 15.9% of the vote and 28 seats in the parliament.", "prompts": {"A0": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- : 485,289\n- % of popular vote: 15.9%\n- : 28 / 179\n- Government: providing parliamentary support\n- : 414,219\n- % of popular vote: 13.6%\n- : 24 / 179\n- Government: in opposition\n- : 453,792\n\nSentence:", "A1": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- : 485,289\n- % of popular vote: 13.6%\n- : 28 / 179\n- Government: providing parliamentary support\n- : 414,219\n- % of popular vote: 13.6%\n- : 24 / 179\n- Government: in opposition\n- : 453,792\n\nSentence:", "A2": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- : 414,219\n- % of popular vote: 15.9%\n- : 28 / 179\n- Government: providing parliamentary support\n- : 414,219\n- % of popular vote: 13.6%\n- : 24 / 179\n- Government: in opposition\n- : 453,792\n\nSentence:"}, "changed": {"relevant": {"field": "% of popular vote#2", "from": "15.9%", "to": "13.6%"}, "placebo": {"field": "# of total votes#1", "from": "485,289", "to": "414,219"}}, "dense_risk": {"A0": -5.638, "A1": 3.4937, "A2": -5.0093}, "nll": {"A0": 0.5832, "A1": 2.501, "A2": 0.5295}, "correlates": {"wu": {"A0": [{"token": " (", "weight": 1.03853, "hit": false}, {"token": "...", "weight": 0.95499, "hit": false}, {"token": "\u2014", "weight": 0.50813, "hit": false}, {"token": "_", "weight": 0.3395, "hit": false}, {"token": "3", "weight": 0.26339, "hit": true}, {"token": "-", "weight": 0.22498, "hit": false}, {"token": " R", "weight": 0.18543, "hit": false}, {"token": " o", "weight": 0.1474, "hit": false}], "A1": [{"token": " (", "weight": 1.46149, "hit": false}, {"token": "...", "weight": 1.11227, "hit": false}, {"token": "/", "weight": 0.838, "hit": false}, {"token": ":", "weight": 0.71894, "hit": false}, {"token": "\u2014", "weight": 0.54446, "hit": false}, {"token": "3", "weight": 0.35099, "hit": true}, {"token": "-", "weight": 0.3326, "hit": false}, {"token": " or", "weight": 0.25545, "hit": false}], "A2": [{"token": "...", "weight": 1.20263, "hit": false}, {"token": "\u2014", "weight": 0.73847, "hit": false}, {"token": " (", "weight": 0.61759, "hit": false}, {"token": "_", "weight": 0.37719, "hit": false}, {"token": "-", "weight": 0.27406, "hit": false}, {"token": " or", "weight": 0.26447, "hit": false}, {"token": " o", "weight": 0.15711, "hit": false}, {"token": "3", "weight": 0.14987, "hit": true}]}, "jacobian": {"A0": [{"token": "\u00b7", "weight": 0.20852, "hit": false}, {"token": "3", "weight": 0.18208, "hit": true}, {"token": "!", "weight": 0.16725, "hit": false}, {"token": ":", "weight": 0.13241, "hit": false}, {"token": "%\",", "weight": 0.13193, "hit": false}, {"token": " electoral", "weight": 0.0718, "hit": false}, {"token": "ja", "weight": 0.05453, "hit": false}, {"token": "9", "weight": 0.04378, "hit": true}], "A1": [{"token": ":", "weight": 0.25101, "hit": false}, {"token": "os", "weight": 0.24473, "hit": false}, {"token": "3", "weight": 0.23848, "hit": true}, {"token": "!", "weight": 0.21518, "hit": false}, {"token": "\u00b7", "weight": 0.16369, "hit": false}, {"token": " electoral", "weight": 0.15811, "hit": false}, {"token": "4", "weight": 0.13101, "hit": false}, {"token": "%\",", "weight": 0.12549, "hit": false}], "A2": [{"token": "2", "weight": 0.26026, "hit": false}, {"token": "!", "weight": 0.20283, "hit": false}, {"token": "\u00b7", "weight": 0.16749, "hit": false}, {"token": "4", "weight": 0.14948, "hit": false}, {"token": "%\",", "weight": 0.10594, "hit": false}, {"token": "\u2014", "weight": 0.09621, "hit": false}, {"token": " electoral", "weight": 0.07907, "hit": false}, {"token": ":", "weight": 0.05839, "hit": false}]}}}, {"domain": "totto", "source_id": "totto-1648", "response": "In 2010, 'S' Hybrid of 3.0-L engine has 193 g/km of CO 2 emissions.", "prompts": {"A0": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Emissions CO 2: 245 g/km\n- Model: Cayenne S\n- Production period: 2014-2018\n- Engine: 3,604 cc (3.6 L; 219.9 cu in) twin turbo V6\n- Power (PS, torque) at rpm: 420 PS (309 kW; 414 hp) at 6,000, 500 N\u22c5m (369 lb\u22c5ft) at 1,350\n- Emissions CO 2: 223 g/km\n- Model: Cayenne S Hybrid\n- Production period: 2010-2014\n- Engine: 2,995 cc (3.0 L; 182.8 cu in) supercharged V6\n- Power (PS, torque) at rpm: 333 PS (245 kW; 328 hp) at 5,250, 440 N\u22c5m (325 lb\u22c5ft) at 3,000\n- Emissions CO 2: 193 g/km\n- Model: Cayenne S E-Hybrid\n- Production period: 2014-2018\n- Engine: 2,995 cc (3.0 L; 182.8 cu in) supercharged V6 PHEV\n- Power (PS, torque) at rpm: 416 PS (306 kW; 410 hp) at 5,500, 590 N\u22c5m (435 lb\u22c5ft) at 3,000\n- Emissions CO 2: 79 g/km\n- Model: Cayenne GTS\n\nSentence:", "A1": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Emissions CO 2: 245 g/km\n- Model: Cayenne S\n- Production period: 2014-2018\n- Engine: 3,604 cc (3.6 L; 219.9 cu in) twin turbo V6\n- Power (PS, torque) at rpm: 420 PS (309 kW; 414 hp) at 6,000, 500 N\u22c5m (369 lb\u22c5ft) at 1,350\n- Emissions CO 2: 223 g/km\n- Model: Cayenne S Hybrid\n- Production period: 2010-2014\n- Engine: 2,995 cc (3.0 L; 182.8 cu in) supercharged V6\n- Power (PS, torque) at rpm: 333 PS (245 kW; 328 hp) at 5,250, 440 N\u22c5m (325 lb\u22c5ft) at 3,000\n- Emissions CO 2: 245 g/km\n- Model: Cayenne S E-Hybrid\n- Production period: 2014-2018\n- Engine: 2,995 cc (3.0 L; 182.8 cu in) supercharged V6 PHEV\n- Power (PS, torque) at rpm: 416 PS (306 kW; 410 hp) at 5,500, 590 N\u22c5m (435 lb\u22c5ft) at 3,000\n- Emissions CO 2: 79 g/km\n- Model: Cayenne GTS\n\nSentence:", "A2": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Emissions CO 2: 223 g/km\n- Model: Cayenne S\n- Production period: 2014-2018\n- Engine: 3,604 cc (3.6 L; 219.9 cu in) twin turbo V6\n- Power (PS, torque) at rpm: 420 PS (309 kW; 414 hp) at 6,000, 500 N\u22c5m (369 lb\u22c5ft) at 1,350\n- Emissions CO 2: 223 g/km\n- Model: Cayenne S Hybrid\n- Production period: 2010-2014\n- Engine: 2,995 cc (3.0 L; 182.8 cu in) supercharged V6\n- Power (PS, torque) at rpm: 333 PS (245 kW; 328 hp) at 5,250, 440 N\u22c5m (325 lb\u22c5ft) at 3,000\n- Emissions CO 2: 193 g/km\n- Model: Cayenne S E-Hybrid\n- Production period: 2014-2018\n- Engine: 2,995 cc (3.0 L; 182.8 cu in) supercharged V6 PHEV\n- Power (PS, torque) at rpm: 416 PS (306 kW; 410 hp) at 5,500, 590 N\u22c5m (435 lb\u22c5ft) at 3,000\n- Emissions CO 2: 79 g/km\n- Model: Cayenne GTS\n\nSentence:"}, "changed": {"relevant": {"field": "Emissions CO 2#4", "from": "193 g/km", "to": "245 g/km"}, "placebo": {"field": "Emissions CO 2#4", "from": "245 g/km", "to": "223 g/km"}}, "dense_risk": {"A0": -5.6874, "A1": 2.9086, "A2": -6.1204}, "nll": {"A0": 0.4336, "A1": 1.8707, "A2": 0.3542}, "correlates": {"wu": {"A0": [{"token": "/", "weight": 2.92712, "hit": false}, {"token": " (", "weight": 1.89783, "hit": false}, {"token": "-", "weight": 0.83163, "hit": false}, {"token": "3", "weight": 0.39748, "hit": true}, {"token": " R", "weight": 0.28826, "hit": false}, {"token": " $", "weight": 0.19652, "hit": false}, {"token": "_", "weight": 0.185, "hit": false}, {"token": " [", "weight": 0.1785, "hit": false}], "A1": [{"token": "/", "weight": 5.4763, "hit": false}, {"token": " (", "weight": 1.67052, "hit": false}, {"token": "...", "weight": 1.36435, "hit": false}, {"token": "-", "weight": 0.38395, "hit": false}, {"token": "3", "weight": 0.35419, "hit": true}, {"token": " $", "weight": 0.24507, "hit": false}, {"token": " [", "weight": 0.23675, "hit": false}, {"token": " R", "weight": 0.22748, "hit": false}], "A2": [{"token": "/", "weight": 2.25334, "hit": false}, {"token": " (", "weight": 2.13423, "hit": false}, {"token": "-", "weight": 0.92017, "hit": false}, {"token": "3", "weight": 0.36797, "hit": true}, {"token": " R", "weight": 0.27461, "hit": false}, {"token": " $", "weight": 0.21811, "hit": false}, {"token": "\n\n", "weight": 0.15291, "hit": false}, {"token": "\u2026", "weight": 0.11973, "hit": false}]}, "jacobian": {"A0": [{"token": "xx", "weight": 0.46601, "hit": false}, {"token": "3", "weight": 0.23714, "hit": true}, {"token": "-year", "weight": 0.10157, "hit": false}, {"token": "?", "weight": 0.09846, "hit": false}, {"token": "er", "weight": 0.04572, "hit": false}, {"token": " cig", "weight": 0.04217, "hit": false}, {"token": "(", "weight": 0.0273, "hit": false}, {"token": "/", "weight": 0.02357, "hit": false}], "A1": [{"token": "?", "weight": 0.48716, "hit": false}, {"token": ":", "weight": 0.41384, "hit": false}, {"token": "xx", "weight": 0.2756, "hit": false}, {"token": "\u2014", "weight": 0.23644, "hit": false}, {"token": "3", "weight": 0.17343, "hit": true}, {"token": "ov", "weight": 0.17326, "hit": false}, {"token": "6", "weight": 0.13004, "hit": false}, {"token": "\u00b7", "weight": 0.09826, "hit": false}], "A2": [{"token": "xx", "weight": 0.408, "hit": false}, {"token": "3", "weight": 0.20862, "hit": true}, {"token": "?", "weight": 0.15487, "hit": false}, {"token": "-year", "weight": 0.05964, "hit": false}, {"token": "er", "weight": 0.05726, "hit": false}, {"token": " cig", "weight": 0.04872, "hit": false}, {"token": "(", "weight": 0.03173, "hit": false}, {"token": "9", "weight": 0.02311, "hit": true}]}}}, {"domain": "totto", "source_id": "totto-2079", "response": "M-1 MFC: Mix-fight was an event held on April 10, 2005 in Russia.", "prompts": {"A0": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Location: Saint Petersburg, Russia\n- : 31\n- Event Title: M-1 MFC: New Blood\n- Date: October 1, 2005\n- Location: Saint Petersburg, Russia\n- : 30\n- Event Title: M-1 MFC: Mix-fight\n- Date: April 10, 2005\n- Location: Russia\n- : 29\n- Event Title: M-1 MFC: International Fight Night\n- Date: February 5, 2005\n- Location: Saint Petersburg, Russia\n\nSentence:", "A1": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Location: Saint Petersburg, Russia\n- : 31\n- Event Title: M-1 MFC: New Blood\n- Date: October 1, 2005\n- Location: Saint Petersburg, Russia\n- : 30\n- Event Title: M-1 MFC: International Fight Night\n- Date: April 10, 2005\n- Location: Russia\n- : 29\n- Event Title: M-1 MFC: International Fight Night\n- Date: February 5, 2005\n- Location: Saint Petersburg, Russia\n\nSentence:", "A2": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Location: Saint Petersburg, Russia\n- : 29\n- Event Title: M-1 MFC: New Blood\n- Date: October 1, 2005\n- Location: Saint Petersburg, Russia\n- : 30\n- Event Title: M-1 MFC: Mix-fight\n- Date: April 10, 2005\n- Location: Russia\n- : 29\n- Event Title: M-1 MFC: International Fight Night\n- Date: February 5, 2005\n- Location: Saint Petersburg, Russia\n\nSentence:"}, "changed": {"relevant": {"field": "Event Title#1", "from": "M-1 MFC: Mix-fight", "to": "M-1 MFC: International Fight Night"}, "placebo": {"field": "##0", "from": "31", "to": "29"}}, "dense_risk": {"A0": -1.8866, "A1": 1.6679, "A2": -1.7462}, "nll": {"A0": 0.5473, "A1": 2.7326, "A2": 0.5941}, "correlates": {"wu": {"A0": [{"token": ":", "weight": 3.02264, "hit": true}, {"token": " (", "weight": 1.42846, "hit": false}, {"token": "-", "weight": 0.91689, "hit": true}, {"token": "...", "weight": 0.6855, "hit": false}, {"token": " B", "weight": 0.61574, "hit": false}, {"token": "_", "weight": 0.53229, "hit": false}, {"token": "?", "weight": 0.32141, "hit": false}, {"token": "/", "weight": 0.30055, "hit": false}], "A1": [{"token": ":", "weight": 4.37352, "hit": true}, {"token": "-", "weight": 1.698, "hit": true}, {"token": "...", "weight": 1.67944, "hit": false}, {"token": " (", "weight": 1.4444, "hit": false}, {"token": "/", "weight": 0.64831, "hit": false}, {"token": " B", "weight": 0.62565, "hit": false}, {"token": "'s", "weight": 0.52232, "hit": false}, {"token": "\u2014", "weight": 0.46938, "hit": false}], "A2": [{"token": ":", "weight": 3.28374, "hit": true}, {"token": " (", "weight": 1.69316, "hit": false}, {"token": "-", "weight": 0.96664, "hit": true}, {"token": "...", "weight": 0.83098, "hit": false}, {"token": "/", "weight": 0.64841, "hit": false}, {"token": " B", "weight": 0.48739, "hit": false}, {"token": "_", "weight": 0.45538, "hit": false}, {"token": "?", "weight": 0.32698, "hit": false}]}, "jacobian": {"A0": [{"token": ":", "weight": 7.59958, "hit": true}, {"token": " Club", "weight": 1.35911, "hit": false}, {"token": "date", "weight": 0.23945, "hit": false}, {"token": "?", "weight": 0.21584, "hit": false}, {"token": "????", "weight": 0.20431, "hit": false}, {"token": "*", "weight": 0.16132, "hit": false}, {"token": "-M", "weight": 0.14333, "hit": false}, {"token": "'s", "weight": 0.09787, "hit": false}], "A1": [{"token": ":", "weight": 9.41355, "hit": true}, {"token": " Club", "weight": 1.50697, "hit": false}, {"token": "!.", "weight": 0.666, "hit": false}, {"token": "y", "weight": 0.65198, "hit": false}, {"token": "ler", "weight": 0.40956, "hit": false}, {"token": "z", "weight": 0.34236, "hit": false}, {"token": "ba", "weight": 0.20304, "hit": false}, {"token": "\u00e9", "weight": 0.15064, "hit": false}], "A2": [{"token": ":", "weight": 7.61446, "hit": true}, {"token": " Club", "weight": 1.53176, "hit": false}, {"token": "????", "weight": 0.36358, "hit": false}, {"token": "date", "weight": 0.23042, "hit": false}, {"token": "*", "weight": 0.16742, "hit": false}, {"token": "?", "weight": 0.14254, "hit": false}, {"token": "-M", "weight": 0.12234, "hit": false}, {"token": "'s", "weight": 0.09958, "hit": false}]}}}, {"domain": "totto", "source_id": "totto-2496", "response": "As of the 2010 census, the Hampton County population was 21,090.", "prompts": {"A0": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Historical population: 1990\n- col1: 18,191\n- col3: 0.2%\n- Historical population: 2000\n- col1: 21,386\n- col3: 17.6%\n- Historical population: 2010\n- col1: 21,090\n- col3: \u22121.4%\n- Historical population: Est. 2016\n- col1: 19,922\n- col3: \u22125.5%\n- Historical population: U.S. Decennial Census 1790-1960 1900-1990 1990-2000 2010-2013\n\nSentence:", "A1": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Historical population: 1990\n- col1: 18,191\n- col3: 0.2%\n- Historical population: 2000\n- col1: 21,386\n- col3: 17.6%\n- Historical population: 2000\n- col1: 21,090\n- col3: \u22121.4%\n- Historical population: Est. 2016\n- col1: 19,922\n- col3: \u22125.5%\n- Historical population: U.S. Decennial Census 1790-1960 1900-1990 1990-2000 2010-2013\n\nSentence:", "A2": "Write one sentence about the highlighted cells based only on this table. Do not add information.\nTable:\n- Historical population: 2000\n- col1: 18,191\n- col3: 0.2%\n- Historical population: 2000\n- col1: 21,386\n- col3: 17.6%\n- Historical population: 2010\n- col1: 21,090\n- col3: \u22121.4%\n- Historical population: Est. 2016\n- col1: 19,922\n- col3: \u22125.5%\n- Historical population: U.S. Decennial Census 1790-1960 1900-1990 1990-2000 2010-2013\n\nSentence:"}, "changed": {"relevant": {"field": "Historical population#0", "from": "2010", "to": "2000"}, "placebo": {"field": "Historical population#0", "from": "1990", "to": "2000"}}, "dense_risk": {"A0": -4.6918, "A1": 3.3259, "A2": -4.5497}, "nll": {"A0": 0.1084, "A1": 0.6162, "A2": 0.1318}, "correlates": {"wu": {"A0": [{"token": "...", "weight": 1.63156, "hit": false}, {"token": "/", "weight": 0.9556, "hit": false}, {"token": "_", "weight": 0.39887, "hit": false}, {"token": " $", "weight": 0.39226, "hit": false}, {"token": "?", "weight": 0.2608, "hit": false}, {"token": "-", "weight": 0.26029, "hit": false}, {"token": " or", "weight": 0.17389, "hit": false}, {"token": "s", "weight": 0.11474, "hit": false}], "A1": [{"token": "/", "weight": 2.1487, "hit": false}, {"token": "...", "weight": 1.75936, "hit": false}, {"token": "-", "weight": 0.63688, "hit": false}, {"token": " [", "weight": 0.37715, "hit": false}, {"token": "?", "weight": 0.34274, "hit": false}, {"token": " or", "weight": 0.3305, "hit": false}, {"token": "_", "weight": 0.29995, "hit": false}, {"token": " (", "weight": 0.29223, "hit": false}], "A2": [{"token": "...", "weight": 2.56563, "hit": false}, {"token": "/", "weight": 0.7741, "hit": false}, {"token": "?", "weight": 0.3915, "hit": false}, {"token": " or", "weight": 0.34675, "hit": false}, {"token": "_", "weight": 0.34233, "hit": false}, {"token": "-", "weight": 0.32078, "hit": false}, {"token": " $", "weight": 0.29129, "hit": false}, {"token": "\u2014", "weight": 0.22941, "hit": false}]}, "jacobian": {"A0": [{"token": "2", "weight": 0.60243, "hit": true}, {"token": ":", "weight": 0.49835, "hit": false}, {"token": " census", "weight": 0.44114, "hit": false}, {"token": "xx", "weight": 0.36851, "hit": false}, {"token": "?", "weight": 0.26786, "hit": false}, {"token": "-year", "weight": 0.10352, "hit": false}, {"token": "date", "weight": 0.05632, "hit": false}, {"token": "s", "weight": 0.05515, "hit": false}], "A1": [{"token": ":", "weight": 0.8334, "hit": false}, {"token": "2", "weight": 0.57529, "hit": true}, {"token": "xx", "weight": 0.49561, "hit": false}, {"token": " census", "weight": 0.30038, "hit": false}, {"token": "/", "weight": 0.28607, "hit": false}, {"token": "?", "weight": 0.14397, "hit": false}, {"token": "-P", "weight": 0.13028, "hit": false}, {"token": "ohl", "weight": 0.12085, "hit": false}], "A2": [{"token": ":", "weight": 0.67822, "hit": false}, {"token": "2", "weight": 0.45101, "hit": true}, {"token": "xx", "weight": 0.36152, "hit": false}, {"token": " census", "weight": 0.33381, "hit": false}, {"token": "?", "weight": 0.23636, "hit": false}, {"token": "ohl", "weight": 0.13595, "hit": false}, {"token": "-year", "weight": 0.10277, "hit": false}, {"token": " interim", "weight": 0.06541, "hit": false}]}}}, {"domain": "wikibio", "source_id": "wikibio-3042", "response": "nancy janann todd -lrb- born october 28 , 1948 in lawrence , kansas -rrb- is an american politician and a democratic member of the colorado senate representing district 28 since january 12 , 2011 .", "prompts": {"A0": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- district: 28th 41st\n- state_senate: colorado\n- predecessor: suzanne williams suzanne williams\n- successor: incumbent jovan melton\n- birth_place: lawrence , kansas\n- nationality: american\n- party: democratic\n- state_house: colorado\n- birth_date: 28 october 1948\n- term_start: january 9 , 2013 january 2005\n- term_end: january 9 , 2013\n- alma_mater: university of kansas university of northern colorado\n\nBiography:", "A1": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- district: 28th 41st\n- state_senate: maine\n- predecessor: suzanne williams suzanne williams\n- successor: incumbent jovan melton\n- birth_place: lawrence , kansas\n- nationality: american\n- party: democratic\n- state_house: colorado\n- birth_date: 28 october 1948\n- term_start: january 9 , 2013 january 2005\n- term_end: january 9 , 2013\n- alma_mater: university of kansas university of northern colorado\n\nBiography:", "A2": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- district: 12th 48th\n- state_senate: colorado\n- predecessor: suzanne williams suzanne williams\n- successor: incumbent jovan melton\n- birth_place: lawrence , kansas\n- nationality: american\n- party: democratic\n- state_house: colorado\n- birth_date: 28 october 1948\n- term_start: january 9 , 2013 january 2005\n- term_end: january 9 , 2013\n- alma_mater: university of kansas university of northern colorado\n\nBiography:"}, "changed": {"relevant": {"field": "state_senate", "from": "colorado", "to": "maine"}, "placebo": {"field": "district", "from": "28th 41st", "to": "12th 48th"}}, "dense_risk": {"A0": -4.2339, "A1": 1.0816, "A2": -4.0004}, "nll": {"A0": 0.0382, "A1": 0.378, "A2": 0.0291}, "correlates": {"wu": {"A0": [{"token": "...", "weight": 1.02309, "hit": false}, {"token": "\u2014", "weight": 0.27896, "hit": false}, {"token": "'s", "weight": 0.22945, "hit": false}, {"token": " $", "weight": 0.19775, "hit": false}, {"token": "-", "weight": 0.14502, "hit": false}, {"token": " U", "weight": 0.06483, "hit": false}, {"token": " or", "weight": 0.06281, "hit": false}, {"token": "\u0013", "weight": 0.04973, "hit": false}], "A1": [{"token": "...", "weight": 1.0104, "hit": false}, {"token": "\u2014", "weight": 0.41501, "hit": false}, {"token": "-", "weight": 0.20178, "hit": false}, {"token": " $", "weight": 0.20092, "hit": false}, {"token": "'s", "weight": 0.1056, "hit": false}, {"token": " or", "weight": 0.08062, "hit": false}, {"token": " U", "weight": 0.03925, "hit": false}, {"token": "\u0013", "weight": 0.0363, "hit": false}], "A2": [{"token": "...", "weight": 0.94882, "hit": false}, {"token": "\u2014", "weight": 0.36472, "hit": false}, {"token": "'s", "weight": 0.24904, "hit": false}, {"token": " $", "weight": 0.15321, "hit": false}, {"token": "-", "weight": 0.12039, "hit": false}, {"token": " (", "weight": 0.06969, "hit": false}, {"token": " or", "weight": 0.06594, "hit": false}, {"token": " U", "weight": 0.053, "hit": false}]}, "jacobian": {"A0": [{"token": "ba", "weight": 0.06045, "hit": false}, {"token": "...", "weight": 0.03495, "hit": false}, {"token": " deutsch", "weight": 0.01973, "hit": false}, {"token": " Colorado", "weight": 0.00772, "hit": false}, {"token": " congressman", "weight": 0.00723, "hit": false}, {"token": "\";", "weight": 0.00702, "hit": false}, {"token": " conte", "weight": 0.00507, "hit": false}, {"token": "\"\u2014", "weight": 0.00246, "hit": false}], "A1": [{"token": "????", "weight": 0.24061, "hit": false}, {"token": "...", "weight": 0.06853, "hit": false}, {"token": "bach", "weight": 0.02637, "hit": false}, {"token": "\u5dde", "weight": 0.0175, "hit": false}, {"token": " Colorado", "weight": 0.01663, "hit": false}, {"token": "au", "weight": 0.01625, "hit": false}, {"token": "?", "weight": 0.01513, "hit": false}, {"token": " congressman", "weight": 0.01163, "hit": false}], "A2": [{"token": "ba", "weight": 0.07496, "hit": false}, {"token": "...", "weight": 0.04212, "hit": false}, {"token": " deutsch", "weight": 0.02146, "hit": false}, {"token": " Colorado", "weight": 0.00812, "hit": false}, {"token": "\";", "weight": 0.00737, "hit": false}, {"token": " congressman", "weight": 0.00706, "hit": false}, {"token": " conte", "weight": 0.0051, "hit": false}, {"token": "bach", "weight": 0.00488, "hit": false}]}}}, {"domain": "wikibio", "source_id": "wikibio-3572", "response": "nikolai vasilyevich kratyuk -lrb- ; born january 4 , 1992 -rrb- is a russian football defender who last played for fc sibir-2 novosibirsk .", "prompts": {"A0": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- fullname: nikolai vasilyevich kratyuk\n- pcupdate: 03:17 , 1 july 2013 -lrb- utc -rrb-\n- years: 2012-2013\n- clubs: fc sibir-2 novosibirsk\n- caps: 15\n- goals: 0\n- height: 1.84\n- position: defender\n- birth_date: 4 january 1992\n\nBiography:", "A1": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- fullname: abdelkader mohamed ghezzal\n- pcupdate: 03:17 , 1 july 2013 -lrb- utc -rrb-\n- years: 2012-2013\n- clubs: fc sibir-2 novosibirsk\n- caps: 15\n- goals: 0\n- height: 1.84\n- position: defender\n- birth_date: 4 january 1992\n\nBiography:", "A2": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- fullname: nikolai vasilyevich kratyuk\n- pcupdate: 20:49 , 19 august 2014 -lrb- utc -rrb-\n- years: 2012-2013\n- clubs: fc sibir-2 novosibirsk\n- caps: 15\n- goals: 0\n- height: 1.84\n- position: defender\n- birth_date: 4 january 1992\n\nBiography:"}, "changed": {"relevant": {"field": "fullname", "from": "nikolai vasilyevich kratyuk", "to": "abdelkader mohamed ghezzal"}, "placebo": {"field": "pcupdate", "from": "03:17 , 1 july 2013 -lrb- utc -rrb-", "to": "20:49 , 19 august 2014 -lrb- utc -rrb-"}}, "dense_risk": {"A0": -5.9248, "A1": 6.8768, "A2": -5.9772}, "nll": {"A0": 0.9787, "A1": 4.4688, "A2": 0.9474}, "correlates": {"wu": {"A0": [{"token": " (", "weight": 2.82358, "hit": false}, {"token": " B", "weight": 0.42028, "hit": false}, {"token": "...", "weight": 0.38698, "hit": false}, {"token": " $", "weight": 0.3743, "hit": false}, {"token": " a", "weight": 0.32582, "hit": false}, {"token": "q", "weight": 0.14785, "hit": false}, {"token": "?", "weight": 0.14246, "hit": false}, {"token": "U", "weight": 0.12503, "hit": false}], "A1": [{"token": " (", "weight": 2.07061, "hit": false}, {"token": "...", "weight": 1.34751, "hit": false}, {"token": " a", "weight": 1.14725, "hit": false}, {"token": " B", "weight": 0.55282, "hit": false}, {"token": "\n\n", "weight": 0.4993, "hit": false}, {"token": ":", "weight": 0.48359, "hit": false}, {"token": "_", "weight": 0.47077, "hit": false}, {"token": " T", "weight": 0.41038, "hit": false}], "A2": [{"token": " (", "weight": 2.64577, "hit": false}, {"token": " B", "weight": 0.41321, "hit": false}, {"token": " $", "weight": 0.39277, "hit": false}, {"token": "...", "weight": 0.36094, "hit": false}, {"token": "?", "weight": 0.31241, "hit": false}, {"token": " a", "weight": 0.30719, "hit": false}, {"token": "_", "weight": 0.2044, "hit": false}, {"token": " [", "weight": 0.16116, "hit": false}]}, "jacobian": {"A0": [{"token": "os", "weight": 0.80168, "hit": false}, {"token": "y", "weight": 0.76888, "hit": true}, {"token": "ov", "weight": 0.62967, "hit": false}, {"token": "????", "weight": 0.6273, "hit": false}, {"token": "\u00b7", "weight": 0.46027, "hit": false}, {"token": "?", "weight": 0.36433, "hit": false}, {"token": "xxx", "weight": 0.25176, "hit": false}, {"token": "\u2014\u2014", "weight": 0.24171, "hit": false}], "A1": [{"token": "y", "weight": 2.98574, "hit": true}, {"token": "os", "weight": 2.16013, "hit": false}, {"token": "\u00b7", "weight": 1.24584, "hit": false}, {"token": "z", "weight": 0.99843, "hit": false}, {"token": "ani", "weight": 0.82392, "hit": false}, {"token": "????", "weight": 0.7186, "hit": false}, {"token": "ov", "weight": 0.52474, "hit": false}, {"token": "\u2014\u2014", "weight": 0.26402, "hit": false}], "A2": [{"token": "y", "weight": 0.96544, "hit": true}, {"token": "os", "weight": 0.82073, "hit": false}, {"token": "ov", "weight": 0.63401, "hit": false}, {"token": "????", "weight": 0.63035, "hit": false}, {"token": "\u00b7", "weight": 0.40933, "hit": false}, {"token": "?", "weight": 0.4044, "hit": false}, {"token": "\u2014\u2014", "weight": 0.2327, "hit": false}, {"token": "\u00e9", "weight": 0.22603, "hit": false}]}}}, {"domain": "wikibio", "source_id": "wikibio-3663", "response": "gerardo torrado d\u00edez de bonilla -lrb- born 30 april 1979 -rrb- is a mexican footballer who plays for and captains cruz azul .", "prompts": {"A0": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- nationalcaps: 5 146\n- birth_date: 30 april 1979\n- currentclub: cruz azul\n- pcupdate: 17 august 2015\n- years: 1997 2002 -- 2004 2004 -- 2005 2005 -- -- 2000 2000 -- 2001 2001 -- 2002\n- caps: 44 36 32 40 19 315\n- goals: 1 1 0 0 0 12\n- image_size: 200\n- nationalyears: 1999 1999 -- 2013\n- image: gerardo torrado.jpg\n- caption: torrado cup playing for mexico at the 2010 fifa world\n- fullname: gerardo torrado d\u00edez de bonilla\n- ntupdate: 8 april 2014\n- birth_place: mexico city , mexico\n- nationalteam: mexico u20 mexico\n- height: 173 cm\n- clubnumber: 6\n- nationalgoals: 0 6\n- clubs: unam azul pumas tenerife poli ejido sevilla racing santander cruz\n- position: defensive midfielder\n\nBiography:", "A1": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- nationalcaps: 5 146\n- birth_date: 11 december 1961\n- currentclub: cruz azul\n- pcupdate: 17 august 2015\n- years: 1997 2002 -- 2004 2004 -- 2005 2005 -- -- 2000 2000 -- 2001 2001 -- 2002\n- caps: 44 36 32 40 19 315\n- goals: 1 1 0 0 0 12\n- image_size: 200\n- nationalyears: 1999 1999 -- 2013\n- image: gerardo torrado.jpg\n- caption: torrado cup playing for mexico at the 2010 fifa world\n- fullname: gerardo torrado d\u00edez de bonilla\n- ntupdate: 8 april 2014\n- birth_place: mexico city , mexico\n- nationalteam: mexico u20 mexico\n- height: 173 cm\n- clubnumber: 6\n- nationalgoals: 0 6\n- clubs: unam azul pumas tenerife poli ejido sevilla racing santander cruz\n- position: defensive midfielder\n\nBiography:", "A2": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- nationalcaps: 27 54\n- birth_date: 30 april 1979\n- currentclub: cruz azul\n- pcupdate: 17 august 2015\n- years: 1997 2002 -- 2004 2004 -- 2005 2005 -- -- 2000 2000 -- 2001 2001 -- 2002\n- caps: 44 36 32 40 19 315\n- goals: 1 1 0 0 0 12\n- image_size: 200\n- nationalyears: 1999 1999 -- 2013\n- image: gerardo torrado.jpg\n- caption: torrado cup playing for mexico at the 2010 fifa world\n- fullname: gerardo torrado d\u00edez de bonilla\n- ntupdate: 8 april 2014\n- birth_place: mexico city , mexico\n- nationalteam: mexico u20 mexico\n- height: 173 cm\n- clubnumber: 6\n- nationalgoals: 0 6\n- clubs: unam azul pumas tenerife poli ejido sevilla racing santander cruz\n- position: defensive midfielder\n\nBiography:"}, "changed": {"relevant": {"field": "birth_date", "from": "30 april 1979", "to": "11 december 1961"}, "placebo": {"field": "nationalcaps", "from": "5 146", "to": "27 54"}}, "dense_risk": {"A0": -5.7479, "A1": 6.6485, "A2": -5.7247}, "nll": {"A0": 0.0046, "A1": 3.0219, "A2": 0.0046}, "correlates": {"wu": {"A0": [{"token": "?", "weight": 0.64785, "hit": false}, {"token": "...", "weight": 0.64249, "hit": false}, {"token": "\u2014", "weight": 0.58102, "hit": false}, {"token": " (", "weight": 0.54113, "hit": false}, {"token": " h", "weight": 0.45861, "hit": false}, {"token": " [", "weight": 0.39256, "hit": false}, {"token": " *", "weight": 0.38691, "hit": false}, {"token": "/", "weight": 0.30925, "hit": false}], "A1": [{"token": "/", "weight": 2.01161, "hit": false}, {"token": "...", "weight": 1.96926, "hit": false}, {"token": " [", "weight": 1.3161, "hit": false}, {"token": "?", "weight": 1.08267, "hit": false}, {"token": "\u2014", "weight": 0.98611, "hit": false}, {"token": " h", "weight": 0.50567, "hit": false}, {"token": " (", "weight": 0.34828, "hit": false}, {"token": " *", "weight": 0.33932, "hit": false}], "A2": [{"token": "/", "weight": 0.79968, "hit": false}, {"token": "\u2014", "weight": 0.65112, "hit": false}, {"token": "...", "weight": 0.64142, "hit": false}, {"token": "?", "weight": 0.50833, "hit": false}, {"token": " (", "weight": 0.50744, "hit": false}, {"token": " [", "weight": 0.42449, "hit": false}, {"token": " h", "weight": 0.41708, "hit": false}, {"token": " *", "weight": 0.37824, "hit": false}]}, "jacobian": {"A0": [{"token": "????", "weight": 0.65737, "hit": false}, {"token": "ba", "weight": 0.37605, "hit": false}, {"token": "ja", "weight": 0.19476, "hit": false}, {"token": "\u00b7", "weight": 0.1751, "hit": false}, {"token": "xxx", "weight": 0.15022, "hit": false}, {"token": ")|", "weight": 0.14449, "hit": false}, {"token": "born", "weight": 0.11789, "hit": false}, {"token": "*)", "weight": 0.11745, "hit": false}], "A1": [{"token": "????", "weight": 1.53038, "hit": false}, {"token": "born", "weight": 1.06438, "hit": false}, {"token": "2", "weight": 0.92287, "hit": false}, {"token": "xxx", "weight": 0.40348, "hit": false}, {"token": "=date", "weight": 0.36316, "hit": false}, {"token": "ja", "weight": 0.28184, "hit": false}, {"token": "*)", "weight": 0.27207, "hit": false}, {"token": "ba", "weight": 0.2006, "hit": false}], "A2": [{"token": "????", "weight": 0.58149, "hit": false}, {"token": "ba", "weight": 0.36501, "hit": false}, {"token": "\u00b7", "weight": 0.21274, "hit": false}, {"token": "ja", "weight": 0.21119, "hit": false}, {"token": "xxx", "weight": 0.14362, "hit": false}, {"token": ")|", "weight": 0.12514, "hit": false}, {"token": "*)", "weight": 0.11757, "hit": false}, {"token": "9", "weight": 0.08372, "hit": true}]}}}, {"domain": "wikibio", "source_id": "wikibio-3960", "response": "roy mannion -lrb- born 1968 -rrb- is an irish retired hurler who played as a right wing-back for the offaly senior team .", "prompts": {"A0": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- icposition: right wing-back\n- icupdate: 13:19 , 30 june 2014\n- birth_date: 1968\n- code: hurling\n- nhl: 1\n- club: st. rynagh 's\n- birth_place: birr , county offaly , ireland\n- county: offaly\n- sport: hurling\n- allstars: 0\n- clprovince: 1\n- icprovince: 2\n- counties: offaly\n- icyears: 1988-1997\n- icallireland: 0\n- province: leinster\n- clcounty: 4\n- irish: ruadh \u00d3 mainn\u00edn\n\nBiography:", "A1": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- icposition: left corner back\n- icupdate: 13:19 , 30 june 2014\n- birth_date: 1968\n- code: hurling\n- nhl: 1\n- club: st. rynagh 's\n- birth_place: birr , county offaly , ireland\n- county: offaly\n- sport: hurling\n- allstars: 0\n- clprovince: 1\n- icprovince: 2\n- counties: offaly\n- icyears: 1988-1997\n- icallireland: 0\n- province: leinster\n- clcounty: 4\n- irish: ruadh \u00d3 mainn\u00edn\n\nBiography:", "A2": "Write the opening sentence of a biography based only on this infobox. Do not add information.\nInfobox:\n- icposition: right wing-back\n- icupdate: 13:19 , 30 june 2014\n- birth_date: 1968\n- code: camogie\n- nhl: 1\n- club: st. rynagh 's\n- birth_place: birr , county offaly , ireland\n- county: offaly\n- sport: hurling\n- allstars: 0\n- clprovince: 1\n- icprovince: 2\n- counties: offaly\n- icyears: 1988-1997\n- icallireland: 0\n- province: leinster\n- clcounty: 4\n- irish: ruadh \u00d3 mainn\u00edn\n\nBiography:"}, "changed": {"relevant": {"field": "icposition", "from": "right wing-back", "to": "left corner back"}, "placebo": {"field": "code", "from": "hurling", "to": "camogie"}}, "dense_risk": {"A0": -1.6662, "A1": 6.4372, "A2": -1.7964}, "nll": {"A0": 0.0366, "A1": 1.6696, "A2": 0.043}, "correlates": {"wu": {"A0": [{"token": " (", "weight": 1.0336, "hit": false}, {"token": " B", "weight": 0.53233, "hit": false}, {"token": ":", "weight": 0.28457, "hit": false}, {"token": "-", "weight": 0.27828, "hit": false}, {"token": "s", "weight": 0.15329, "hit": false}, {"token": " r", "weight": 0.15113, "hit": false}, {"token": " '", "weight": 0.09863, "hit": false}, {"token": " d", "weight": 0.04147, "hit": false}], "A1": [{"token": "/", "weight": 2.33826, "hit": false}, {"token": " (", "weight": 1.78067, "hit": false}, {"token": " R", "weight": 0.34623, "hit": false}, {"token": " *", "weight": 0.27561, "hit": false}, {"token": " o", "weight": 0.17696, "hit": false}, {"token": " r", "weight": 0.15582, "hit": false}, {"token": "-", "weight": 0.14643, "hit": false}, {"token": "t", "weight": 0.13932, "hit": false}], "A2": [{"token": " (", "weight": 1.0256, "hit": false}, {"token": ":", "weight": 0.28625, "hit": false}, {"token": "-", "weight": 0.28217, "hit": false}, {"token": "s", "weight": 0.16912, "hit": false}, {"token": " r", "weight": 0.13398, "hit": false}, {"token": " '", "weight": 0.1234, "hit": false}, {"token": " B", "weight": 0.09367, "hit": false}, {"token": " d", "weight": 0.03778, "hit": false}]}, "jacobian": {"A0": [{"token": "\u00b7", "weight": 0.22396, "hit": false}, {"token": " linebacker", "weight": 0.07281, "hit": false}, {"token": " Og", "weight": 0.04029, "hit": false}, {"token": " defender", "weight": 0.0337, "hit": false}, {"token": "s", "weight": 0.03159, "hit": false}, {"token": ".[", "weight": 0.02193, "hit": false}, {"token": " Ma", "weight": 0.0213, "hit": false}, {"token": ".\u2014", "weight": 0.0201, "hit": false}], "A1": [{"token": "y", "weight": 0.34183, "hit": false}, {"token": "\u2014\u2014", "weight": 0.13758, "hit": false}, {"token": "\u2014", "weight": 0.08277, "hit": false}, {"token": "s", "weight": 0.06629, "hit": false}, {"token": "mouth", "weight": 0.06024, "hit": false}, {"token": " Ma", "weight": 0.05082, "hit": false}, {"token": " Og", "weight": 0.0276, "hit": false}, {"token": " defender", "weight": 0.0267, "hit": false}], "A2": [{"token": "\u00b7", "weight": 0.22852, "hit": false}, {"token": " linebacker", "weight": 0.06758, "hit": false}, {"token": " Og", "weight": 0.04246, "hit": false}, {"token": " defender", "weight": 0.04098, "hit": false}, {"token": "s", "weight": 0.02637, "hit": false}, {"token": " Ma", "weight": 0.02387, "hit": false}, {"token": ".[", "weight": 0.01973, "hit": false}, {"token": ".\u2014", "weight": 0.01944, "hit": false}]}}}]}, "adverse": [{"label": "Control gate", "value": "CONTROL-UNRESOLVED", "note": "Every rotation seed reproduced the gap, but the readable bases bracket the rotations instead of matching them, and the seeds differ from each other. Generic sparsity is not claimed."}, {"label": "W_U on ToTTo, cohort 2", "value": "-0.0144", "note": "Negative. Cohort 1 was positive in every domain for both bases; cohort 2 is not, for this basis in this domain."}, {"label": "Replication magnitude", "value": "+0.5159 to +0.2803", "note": "Roughly halved on the fresh cohort. Cohort 1's numbers alone would overstate the size of the effect."}, {"label": "Preregistration failure", "value": "margin 0.3797", "note": "The frozen non-inferiority margin was mis-specified - half the per-cluster SD rather than the estimator's SD of 0.0232 - which made the secondary test uninformative. Disclosed, not re-derived."}, {"label": "Highest grounding retention, cohort 2", "value": "W_U", "note": "The readable unembedding basis retains grounding better than any meaning-free rotation, in every domain. A cost-of-readability reading is contradicted by our own data, not merely unsupported."}]}</script>
 <script>
-const samples=[
-{domain:'E2E',id:'e2e-1288',response:'The Golden Curry is a non children friendly fast food restaurant. It has a high price range, and is near The Bakers.',prompts:{A0:'Structured data:\n- name: The Golden Curry\n- food: Fast food\n- priceRange: high\n- familyFriendly: no\n- near: The Bakers',A1:'Structured data:\n- name: The Plough\n- food: Fast food\n- priceRange: high\n- familyFriendly: no\n- near: The Bakers',A2:'Structured data:\n- name: The Golden Curry\n- food: Fast food\n- priceRange: high\n- familyFriendly: yes\n- near: The Bakers'},changed:{A0:null,A1:{field:'name',from:'The Golden Curry',to:'The Plough'},A2:{field:'familyFriendly',from:'no',to:'yes'}},risk:{A0:-9.411,A1:6.5422,A2:-8.7483},corr:{wu:{A0:[['?',0],['(',0],['B',0],['$',0],['—',0],['-',0],['iz',0],['name',1]],A1:[['*',0],['(',0],['?',0],['/',0],['R',0],[':',0],['B',0],['o',0]],A2:[['(',0],['?',0],['B',0],['$',0],['—',0],['-',0],['iz',0],['y',0]]},jacobian:{A0:[['Cafe',0],['Dining',0],['Hotel',0],['—',0],['Restaurant',0],['Inn',0],['BBQ',0],['Spa',0]],A1:[['Cafe',0],['Dining',0],[':',0],['Golden',1],['!.',0],['Club',0],['BBQ',0],['Centre',0]],A2:[['Cafe',0],['Dining',0],['Hotel',0],['—',0],['Restaurant',0],['Inn',0],['BBQ',0],['Spa',0]]}}},
-{domain:'ToTTo',id:'totto-160',response:'Progress Party won 15.9% of the vote and 28 seats in the parliament.',prompts:{A0:'Table:\n- votes: 485,289\n- % of popular vote: 15.9%\n- seats: 28 / 179\n- Government: providing parliamentary support',A1:'Table:\n- votes: 485,289\n- % of popular vote: 13.6%\n- seats: 28 / 179\n- Government: providing parliamentary support',A2:'Table:\n- votes: 414,219\n- % of popular vote: 15.9%\n- seats: 28 / 179\n- Government: providing parliamentary support'},changed:{A0:null,A1:{field:'% popular vote',from:'15.9%',to:'13.6%'},A2:{field:'total votes',from:'485,289',to:'414,219'}},risk:{A0:-5.638,A1:3.4937,A2:-5.0093},corr:{wu:{A0:[['(',0],['...',0],['—',0],['_',0],['3',1],['-',0],['R',0],['o',0]],A1:[['(',0],['...',0],['/',0],[':',0],['—',0],['3',1],['-',0],['or',0]],A2:[['...',0],['—',0],['(',0],['_',0],['-',0],['or',0],['o',0],['3',1]]},jacobian:{A0:[['·',0],['3',1],['!',0],[':',0],['%',0],['electoral',0],['ja',0],['9',1]],A1:[[':',0],['os',0],['3',1],['!',0],['·',0],['electoral',0],['4',0],['%',0]],A2:[['2',0],['!',0],['·',0],['4',0],['%',0],['—',0],['electoral',0],[':',0]]}}},
-{domain:'WikiBio',id:'wikibio-3663',response:'gerardo torrado díez de bonilla (born 30 april 1979) is a mexican footballer who plays for and captains cruz azul.',prompts:{A0:'Infobox:\n- birth_date: 30 april 1979\n- currentclub: cruz azul\n- fullname: gerardo torrado díez de bonilla\n- birth_place: mexico city, mexico\n- nationalteam: mexico\n- position: defensive midfielder',A1:'Infobox:\n- birth_date: 11 december 1961\n- currentclub: cruz azul\n- fullname: gerardo torrado díez de bonilla\n- birth_place: mexico city, mexico\n- nationalteam: mexico\n- position: defensive midfielder',A2:'Infobox:\n- birth_date: 30 april 1979\n- currentclub: cruz azul\n- nationalcaps: 27 54\n- fullname: gerardo torrado díez de bonilla\n- birth_place: mexico city, mexico\n- nationalteam: mexico'},changed:{A0:null,A1:{field:'birth_date',from:'30 april 1979',to:'11 december 1961'},A2:{field:'nationalcaps',from:'5 146',to:'27 54'}},risk:{A0:-5.7479,A1:6.6485,A2:-5.7247},corr:{wu:{A0:[['?',0],['...',0],['—',0],['(',0],['h',0],['[',0],['*',0],['/',0]],A1:[['/',0],['...',0],['[',0],['?',0],['—',0],['h',0],['(',0],['*',0]],A2:[['/',0],['—',0],['...',0],['?',0],['(',0],['[',0],['h',0],['*',0]]},jacobian:{A0:[['????',0],['ba',0],['ja',0],['·',0],['xxx',0],[')|',0],['born',0],['*)',0]],A1:[['????',0],['born',0],['2',0],['xxx',0],['=date',0],['ja',0],['*)',0],['ba',0]],A2:[['????',0],['ba',0],['·',0],['ja',0],['xxx',0],[')|',0],['*)',0],['9',1]]}}}
-];
-const arms={A0:{name:'A0 · Published',sub:'source as published',cls:'a0'},A1:{name:'A1 · Contradicted',sub:'deciding evidence flipped',cls:'a1'},A2:{name:'A2 · Placebo',sub:'unmentioned field flipped',cls:'a2'}};let si=0,arm='A1',basis='wu';
-function esc(x){return String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function marked(text,chg,cls){if(!chg)return esc(text);let i=text.toLowerCase().indexOf(chg.to.toLowerCase());if(i<0)return esc(text);return esc(text.slice(0,i))+'<mark>'+esc(text.slice(i,i+chg.to.length))+'</mark>'+esc(text.slice(i+chg.to.length))}
-function render(){const s=samples[si];responseText.textContent=s.response;sampleMeta.textContent=`${s.domain} · ${s.id} · response is byte-identical across A0/A1/A2`;sampleButtons.innerHTML=samples.map((x,i)=>`<button class="pill ${i===si?'active':''}" onclick="si=${i};render()">${x.domain}</button>`).join('')+`<div class="basis-wrap"><button class="pill ${basis==='wu'?'active':''}" onclick="basis='wu';render()">W_U</button><button class="pill ${basis==='jacobian'?'active':''}" onclick="basis='jacobian';render()">Jacobian</button></div>`;armTabs.innerHTML=Object.entries(arms).map(([k,a])=>`<button class="armbtn ${a.cls} ${arm===k?'active':''}" onclick="arm='${k}';render()"><b>${a.name}</b><span>${a.sub}</span></button>`).join('');sourceCard.className='source-card '+arms[arm].cls;sourceCard.innerHTML=marked(s.prompts[arm],s.changed[arm],arms[arm].cls);const r=s.risk[arm];riskValue.textContent=(r>=0?'+':'')+r.toFixed(2);let pct=Math.min(50,Math.abs(r)/12*50);riskFill.style.width=pct+'%';riskFill.style.left=(r>=0?50:50-pct)+'%';riskFill.style.background=r>=0?'var(--red)':'var(--cyan)';const ch=s.changed[arm];fieldValue.textContent=ch?ch.field:'none';changeValue.textContent=ch?`${ch.from} → ${ch.to}`:'No source field changed.';chips.innerHTML=s.corr[basis][arm].map(([t,h])=>`<span class="chip ${h?'hit':''}">${esc(t)}</span>`).join('')}
-render();
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("payload").textContent);
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var NS = "http://www.w3.org/2000/svg";
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  function fmt(x, n) { return (x >= 0 ? "+" : "\u2212") + Math.abs(x).toFixed(n === undefined ? 4 : n); }
+  function el(tag, attrs, text) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) { e.setAttribute(k, attrs[k]); }
+    if (text !== undefined) { e.textContent = text; }
+    return e;
+  }
+  function seg(host, opts, active, onPick) {
+    host.innerHTML = opts.map(function (o) {
+      return '<button type="button" data-v="' + esc(o.v) + '" aria-pressed="' +
+        (o.v === active) + '">' + esc(o.label) + "</button>";
+    }).join("");
+    host.addEventListener("click", function (e) {
+      var b = e.target.closest("button");
+      if (!b) { return; }
+      Array.prototype.forEach.call(host.children, function (c) {
+        c.setAttribute("aria-pressed", String(c === b));
+      });
+      onPick(b.dataset.v);
+    });
+  }
+
+  document.getElementById("claim").textContent = D.paper.claim;
+  document.getElementById("disclaimer").textContent = D.disclaimer;
+  document.getElementById("tag-name").textContent = D.paper.tag;
+  document.getElementById("pdf-sha").textContent = D.paper.pdf_sha256;
+  document.getElementById("gate-word").textContent =
+    D.cohort2.gate === "CONTROL-UNRESOLVED" ? "unresolved" : D.cohort2.gate;
+
+  /* ---------- explainer + lab share the arm renderer ---------- */
+  var ARMS = [
+    { k: "A0", cls: "a0", name: "A0 &middot; published", what: "The source as published." },
+    { k: "A1", cls: "a1", name: "A1 &middot; contradicted", what: "One asserted value replaced. The response is now false." },
+    { k: "A2", cls: "a2", name: "A2 &middot; placebo", what: "One unmentioned value replaced. The response is still true." }
+  ];
+
+  function sourceBody(prompt, mark) {
+    var body = prompt.split("\n").filter(function (l) {
+      return l.indexOf("Write ") !== 0 && l.trim() !== "";
+    }).join("\n");
+    if (!mark) { return esc(body); }
+    var at = body.toLowerCase().indexOf(String(mark).toLowerCase());
+    if (at < 0) { return esc(body); }
+    return esc(body.slice(0, at)) + "<mark>" + esc(body.slice(at, at + mark.length)) +
+      "</mark>" + esc(body.slice(at + mark.length));
+  }
+
+  function renderArms(host, row, basis, withMetrics) {
+    var risks = ARMS.map(function (a) { return row.dense_risk[a.k]; });
+    var span = Math.max.apply(null, risks.map(Math.abs).concat([1])) * 1.12;
+    host.innerHTML = ARMS.map(function (a) {
+      var ch = a.k === "A1" ? row.changed.relevant : a.k === "A2" ? row.changed.placebo : null;
+      var risk = row.dense_risk[a.k];
+      var pct = (Math.abs(risk) / span) * 50;
+      var left = risk >= 0 ? 50 : 50 - pct;
+      var caption = ch
+        ? '<span class="mono">' + esc(ch.field.split("#")[0]) + "</span> &middot; " +
+          esc(ch.from) + " &rarr; <b>" + esc(ch.to) + "</b>"
+        : "nothing changed";
+      var metrics = "";
+      if (withMetrics) {
+        var chips = ((row.correlates[basis] || {})[a.k] || []).map(function (c) {
+          return '<span class="chip' + (c.hit ? " hit" : "") + '">' +
+            esc(c.token.replace(/ /g, "\u00b7")) + "</span>";
+        }).join("");
+        metrics =
+          '<div><div class="metricrow"><span>Dense risk</span><span class="v">' +
+          fmt(risk, 2) + '</span></div><div class="meter"><span class="zero"></span>' +
+          '<span class="fill" style="left:' + left + "%;width:" + pct + '%"></span></div></div>' +
+          '<div><div class="metricrow" style="margin-bottom:.35rem"><span>Top readable coordinates</span></div>' +
+          '<div class="chips">' + chips + "</div></div>";
+      }
+      return '<article class="arm ' + a.cls + '"><span class="tag">' + a.name +
+        '</span><span class="note">' + a.what + "</span>" +
+        '<div class="note">' + caption + "</div>" +
+        '<div class="src">' + sourceBody(row.prompts[a.k], ch ? ch.to : null) + "</div>" +
+        metrics + "</article>";
+    }).join("");
+  }
+
+  var rows = D.replay.rows;
+  var ex = rows[0];
+  document.getElementById("ex-response").textContent = ex.response;
+  renderArms(document.getElementById("explainer"), ex, "wu", false);
+
+  /* ---------- retention chart ---------- */
+  var W = 720, H = 320, M = { t: 18, r: 18, b: 42, l: 52 };
+  var ks = D.ks;
+  var lx = ks.map(function (k) { return Math.log2(k); });
+  var lmin = lx[0], lmax = lx[lx.length - 1];
+  function X(i) { return M.l + (lx[i] - lmin) / (lmax - lmin) * (W - M.l - M.r); }
+  function Y(v, lo, hi) { return H - M.b - (v - lo) / (hi - lo) * (H - M.t - M.b); }
+
+  function drawRetention(basis) {
+    var svg = document.getElementById("chart-retention");
+    while (svg.childNodes.length > 1) { svg.removeChild(svg.lastChild); }
+    var lo = -0.05, hi = 1.05;
+    var g = el("g", { "class": "grid" });
+    [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+      g.appendChild(el("line", { x1: M.l, x2: W - M.r, y1: Y(v, lo, hi), y2: Y(v, lo, hi) }));
+      g.appendChild(el("text", { x: M.l - 9, y: Y(v, lo, hi) + 4, "text-anchor": "end", "font-size": 11 }, v.toFixed(2)));
+    });
+    svg.appendChild(g);
+    var dense = el("line", { x1: M.l, x2: W - M.r, y1: Y(1, lo, hi), y2: Y(1, lo, hi), stroke: "var(--line)", "stroke-dasharray": "5 4" });
+    svg.appendChild(dense);
+    svg.appendChild(el("text", { x: W - M.r, y: Y(1, lo, hi) - 7, "text-anchor": "end", "font-size": 11 }, "dense anchor = 1"));
+
+    ks.forEach(function (k, i) {
+      svg.appendChild(el("text", { x: X(i), y: H - M.b + 20, "text-anchor": "middle", "font-size": 11 }, String(k)));
+    });
+    svg.appendChild(el("text", { x: (M.l + W - M.r) / 2, y: H - 6, "text-anchor": "middle", "font-size": 12 }, "active coordinates k"));
+
+    var c = D.cohort1.curves[basis];
+    [["pred", "var(--pred)", "prediction"], ["ground", "var(--ground-c)", "grounding"]].forEach(function (spec) {
+      var axis = spec[0], col = spec[1], name = spec[2];
+      var pts = c[axis].map(function (v, i) { return X(i) + "," + Y(v, lo, hi); });
+      var path = el("polyline", {
+        points: pts.join(" "), fill: "none", stroke: col, "stroke-width": 2.2,
+        "stroke-linejoin": "round", "stroke-linecap": "round"
+      });
+      if (axis === "ground") { path.setAttribute("stroke-dasharray", "6 4"); }
+      svg.appendChild(path);
+      if (!reduce && axis === "pred") {
+        try {
+          var len = path.getTotalLength();
+          path.style.setProperty("--len", len);
+          path.classList.add("draw");
+        } catch (e) { /* getTotalLength unsupported; static is fine */ }
+      }
+      c[axis].forEach(function (v, i) {
+        svg.appendChild(el("circle", { cx: X(i), cy: Y(v, lo, hi), r: 3.4, fill: axis === "pred" ? col : "var(--surface)", stroke: col, "stroke-width": 1.6 }));
+      });
+      var last = c[axis][c[axis].length - 1];
+      svg.appendChild(el("text", { x: W - M.r - 6, y: Y(last, lo, hi) + (axis === "pred" ? -10 : 18), "text-anchor": "end", "font-size": 12, "class": "lbl" }, name));
+    });
+
+    var gp = D.cohort1.gap[basis];
+    document.getElementById("ret-cap").innerHTML =
+      "Cohort 1, sealed and opened once: " + D.cohort1.items + " items over " +
+      D.cohort1.clusters + " source clusters. Curve-area gap for this basis is <b>" +
+      fmt(gp.point) + "</b> with a source-cluster bootstrap interval of [" +
+      fmt(gp.ci[0]) + ", " + fmt(gp.ci[1]) + "], positive at " + gp.k_positive +
+      " of " + ks.length + " values of k" +
+      (gp.domains_consistent ? " and consistent in direction across all three domains." : ".");
+  }
+
+  /* ---------- control chart ---------- */
+  function drawControl() {
+    var svg = document.getElementById("chart-control");
+    while (svg.childNodes.length > 1) { svg.removeChild(svg.lastChild); }
+    var CW = 720, CH = 300, cm = { t: 16, r: 26, b: 44, l: 132 };
+    var entries = Object.keys(D.cohort2.pooled).map(function (b) {
+      var p = D.cohort2.pooled[b];
+      return { b: b, point: p.point, ci: p.ci, readable: p.readable };
+    }).sort(function (a, b) { return b.point - a.point; });
+    var lo = 0, hi = Math.max.apply(null, entries.map(function (e) { return e.ci[1]; })) * 1.08;
+    function cx(v) { return cm.l + (v - lo) / (hi - lo) * (CW - cm.l - cm.r); }
+    var step = (CH - cm.t - cm.b) / entries.length;
+
+    var g = el("g", { "class": "grid" });
+    [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6].filter(function (v) { return v <= hi; }).forEach(function (v) {
+      g.appendChild(el("line", { x1: cx(v), x2: cx(v), y1: cm.t, y2: CH - cm.b }));
+      g.appendChild(el("text", { x: cx(v), y: CH - cm.b + 19, "text-anchor": "middle", "font-size": 11 }, v.toFixed(1)));
+    });
+    svg.appendChild(g);
+    svg.appendChild(el("line", { x1: cx(0), x2: cx(0), y1: cm.t, y2: CH - cm.b, stroke: "var(--ink)", "stroke-width": 1 }));
+    svg.appendChild(el("text", { x: (cm.l + CW - cm.r) / 2, y: CH - 8, "text-anchor": "middle", "font-size": 12 }, "prediction \u2212 grounding gap, 95% CI"));
+
+    var NAME = { wu: "W_U (readable)", jacobian: "Jacobian (readable)" };
+    entries.forEach(function (e, i) {
+      var y = cm.t + step * (i + 0.5);
+      var col = e.readable ? (e.b === "wu" ? "var(--pred)" : "var(--ground-c)") : "var(--rot)";
+      svg.appendChild(el("line", { x1: cx(e.ci[0]), x2: cx(e.ci[1]), y1: y, y2: y, stroke: col, "stroke-width": 3, "stroke-linecap": "round" }));
+      svg.appendChild(el("circle", { cx: cx(e.point), cy: y, r: 4.6, fill: col }));
+      svg.appendChild(el("text", { x: cm.l - 12, y: y + 4, "text-anchor": "end", "font-size": 12, "class": e.readable ? "lbl" : "" }, NAME[e.b] || "rotation " + e.b.slice(3)));
+    });
+    var rm = D.cohort2.readable_minus_rotated;
+    document.getElementById("ctl-cap").innerHTML =
+      "Cohort 2, sealed, source-disjoint from cohort 1: " + D.cohort2.items +
+      " items over " + D.cohort2.clusters + " clusters. Every rotation is positive " +
+      "and Holm-significant, so vocabulary meaning is not necessary. But W<sub>U</sub> " +
+      "minus the rotation mean is <b>" + fmt(rm.wu.point) + "</b> [" + fmt(rm.wu.ci[0]) +
+      ", " + fmt(rm.wu.ci[1]) + "] and Jacobian minus the rotation mean is <b>" +
+      fmt(rm.jacobian.point) + "</b> [" + fmt(rm.jacobian.ci[0]) + ", " +
+      fmt(rm.jacobian.ci[1]) + "] &mdash; both excluding zero, in opposite directions. " +
+      "The paired non-inferiority test is omitted: its frozen margin of " +
+      D.cohort2.margin + " was mis-specified and is uninformative.";
+  }
+
+  /* ---------- domains, attribution, adverse ---------- */
+  document.getElementById("domains").innerHTML = D.domains.map(function (d) {
+    return '<div class="card"><h3>' + esc(d.name) + '</h3><span class="n">' +
+      d.items.toLocaleString() + " items &middot; ~" + d.median_prompt_tokens +
+      ' prompt tokens</span><p class="note" style="margin:.5rem 0 0">' +
+      esc(d.blurb) + "</p></div>";
+  }).join("");
+
+  (function () {
+    var tb = document.querySelector("#attr-table tbody");
+    var NAME = { wu: "W_U at top 25", jacobian: "Jacobian at top 25" };
+    tb.innerHTML = Object.keys(D.attribution).map(function (b) {
+      var r = D.attribution[b].rates["25"];
+      if (!r) { return ""; }
+      var beaten = r.value < r.overlap_matched_ctrl;
+      return "<tr><td>" + NAME[b] + '</td><td class="' + (beaten ? "neg" : "pos") +
+        '">' + r.value.toFixed(3) + '</td><td class="' + (beaten ? "pos" : "") +
+        '">' + r.overlap_matched_ctrl.toFixed(3) + "</td><td>" +
+        r.random_ctrl.toFixed(3) + "</td></tr>";
+    }).join("");
+    document.getElementById("attr-cap").innerHTML =
+      "For <b>W<sub>U</sub></b> the size-matched control beats the deciding value: " +
+      "a random same-size sample of other source tokens lands in the top " +
+      "coordinates more often than the tokens that actually decide the label. The " +
+      "Jacobian basis reverses this, and we record that as <b>unresolved</b> rather " +
+      "than as evidence of faithfulness &mdash; it is exploratory, one model, one k, " +
+      "one ranking rule, and it was found after the first analysis was written. " +
+      "Throughout, these are readable correlates, never explanations.";
+  })();
+
+  document.getElementById("adverse").innerHTML = D.adverse.map(function (a) {
+    return '<div class="row"><span class="k">' + esc(a.label) + '</span><span class="v">' +
+      esc(a.value) + '</span><span class="n">' + esc(a.note) + "</span></div>";
+  }).join("");
+
+  document.getElementById("foot").innerHTML =
+    "Artifact Replay of frozen measured outputs. No model runs on this page. " +
+    "Qwen3.5-4B at layer 19; the second model, Phi, is a direction check on its own " +
+    "eligible subset and not a controlled architecture comparison. " +
+    "Paper: <em>" + esc(D.paper.title) + "</em>, tag <code>" + esc(D.paper.tag) +
+    "</code>.";
+
+  /* ---------- wiring ---------- */
+  var bases = [{ v: "wu", label: "W_U" }, { v: "jacobian", label: "Jacobian" }];
+  seg(document.getElementById("basis-seg"), bases, "wu", drawRetention);
+  drawRetention("wu");
+  drawControl();
+
+  var labState = { row: 0, basis: "wu" };
+  function paintLab() {
+    var r = rows[labState.row];
+    document.getElementById("lab-response").textContent = r.response;
+    renderArms(document.getElementById("lab-arms"), r, labState.basis, true);
+  }
+  seg(document.getElementById("item-seg"),
+    rows.map(function (r, i) { return { v: String(i), label: r.source_id }; }),
+    "0", function (v) { labState.row = +v; paintLab(); });
+  seg(document.getElementById("lab-basis-seg"), bases, "wu",
+    function (v) { labState.basis = v; paintLab(); });
+  paintLab();
+})();
 </script>
-</body></html>
