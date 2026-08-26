@@ -450,6 +450,12 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; 
 <script>
 (function () {
   "use strict";
+  // The page ships as a body fragment: on GitHub Pages the browser synthesises
+  // <html> without a lang, and an artifact host supplies its own skeleton. Either
+  // way a literal <html lang> would be wrong here, so set it at runtime -- a
+  // missing document language leaves screen readers guessing the voice.
+  if (!document.documentElement.lang) { document.documentElement.lang = "en"; }
+
   var D = JSON.parse(document.getElementById("payload").textContent);
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var NS = "http://www.w3.org/2000/svg";
