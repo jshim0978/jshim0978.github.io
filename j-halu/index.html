@@ -8,8 +8,10 @@
 :root {
   --ink: #12181b;
   --ink-soft: #3a484f;
-  --muted: #5f7178;
-  --faint: #8ea0a7;
+  /* 4.5:1 on the sunken panel, which is the tightest ground on the page.
+     The previous #5f7178 measured 4.16 there and 4.49 on the body ground,
+     so muted labels, eyebrows and figcaptions sat just under AA. */
+  --muted: #566870;
   --ground: #eef1f2;
   --surface: #fcfdfd;
   --sunken: #e4e9ea;
@@ -36,7 +38,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ink: #e7eef0; --ink-soft: #b6c5ca; --muted: #91a3aa; --faint: #6c7e85;
+    --ink: #e7eef0; --ink-soft: #b6c5ca; --muted: #91a3aa;
     --ground: #0d1315; --surface: #161f22; --sunken: #1d282c;
     --line: #2b393e; --hair: #232f33;
     --pred: #5cc3bd; --pred-wash: #12302f;
@@ -47,7 +49,7 @@
   }
 }
 :root[data-theme="dark"] {
-  --ink: #e7eef0; --ink-soft: #b6c5ca; --muted: #91a3aa; --faint: #6c7e85;
+  --ink: #e7eef0; --ink-soft: #b6c5ca; --muted: #91a3aa;
   --ground: #0d1315; --surface: #161f22; --sunken: #1d282c;
   --line: #2b393e; --hair: #232f33;
   --pred: #5cc3bd; --pred-wash: #12302f;
