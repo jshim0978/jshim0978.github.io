@@ -24,6 +24,8 @@
   --placebo: #7c6a30;
   --placebo-wash: #efe8d2;
   --rot: #5c6f77;
+  --wu: #3a6ea5;
+  --jac: #7d4f9e;
   --shadow: 0 1px 2px rgba(27,34,38,.05), 0 10px 30px rgba(27,34,38,.06);
 
   --s--1: clamp(.78rem, .76rem + .1vw, .84rem);
@@ -45,6 +47,7 @@
     --ground-c: #e0866d; --ground-wash: #341f1a;
     --placebo: #c9b475; --placebo-wash: #2a2517;
     --rot: #93a5ac;
+    --wu: #7fa8d9; --jac: #b48ed6;
     --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
   }
 }
@@ -56,6 +59,7 @@
   --ground-c: #e0866d; --ground-wash: #341f1a;
   --placebo: #c9b475; --placebo-wash: #2a2517;
   --rot: #93a5ac;
+  --wu: #7fa8d9; --jac: #b48ed6;
   --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
 }
 
@@ -211,13 +215,13 @@ svg.chart { display: block; width: 100%; height: auto; min-width: 470px; }
 .chartbox::after { content: ""; }
 #chart-control { min-width: 380px; }
 @media (max-width: 560px) {
-  .chartbox { padding-bottom: 1.2rem; }
-  .chartbox::before {
+  .chartbox, .tablewrap { padding-bottom: 1.2rem; position: relative; }
+  .chartbox::before, .tablewrap::before {
     content: "drag sideways for the full chart \2192 ";
     position: absolute; bottom: 0; left: 2px;
     font-size: .72rem; color: var(--muted);
   }
-  .chartbox::after {
+  .chartbox::after, .tablewrap::after {
     content: ""; position: absolute; top: 0; right: 0; height: 100%;
     width: 26px; pointer-events: none;
     background: linear-gradient(to right, rgba(255,255,255,0), var(--surface));
@@ -485,9 +489,10 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; 
   <div class="wide"><div class="adverse" id="adverse"></div></div>
   <div class="col" style="margin-top:1.5rem">
     <p class="note">We do not claim that readability causes the loss of grounding;
-    on the confirmation cohort the readable unembedding basis has the
-    <em>highest</em> grounding retention of every basis tested, meaning-free
-    rotations included. We do not claim these coordinates faithfully explain a
+    on the confirmation cohort the readable unembedding basis has the highest
+    <em>pooled</em> grounding retention of every basis tested, meaning-free
+    rotations included (per domain it leads in ToTTo and WikiBio; on E2E one
+    rotation seed exceeds it). We do not claim these coordinates faithfully explain a
     decision. We do not report a working recovery or mitigation method. The
     free-generation steering intervention was null and is retained as a boundary
     condition.</p>
@@ -656,7 +661,8 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; 
     svg.appendChild(el("text", { x: (M.l + W - M.r) / 2, y: H - 6, "text-anchor": "middle", "font-size": 12 }, "active coordinates k"));
 
     var c = D.cohort1.curves[basis];
-    [["pred", "var(--pred)", "prediction"], ["ground", "var(--ground-c)", "grounding"]].forEach(function (spec) {
+    var bcol = basis === "wu" ? "var(--wu)" : "var(--jac)";
+    [["pred", bcol, "prediction"], ["ground", bcol, "grounding"]].forEach(function (spec) {
       var axis = spec[0], col = spec[1], name = spec[2];
       var pts = c[axis].map(function (v, i) { return X(i) + "," + Y(v, lo, hi); });
       var path = el("polyline", {
@@ -714,7 +720,7 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; 
     var NAME = { wu: "W_U (readable)", jacobian: "Jacobian (readable)" };
     entries.forEach(function (e, i) {
       var y = cm.t + step * (i + 0.68);
-      var col = e.readable ? (e.b === "wu" ? "var(--pred)" : "var(--ground-c)") : "var(--rot)";
+      var col = e.readable ? (e.b === "wu" ? "var(--wu)" : "var(--jac)") : "var(--rot)";
       svg.appendChild(el("text", { x: cx(e.ci[0]), y: y - 9, "text-anchor": "start", "font-size": 12, "class": e.readable ? "lbl" : "" }, NAME[e.b] || "rotation " + e.b.slice(3)));
       svg.appendChild(el("line", { x1: cx(e.ci[0]), x2: cx(e.ci[1]), y1: y, y2: y, stroke: col, "stroke-width": 3, "stroke-linecap": "round" }));
       svg.appendChild(el("circle", { cx: cx(e.point), cy: y, r: 4.6, fill: col }));
@@ -823,7 +829,7 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; 
     var yl = el("text", { x: 14, y: (m.t + MH - m.b) / 2, "font-size": 12, transform: "rotate(-90 14 " + ((m.t + MH - m.b) / 2) + ")", "text-anchor": "middle" }, "prediction retention");
     svg.appendChild(yl);
     D.map.forEach(function (p) {
-      var col = p.b === "wu" ? "var(--pred)" : p.b === "jacobian" ? "var(--ground-c)" : "var(--rot)";
+      var col = p.b === "wu" ? "var(--wu)" : p.b === "jacobian" ? "var(--jac)" : "var(--rot)";
       var pooled = p.d === "pooled";
       var node;
       if (p.c === 1) {
@@ -846,7 +852,7 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; 
     document.getElementById("map-cap").innerHTML =
       "Every sealed cell of both cohorts &mdash; " + D.map.length + " points: each " +
       "domain and pooled value, every basis, every k. Circles are cohort 1, " +
-      "triangles cohort 2; open markers are pooled; teal is W<sub>U</sub>, rust " +
+      "triangles cohort 2; open markers are pooled; blue is W<sub>U</sub>, purple " +
       "is Jacobian, grey the three meaning-free rotations. A code that kept both " +
       "abilities equally would sit on the diagonal. All but seven ToTTo cells " +
       "(five readable W<sub>U</sub>, two of one rotation seed) sit far above " +
@@ -901,6 +907,12 @@ code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .92em; 
   seg(document.getElementById("basis-seg"), bases, "wu", drawRetention);
   drawRetention("wu");
   drawControl();
+  (function () {
+    var box = document.getElementById("chart-control").closest(".chartbox");
+    if (box && box.scrollWidth > box.clientWidth + 8) {
+      box.scrollLeft = box.scrollWidth;
+    }
+  })();
 
   var labState = { row: 0, basis: "wu" };
   function paintLab() {
